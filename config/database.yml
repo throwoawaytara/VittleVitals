@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: TestRailsOnDigitalOcean_development
   pool: 5
-  username: TestRailsOnDigitalOcean
+  username: 
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -48,13 +48,13 @@ test:
   encoding: unicode
   database: TestRailsOnDigitalOcean_test
   pool: 5
-  username: TestRailsOnDigitalOcean
+  username: 
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: TestRailsOnDigitalOcean_production
+  database: 
   pool: 5
   username: TestRailsOnDigitalOcean
   password:
