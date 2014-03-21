@@ -7,6 +7,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+user = User.create(email: 'cat@cat.com', password: 'password')
 
 recipe_1 = Recipe.create(name: 'Mac & Cheese', directions: "Cook macaroni according to the package directions. Drain. In a saucepan, melt butter or margarine over medium heat. Stir in enough flour to make a roux. Add milk to roux slowly, stirring constantly. Stir in cheeses, and cook over low heat until cheese is melted and the sauce is a little thick. Put macaroni in large casserole dish, and pour sauce over macaroni. Stir well. Melt butter or margarine in a skillet over medium heat. Add breadcrumbs and brown. Spread over the macaroni and cheese to cover. Sprinkle with a little paprika. Bake at 350 degrees F for 30 minutes. Serve.")
 
@@ -17,6 +18,10 @@ recipe_3 = Recipe.create(name: 'Tofu Scramble', directions: "Preheat a large, he
 recipe_4 = Recipe.create(name: 'Greenbean Casserole', directions: "Stir the soup, milk, soy sauce, black pepper, beans and 2/3 cup onions in a 1 1/2-quart casserole.Bake at 350°F. for 25 minutes or until the bean mixture is hot and bubbling.  Stir the bean mixture. Sprinkle with the remaining onions. Bake for 5 minutes or until the onions are golden brown.")
 
 recipe_5 = Recipe.create(name: 'Turkish Delight', directions: "Bring 1 1/2 cups water, sugar, and corn syrup to a boil over medium-high heat in a large saucepan. Cook, stirring frequently, until the temperature reaches 240 degrees F (115 degrees C) on a candy thermometer. Set aside and keep hot. Stir together orange juice and orange zest, sprinkle with gelatin, and set aside. In a small bowl, dissolve cornstarch in 1/2 cup cold water, then stir into hot syrup. Place over medium-low heat, and simmer, stirring gently, until very thick. Remove syrup from heat, stir in orange juice mixture, vanilla, and pistachios. Sprinkle a 8x8-inch pan generously with confectioners' sugar. Pour the Turkish delight into the pan, and let cool in a cool, dry place (not the refrigerator) until set, 3 to 4 hours. When cool, sprinkle the top with another thick layer of powdered sugar. Cut into 1-inch squares, and dredge each well with confectioners' sugar. Store at room temperature in an airtight container.")
+
+user.recipes << recipe_4
+user.recipes << recipe_1
+user.recipes << recipe_2
 
 ingredient_1 = Ingredient.create(name: 'Cheese', brand: 'Kraft')
 ingredient_2 = Ingredient.create(name: 'Butter', brand: "I can't believe it's not Butter!")

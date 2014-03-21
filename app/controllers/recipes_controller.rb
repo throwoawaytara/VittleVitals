@@ -1,6 +1,9 @@
 class RecipesController < ApplicationController
+
   def index
-    p params
+    if user_signed_in? && !params[:search]
+      return @recipes = User.find(params[:user_id]).recipes
+    end
     if params[:search]
       @recipes = Recipe.search(params[:search], params[:method])
     else
@@ -9,7 +12,6 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = params
-    # @recipe = Recipe.find_by(params[:id])
+    @recipe = Recipe.find(params[:id])
   end
 end
