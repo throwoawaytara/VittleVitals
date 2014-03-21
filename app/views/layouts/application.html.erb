@@ -11,15 +11,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= render "layouts/devise_login_helpers" %>
+<%= render partial: "_site_header" %>
+<%= render partial: "_devise_login_helpers" %>
 
 <div class="container-fluid">
   <section class="content">
     <%= yield %>
   </section>
 </div>
-<%= render "layouts/footer" %>
+<%= render partial: "layouts/_footer" %>
 
 </body>
 </html>
