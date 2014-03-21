@@ -10,11 +10,11 @@ class Recipe < ActiveRecord::Base
 
   # validates_presence_of :creator_id
 
-  def self.search(search) do 
-    if search == 'search_recipe_name'
-      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
-    else
-      find(:all)
-    end
-  end
+  # def self.search(search) do 
+  #   if search == 'search_recipe_name'
+  #     find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+  #   else
+  #     find(:all)
+  #   end
+  # end
 end
