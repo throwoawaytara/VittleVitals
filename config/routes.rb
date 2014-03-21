@@ -8,6 +8,8 @@ TestRailsOnDigitalOcean::Application.routes.draw do
   resources :recipes, only: [:show]
 
   root 'welcome#index'
+
+  resources :recipes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
