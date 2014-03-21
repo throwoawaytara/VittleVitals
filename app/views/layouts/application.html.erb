@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TestRailsOnDigitalOcean</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recipe App</title>
+
+  <%= stylesheet_link_tag     "application","bootstrap-theme","bootstrap", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag  "jquery","application","bootstrap","data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
 <p class="navbar-text pull-right">
 <% if user_signed_in? %>
   Logged in as <strong><%= current_user.email %></strong>.
@@ -25,7 +28,26 @@
   <p class="alert alert-error"><%= alert %></p>
 <% end %>
 
-<%= yield %>
+<div class="container-fluid">
+  
+  <div class="header-wrapper row">
+    <header class="header">
+      <h1><a href="/">Recipe App</a></h1>
+    </header>
+  </div><!-- .header-wrapper .row -->
+
+  <div class="content-wrapper row">
+    <section class="content"><%= yield %></section>
+  </div><!-- .content-wrapper .row -->
+  
+  <div class="footer-wrapper row">
+    <footer class="footer">
+      <p>Copyright &copy;2014</p>
+    </footer>
+  </div><!-- .footer-wrapper .row-->
+
+</div><!-- .container-fluid -->
+
 
 </body>
 </html>
