@@ -2,7 +2,7 @@ TestRailsOnDigitalOcean::Application.routes.draw do
   devise_for :users
 
   resources :users do
-    resources :recipes, only: [:index]
+    resources :recipes, only: [:index, :show]
   end
 
   resources :recipes, only: [:show]
