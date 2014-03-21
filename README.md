@@ -1,3 +1,32 @@
+#Adding a card to trello
+
+The title is one of two formats:
+
+    Feature: description of feature
+    Bugfix: description of bugfix
+
+Each issue must be a user story.  We use the following user story format:  
+
+    "As a <role>, I want <goal/desire> so that <benefit>"
+    
+For example, 
+
+    "As a developer, I want there to be a how to contribute section of the Readme, so that I know how to contribute to the project." 
+
+
+Each issue must also contain a description of what 'done' means for that feature or bugfix.  For example, 
+
+    "the 'how to contribute' section is complete when 
+       1. there is a specific outline of how one can claim units of work
+       2. A descript of the preferred format for letting the other contributers know when you have claimed something.
+
+Once you are done writing up the issue, feel free to claim it. 
+
+
+##If you have forked this repo and want to make a contribution: 
+
+###submit a pull request.  See the format for 'issues.'  Make sure your pull request follows that format. 
+
 
 
 
