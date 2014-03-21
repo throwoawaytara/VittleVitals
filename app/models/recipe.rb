@@ -8,5 +8,5 @@ class Recipe < ActiveRecord::Base
   validates :name, presence: true
   validates :directions, presence: true
 
-  validates_presence_of :creator_id
+  # validates_presence_of :creator_id
 end
