@@ -3,4 +3,6 @@ class Day < ActiveRecord::Base
 
   has_many :day_recipes
   has_many :recipes, through: :day_recipes
+
+  validates :name, true
 end
