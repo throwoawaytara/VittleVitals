@@ -2,14 +2,14 @@ TestRailsOnDigitalOcean::Application.routes.draw do
   devise_for :users
 
   resources :users do
-    resources :recipes, only: [:index, :show]
+    get '/recipes', to: 'user_recipes#index'
+    resources :recipes, only: [:show]
   end
 
-  resources :recipes, only: [:show]
+  resources :recipes, only: [:show, :index]
 
   root 'welcome#index'
 
-  resources :recipes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
