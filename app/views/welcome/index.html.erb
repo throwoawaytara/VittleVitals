@@ -4,8 +4,8 @@
   <div>
     <%= text_field_tag :search, params[:search] %>
     <div>
-      <%= submit_tag "By Ingredient", name: "search_ingredient" %>
-      <%= submit_tag "By Recipe Name", name: "search_recipe_name" %>
+      <%= submit_tag "By Ingredient", name: "method" %>
+      <%= submit_tag "By Recipe Name", name: "method" %>
     </div>
   </div>
 <% end %>
@@ -13,8 +13,7 @@
 
 <% @recipes.each do |recipe| %>
   <div>
-    check
-    <% recipe.name %>
+    <%= recipe.name %>
   </div>
 <% end %>
 
