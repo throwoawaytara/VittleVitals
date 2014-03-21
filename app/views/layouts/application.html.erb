@@ -11,15 +11,43 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render partial: "_site_header" %>
-<%= render partial: "_devise_login_helpers" %>
+<p class="navbar-text pull-right">
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+<% end %>
+
+<% if notice %>
+  <p class="alert alert-notice"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-error"><%= alert %></p>
+<% end %>
 
 <div class="container-fluid">
-  <section class="content">
-    <%= yield %>
-  </section>
-</div>
-<%= render partial: "layouts/_footer" %>
+  
+  <div class="header-wrapper row">
+    <header class="header">
+      <h1><a href="/">Recipe App</a></h1>
+    </header>
+  </div><!-- .header-wrapper .row -->
+
+  <div class="content-wrapper row">
+    <section class="content"><%= yield %></section>
+  </div><!-- .content-wrapper .row -->
+  
+  <div class="footer-wrapper row">
+    <footer class="footer">
+      <p>Copyright &copy;2014</p>
+    </footer>
+  </div><!-- .footer-wrapper .row-->
+
+</div><!-- .container-fluid -->
+
 
 </body>
 </html>
