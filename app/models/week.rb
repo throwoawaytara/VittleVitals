@@ -3,4 +3,6 @@ class Week < ActiveRecord::Base
   belongs_to :user
 
   validates :date, presence: true
+
+  validates_presence_of :user_id
 end

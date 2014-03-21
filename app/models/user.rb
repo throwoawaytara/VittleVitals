@@ -11,5 +11,4 @@ class User < ActiveRecord::Base
   has_many :collected_recipes, foreign_key: :collector_id
   has_many :recipes, through: :collected_recipes, source: :collector_id
 
-
 end
