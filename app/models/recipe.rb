@@ -18,4 +18,13 @@ class Recipe < ActiveRecord::Base
   validates :directions, presence: true
 
   validates_presence_of :creator_id
+
+
+  def self.search(search) do 
+    if search == 'search_recipe_name'
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
 end
