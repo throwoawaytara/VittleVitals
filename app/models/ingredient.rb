@@ -7,4 +7,6 @@ class Ingredient < ActiveRecord::Base
   validates :name, presence: true
   validates :brand, presence: true
 
+  
+
 end
