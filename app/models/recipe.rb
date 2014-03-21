@@ -19,12 +19,16 @@ class Recipe < ActiveRecord::Base
 
   validates_presence_of :creator_id
 
-
-  def self.search(search) do 
-    if search == 'search_recipe_name'
-      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+  def self.search(search) do
+    if search #== 'search_recipe_name'
+      @recipes = Recipe.where("name ILike '%?%'", params[:search]) #find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    elsif search == 'search_ingredient'
+      @recipes = Ingredient.includes(:recipes).where("name is ILike '%?%'", params[:seach]).first.recipes
     else
-      find(:all)
+      @recipes = Recipe.take(20)
     end
   end
 end
+
+
+# @ingredient = Ingredient.includes(:recipes).where("name is ILike %params[:name]").first.recipes

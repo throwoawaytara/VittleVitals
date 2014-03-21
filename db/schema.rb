@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20140321181531) do
   end
 
   create_table "scheduled_recipes", force: true do |t|
+    t.date     "date"
     t.integer  "recipe_id"
     t.integer  "user_id"
     t.datetime "created_at"
