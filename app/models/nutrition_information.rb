@@ -1,4 +1,5 @@
 class NutritionInformation < ActiveRecord::Base
+  
   belongs_to :ingredient
 
   validates :item_name, presence: true
