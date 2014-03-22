@@ -5,6 +5,7 @@ TestRailsOnDigitalOcean::Application.routes.draw do
     get '/recipes', to: 'user_recipes#index'
     resources :recipes, only: [:show]
     resources :grocerylists, only: [:show]
+    resources :scheduled_recipes
   end
 
   resources :recipes, only: [:show, :index]
