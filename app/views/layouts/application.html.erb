@@ -1,63 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Recipe App</title>
-
+  <meta name="description" content="An app to make shopping for healthy ingredients easier.">
+  <meta name="author" content="Built by Diana Calvache, Dustin Fox, Cristin O'Connor and Tara Roys at Dev Bootcamp Chicago">
+  <title>RecipEase/GrocerEase</title>
   <%= stylesheet_link_tag     "application","bootstrap-theme","bootstrap", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag  "jquery","application","bootstrap","data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div class="devise notices">
-<% if notice %>
-  <p class="alert alert-notice"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-error"><%= alert %></p>
-<% end %>
-</div>
-
-<div class="container-fluid">
-  
-  <div class="site-header-wrapper row">
-    
-    <nav role="primary" class="util-nav">
-      <div class="login-signup navbar-text pull-right">
+  <div class="container-fluid">
+    <div class="site-header-wrapper row">
+      <nav class="site-nav" role="primary">
         <% if user_signed_in? %>
-         <%= render "logged_in_navbar" %>
+          <div class="login-signup navbar-text pull-right"><ul class="nav nav-tabs"><%= render "logged_in_navbar" %></ul></div>
         <% else %>
-          <%= link_to "Sign up", new_user_registration_path, :class => "navbar-link"  %>
-          <%= link_to "Login", new_user_session_path, :class => "navbar-link"  %>
+          <ul class="nav nav-tabs"><%= render "logged_out_navbar" %></ul>
         <% end %>
-      </div><!-- .navbar-text .pull-right .login-signup-->
-      <ul class="site-nav"><!-- page nav goes here as ul --></ul>
-    </nav><!-- .util-nav -->
+      </nav><!-- .site-nav -->
+      <div class="devise notices">
+        <% if notice %>
+          <p class="alert alert-notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-error"><%= alert %></p>
+        <% end %>
+      </div>
+      <header class="brand">
+        <h1><a href="/">RecipEase/GrocerEase</a></h1>
+      </header>
+    </div><!-- .site-header-wrapper .row -->
 
-    <header class="brand">
-      <h1><a href="/">Recipe App</a></h1>
-    </header>
+    <div class="content-wrapper row">
+      <section class="content" role="main">
+        <%= yield %>
+      </section>
+    </div><!-- .content-wrapper .row -->
     
-  </div><!-- .site-header-wrapper .row -->
+    <div class="footer-wrapper row">
+     <%= render "footer" %>
+    </div><!-- .footer-wrapper .row-->
 
-  <div class="content-wrapper row">
-    <section class="content">
-      <%= yield %>
-    </section>
-  </div><!-- .content-wrapper .row -->
-  
-  <div class="footer-wrapper row">
-    <footer class="footer">
-      <p>Copyright &copy;<%= Time.now.year %></p>
-      <p class="attribution">Powered by <a href="http://www.nutritionix.com/api">Nutritionix API</a></p>
-    </footer>
-  </div><!-- .footer-wrapper .row-->
-
-</div><!-- .container-fluid -->
-
-
+  </div><!-- .container-fluid -->
 </body>
 </html>
