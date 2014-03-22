@@ -5,10 +5,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :grocery_lists
-  
+
   has_many :created_recipes, class_name: "Recipe",  foreign_key: "creator_id"
-  
-  has_many :weeks
+
+  has_many :scheduled_recipes
+  has_many :upcoming_week_recipes, through: :scheduled_recipes, :source => :recipe
 
   has_many :collected_recipes, foreign_key: :collector_id
   has_many :recipes, through: :collected_recipes
