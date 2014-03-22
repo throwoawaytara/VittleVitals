@@ -1,0 +1,37 @@
+<ul class="recipes all grid-list logged-out">
+  <% @recipes.each do |recipe| %>
+    <li class="item">
+      <article class="recipe">
+        <div class="thumbnail overlays">
+        <% if user_signed_in? %>
+          <% if current_user.recipes.exists?(recipe.id) %>
+            <span class="add-opt">added</span>
+          <% else %>
+            <span class="add-opt">
+              <form id="sign-up" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>"> 
+                <input type="submit" value="Add">
+              </form> 
+            </span>
+          <%end%>
+
+          <% if current_user.recipes.exists?(recipe.id) && current_user.collected_recipes.where(recipe_id: recipe.id).first.favorite == true%>
+            <span class="fave-opt">faved</span>
+          <% else %>
+            <span class="fave-opt">
+              <form id="fave" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>&favorite=true"> 
+                <input type="submit" value="fave">
+              </form> 
+            </span>
+          <%end%>
+
+
+        <% end %>
+          <p class="thumbnail"><img src="" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
+        </div>
+        <header>
+          <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
+        </header>
+      </article>
+    </li>
+  <% end %>
+</ul>

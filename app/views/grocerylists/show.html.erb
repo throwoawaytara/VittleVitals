@@ -1,8 +1,10 @@
 <h2>Grocery List</h2>
-<ul>
-  <% @grocery_list.recipes.each do |recipe| %>
-    <% recipe.ingredients.each do |ingredient| %>
-      <li><%= ingredient.name %> - <%= ingredient.brand %></li>
+<div class="page-content">
+  <ul class="grocery-list">
+    <% @list_items.each do |ingredient| %>
+      <li class="grocery-item well"><b class="name"><%= ingredient.name %></li>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+</div><!-- .page-content -->
+
+
