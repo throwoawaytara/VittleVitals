@@ -8,6 +8,7 @@ class ScheduledRecipesController < ApplicationController
       @friday_recipes = meals_scheduled_for('2014-03-28')
 
       # Need to link up each recipe
+      # change date to a string and use Monday... as keyword to search by
       # Need to make some tables for the weekly recipes
 
     else
