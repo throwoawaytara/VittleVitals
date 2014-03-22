@@ -6,6 +6,11 @@
   </ul>
   <% end %>
 
+  <%= form_for [@user, :scheduled_recipe], user_recipes_path do |f| %>
+  <%= f.select :day, [['Monday'],['Tuesday'],['Wednesday']] %>
+  <%= f.submit %>
+  <% end %>
+
   <p>[ Some IMG Goes Here ]</p>
   <h3>Instructions: </h3>
   <p><%= @recipe.directions %></p>
