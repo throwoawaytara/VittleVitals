@@ -16,7 +16,17 @@
                 </form> 
               </span>
             <%end%>
-            <span class="fav-opt"></span>
+
+            <% if current_user.recipes.exists?(recipe.id) && current_user.collected_recipes.where(recipe_id: recipe.id).first.favorite == true%>
+              <span class="fave-opt">faved</span>
+            <% else %>
+              <span class="fave-opt">
+                <form id="fave" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>&favorite=true"> 
+                  <input type="submit" value="fave">
+                </form> 
+              </span>
+            <%end%>
+
           <% end %>
           <p class="thumbnail"><img src="" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
         </div>
