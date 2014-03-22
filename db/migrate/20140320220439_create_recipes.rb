@@ -4,7 +4,7 @@ class CreateRecipes < ActiveRecord::Migration
       t.integer :creator_id
       t.string :name
       t.text :directions
-
+      t.string :img_path
       # How do we save an image?
       t.timestamps
     end
