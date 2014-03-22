@@ -1,12 +1,16 @@
-<!-- <h2>Welcome</h2> -->
+<!-- logged out recipe search -->
+<h2>Search Recipes</h2>
 
-<%= form_tag recipes_path, method: 'get' do %>
-  <div>
-    <%= text_field_tag :search, params[:search] %>
-    <div>
-      <%= submit_tag "By Ingredient", name: "method" %>
-      <%= submit_tag "By Recipe Name", name: "method" %>
-    </div>
+<%= form_tag recipes_path, class: "form", role: "form", method: 'get' do %>
+  <div class="form-group">
+    <p class="help-block">Search for recipes based on a keyword in the recipe name.</p>
+    <%= text_field_tag :search, params[:search], autofocus: true, class: "form-control", placeholder: "E.g. thai" %>
+    <%= submit_tag "By Recipe Name", name: "method", class: "btn btn-default" %>
+  </div>
+  <div class="form-group">
+    <p class="help-block">Search for recipes containing a particular ingredient.</p>
+    <%= text_field_tag :search, params[:search], class: "form-control",placeholder: "E.g. milk" %>
+    <%= submit_tag "By Ingredient", name: "method", class: "btn btn-default"  %>
   </div>
 <% end %>
 

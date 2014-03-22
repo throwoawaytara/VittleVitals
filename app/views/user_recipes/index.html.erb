@@ -1,7 +1,19 @@
-<h1>My Recipes</h1>
-
-<% @user_recipes.each do |recipe| %>
-<ul>
-  <li><%= recipe.name %></li>
-</ul>
-<% end %>
+<h2 class="page-title">My Recipes</h2>
+<section class="page-content">
+  <ul class="recipes all grid-list">
+    <% @user_recipes.each do |recipe| %>
+      <li class="item">
+        <article class="recipe">
+          <div class="thumbnail overlays">
+            <span class="add-opt"></span>
+            <span class="fav-opt"></span>
+            <p class="thumbnail"><img src="" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
+          </div>
+          <header>
+            <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
+          </header>
+        </article>
+      </li>
+    <% end %>
+  </ul>
+</section>
