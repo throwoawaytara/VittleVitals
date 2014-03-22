@@ -101,3 +101,10 @@ RecipeIngredient.create(ingredient_id: ingredient_32.id, recipe_id: recipe_5.id,
 RecipeIngredient.create(ingredient_id: ingredient_33.id, recipe_id: recipe_5.id, ingredient_quantity: 1)
 RecipeIngredient.create(ingredient_id: ingredient_34.id, recipe_id: recipe_5.id, ingredient_quantity: 2)
 
+grocery_list = GroceryList.create(user_id: user.id, name: "Grocery List")
+
+grocery_list.recipes << recipe_1
+grocery_list.recipes << recipe_2
+
+
+
