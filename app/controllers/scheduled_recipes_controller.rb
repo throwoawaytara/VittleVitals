@@ -1,24 +1,22 @@
 class ScheduledRecipesController < ApplicationController
   def index
     if current_user
-      @monday_recipes = meals_scheduled_for('2014-03-24')
-      @tuesday_recipes = meals_scheduled_for('2014-03-25')
-      @wednesday_recipes = meals_scheduled_for('2014-03-26')
-      @thursday_recipes = meals_scheduled_for('2014-03-27')
-      @friday_recipes = meals_scheduled_for('2014-03-28')
+      @monday_recipes = meals_scheduled_for('monday')
+      @tuesday_recipes = meals_scheduled_for('tuesday')
+      @wednesday_recipes = meals_scheduled_for('wednesday')
+      @thursday_recipes = meals_scheduled_for('thursday')
+      @friday_recipes = meals_scheduled_for('friday')
 
       # Need to link up each recipe
-      # change date to a string and use Monday... as keyword to search by
       # Need to make some tables for the weekly recipes
-
     else
       redirect_to '/'
     end
   end
 
-  def meals_scheduled_for(date)
+  def meals_scheduled_for(day)
      @day_recipes = []
-      current_user.scheduled_recipes.where(date: date).each do |schedule|
+      current_user.scheduled_recipes.where(day: day).each do |schedule|
         @day_recipes << Recipe.where(id: schedule.recipe_id)
       end
       @day_recipes

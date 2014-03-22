@@ -5,45 +5,45 @@ The title is one of two formats:
     Feature: description of feature
     Bugfix: description of bugfix
 
-Each issue must be a user story.  We use the following user story format:  
+Each issue must be a user story.  We use the following user story format:
 
     "As a <role>, I want <goal/desire> so that <benefit>"
-    
-For example, 
 
-    "As a developer, I want there to be a how to contribute section of the Readme, so that I know how to contribute to the project." 
+For example,
+
+    "As a developer, I want there to be a how to contribute section of the Readme, so that I know how to contribute to the project."
 
 
-Each issue must also contain a description of what 'done' means for that feature or bugfix.  For example, 
+Each issue must also contain a description of what 'done' means for that feature or bugfix.  For example,
 
-    "the 'how to contribute' section is complete when 
+    "the 'how to contribute' section is complete when
        1. there is a specific outline of how one can claim units of work
        2. A descript of the preferred format for letting the other contributers know when you have claimed something.
 
-Once you are done writing up the issue, feel free to claim it. 
+Once you are done writing up the issue, feel free to claim it.
 
 
-##If you have forked this repo and want to make a contribution: 
+##If you have forked this repo and want to make a contribution:
 
-###submit a pull request.  See the format for 'issues.'  Make sure your pull request follows that format. 
+###submit a pull request.  See the format for 'issues.'  Make sure your pull request follows that format.
 
 
 
 
 # Git: Working with Teams
 
-## A friendly reminder to make your teammates like you:  
-   1. NEVER merge your own pull requests.  Get a review. 
-   2. Commit early and often. 
-   3. Don't push to master. 
+## A friendly reminder to make your teammates like you:
+   1. NEVER merge your own pull requests.  Get a review.
+   2. Commit early and often.
+   3. Don't push to master.
 
 Git is a distributed version control system. Every Git working directory is a full-fledged repository with complete history and full version tracking capabilities, not dependent on network access or a central server.
 
-## Bash Make git workflow easy 
+## Bash Make git workflow easy
 
-Copy this script into your bash profile.  
+Copy this script into your bash profile.
 
-Every time you commit, we want you to pull the latest master branch.  This means that we won't have giant merge conflicts because you will be making sure every commit still works with the master branch.  
+Every time you commit, we want you to pull the latest master branch.  This means that we won't have giant merge conflicts because you will be making sure every commit still works with the master branch.
 
 ```bash
 git()
@@ -75,11 +75,11 @@ git()
   elif [ $# -gt 0 ] && [ "$1" == "fetch" ] && [ "$2" == "origin" ]; then
      shift
      /usr/bin/git fetch "$@"
-     echo -e "\n****NEXT COMMAND***\n\n      git rebase origin/master  \n\n*********"  
+     echo -e "\n****NEXT COMMAND***\n\n      git rebase origin/master  \n\n*********"
   elif [ $# -gt 0 ] && [ "$1" == "rebase" ] && [ "$2" == "origin/master" ]; then
      shift
      /usr/bin/git rebase "$@"
-     echo -e "\n****NEXT COMMAND***\n\n      git checkout MY-BRANCH-NAME  \n\n*********"   
+     echo -e "\n****NEXT COMMAND***\n\n      git checkout MY-BRANCH-NAME  \n\n*********"
   elif [ $# -gt 0 ] && [ "$1" == "checkout" ]; then
      shift
      /usr/bin/git checkout "$@"
@@ -87,6 +87,44 @@ git()
   elif [ $# -gt 0 ] && [ "$1" == "rebase" ] && [ "$2" == "master" ]; then
      shift
      /usr/bin/git rebase master
+     echo -e "\n****NEXT COMMAND***\n\n      You are ready to keep working!   \n\n*********"
+  else
+     /usr/bin/git "$@"
+  fi
+}
+```
+For diana's specific machine
+
+```bash
+git()
+{
+  if [ $# -gt 0 ] && [ "$1" == "status" ] ; then
+     shift
+     /usr/bin/git status  "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git add -p -u .  \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "add" ] ; then
+     shift
+     /usr/bin/git add "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git commit -v  \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "commit" ] && [ "$2" == "-v" ]; then
+     shift
+     /usr/bin/git commit -v "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git checkout master  \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "checkout" ] && [ "$2" == "master" ]; then
+     shift
+     /usr/bin/git checkout "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git pull origin master   \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "pull" ] && [ "$2" == "origin" ]; then
+     shift
+     /usr/bin/git pull "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git checkout MY-BRANCH-NAME  \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "checkout" ]; then
+     shift
+     /usr/bin/git checkout "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git merge master   \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "merge" ] && [ "$2" == "master" ]; then
+     shift
+     /usr/bin/git merge master
      echo -e "\n****NEXT COMMAND***\n\n      You are ready to keep working!   \n\n*********"
   else
      /usr/bin/git "$@"
@@ -117,7 +155,7 @@ One of the best features of git is that it allows you to forget that you are usi
     git add -u -p .
     git diff --cached
     git commit -v
-    
+
 Let's walk through this step by step.
 
 1. `git status` allows you to see which files you've modified.
@@ -165,7 +203,7 @@ This will download a copy of the repository that lives at `https://url-from-gith
 ### Push a branch to a remote
 
     git push origin -u <local-branch-name>:<remote-branch-name>
-    
+
 This is the full push command. It pushes the local-branch-name to origin, renaming it to remote-branch-name. It also sets up our local branch to track the remote branch. A shorter form is:
 
     git push origin <local-branch-name>
@@ -183,13 +221,13 @@ So, let's say that a teammate has pushed some changes that she made into the `ma
     $ git rebase origin/master
     $ git checkout my-feature
     $ git rebase master
-    
+
 1. `$ git checkout master` switch into the local master branch
 2. `$ git fetch origin` will fetch all of the changes that have been made to the remote repository. This only downloads the changes, it doesn't merge them into our local repo, though.
 3. `$ git rebase origin/master` in the previous step we fetched all the changes from origin, git now has references to the various branches from origin in the form of "<remote-name>/<remote-branch-name>". In this command we're telling git to rebase our current branch to start from origin's master branch. This effectively pulls in the changes from the origin to our branch.
 4. `$ git checkout my-feature` now switch back to our feature branch
 5. `$ git rebase master` and rebase it to our master branch, which now has the changes from origin/master from step 3.
-    
+
 Issue a pull request (https://help.github.com/articles/creating-a-pull-request) and
 solicit feedback from your team. Once approved, merge the pull request
 (https://help.github.com/articles/merging-a-pull-request). This will merge your
@@ -204,7 +242,7 @@ In the process of working in branches and merging pull requests, your local and 
 Removing branches locally:
 
     $ git branch -d my-feature
-    
+
 Sometimes you'll need to use `-D` instead of `-d`. `-D` is just a more dangerous form of the same method.
 
 Removing branches from remote repositories:
@@ -212,7 +250,7 @@ Removing branches from remote repositories:
     $ git push origin :my_feature
 
 You'll notice that this looks a lot like the normal push command:
-    
+
     git push origin local-branch-name:remote-branch-name:w
 
 That's because it _is_ the same command. In this case we just specify an "empty" branch for the local branch. This has the effect of pushing an empty branch to the repote repository, thus overwriting remote branch contents with an empty branch.
@@ -220,5 +258,5 @@ That's because it _is_ the same command. In this case we just specify an "empty"
 Removing dead references from your local repository:
 
     $ git remote prune origin
-    
+
 When you fetch/pull from a remote, your local repository will download references to all the branches the remote knows about. When a branch is removed from the remote, your local repository will still be holding onto a reference, even though the branch is now dead and gone. It's a good idea to periodically prune your local references using this command. This will remove all references that no longer exist on the given remote.
