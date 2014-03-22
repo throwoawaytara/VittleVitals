@@ -1,0 +1,18 @@
+<ul class="recipes grid-list">
+  <% recipes.each do |recipe| %>
+    <li class="item">
+      <article class="recipe">
+        <div class="thumbnail overlays">
+          <% if user_signed_in? %>
+            <span class="add-opt"></span>
+            <span class="fav-opt"></span>
+          <% end %>
+          <p class="thumbnail"><img src="" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
+        </div>
+        <header>
+          <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
+        </header>
+      </article>
+    </li>
+  <% end %>
+</ul>

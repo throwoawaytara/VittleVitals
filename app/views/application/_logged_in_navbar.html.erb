@@ -1,4 +1,4 @@
-<li class="first"><%= link_to "Search All Recipes", "/search", :id => "search-all-recipes" %></li>
+<li class="first"><%= link_to "Search All Recipes", "/", :id => "search-all-recipes" %></li>
 <li><%= link_to "My Recipes", user_recipes_path(current_user),  :id => "my-recipes" %></li>
 <li><%= link_to "My Grocery List", user_grocerylist_path(current_user, 1), :id => "my-grocery-list" %></li>
 <li><%= link_to "My Week", user_scheduled_recipes_path(current_user), :id => "my-week" %></li>
