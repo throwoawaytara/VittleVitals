@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20140321181531) do
     t.integer  "creator_id"
     t.string   "name"
     t.text     "directions"
+    t.string   "img_path"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

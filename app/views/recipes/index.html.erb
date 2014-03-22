@@ -1,29 +1,6 @@
 <h2 class="page-title">Recipes</h2>
 <div class="page-content">
-  <ul class="recipes all grid-list">
-  <% @recipes.each do |recipe| %>
-    <li class="item">
-      <article class="recipe">
-        <div class="thumbnail overlays">
-          <% if user_signed_in? %>
-            <% if current_user.recipes.exists?(recipe.id) %>
-              <span class="add-opt">added</span>
-            <% else %>
-              <span class="add-opt">
-                <form id="sign-up" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>"> 
-                  <input type="submit" value="Add">
-                </form> 
-              </span>
-            <%end%>
-            <span class="fav-opt"></span>
-          <% end %>
-          <p class="thumbnail"><img src="" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
-        </div>
-        <header>
-          <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
-        </header>
-      </article>
-    </li>
-  <% end %>
-  </ul>
+
+  <%= render partial: "application/recipe_list", locals: {recipes: @recipes} %>
+
 </div>
