@@ -5,11 +5,16 @@ class UserRecipesController < ApplicationController
   end
 
   def create
-    ScheduledRecipe.create(recipe_params)
+    puts '=============================== STRONG PARAMS ==============================='
+    p recipe_params
+    ScheduledRecipe.create(day: params[:day],
+                           recipe_id: params[:recipe_id],
+                           user_id: current_user.id)
+    redirect_to '/'
   end
 
-  private
-  def recipe_params
-    params.require(:recipe).permit(:day) # need a recipe_id ?
-  end
+  # private
+  # def recipe_params
+  #   params.require(:user_id).permit(:day, :recipe_id) # need a recipe_id
+  # end
 end
