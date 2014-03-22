@@ -27,8 +27,7 @@
         <% if user_signed_in? %>
           <%= render "logged_in_navbar" %>
         <% else %>
-          <%= link_to "Sign up", new_user_registration_path, :class => "navbar-link"  %>
-          <%= link_to "Login", new_user_session_path, :class => "navbar-link"  %>
+          <%= render "logged_out_navbar" %>
         <% end %>
       </div><!-- .navbar-text .pull-right .login-signup-->
       <ul class="site-nav"><!-- page nav goes here as ul --></ul>
