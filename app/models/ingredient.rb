@@ -13,7 +13,13 @@ class Ingredient < ActiveRecord::Base
   def get_nutrition_information
     nutrition_json = query_nutritionix
 
-    nutrition_json["hits"]["fields"].each do |field, |
+    args = {}
+    args[:ingredient_id] = self.id
+
+    nutrition_json["hits"]["fields"].each do |field, value|
+      args[:field] = value
+    end
+    NutritionInformation.create(args)
     
   end
 
