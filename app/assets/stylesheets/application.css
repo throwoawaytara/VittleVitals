@@ -66,7 +66,13 @@ input[type="submit"].btn.btn-default {
   display:block;
   padding:0.85em;
   margin-top:0;
-  margin-bottom:2px;
+  margin-bottom:5px;
+}
+
+@media screen and (min-width:400px) {
+  .grocery-list .grocery-item.well {
+    max-width:400px;
+  }
 }
 
 @media screen and (min-width: 600px) {
@@ -84,6 +90,7 @@ input[type="submit"].btn.btn-default {
     max-width:250px;  
     margin-right:1em;
   }
+
 }
 
 @media screen and (min-width: 1200px) {
