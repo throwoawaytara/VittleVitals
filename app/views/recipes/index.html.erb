@@ -1,12 +1,14 @@
 <h2 class="page-title">Recipes</h2>
-<section class="page-content">
+<div class="page-content">
   <ul class="recipes all grid-list">
   <% @recipes.each do |recipe| %>
     <li class="item">
       <article class="recipe">
         <div class="thumbnail overlays">
-          <span class="add-opt"></span>
-          <span class="fav-opt"></span>
+          <% if user_signed_in? %>
+            <span class="add-opt"></span>
+            <span class="fav-opt"></span>
+          <% end %>
           <p class="thumbnail"><img src="" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
         </div>
         <header>
@@ -16,4 +18,4 @@
     </li>
   <% end %>
   </ul>
-</section>
+</div>
