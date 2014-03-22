@@ -15,16 +15,14 @@
 <body>
 
 <div class="container-fluid">
+
   <div class="site-header-wrapper row">
-    <nav class="site-nav">
-      <div class="login-signup navbar-text pull-right">
-        <% if user_signed_in? %>
-          <%= render "logged_in_navbar" %>
-        <% else %>
-          <%= render "logged_out_navbar" %>
-        <% end %>
-      </div><!-- .navbar-text .pull-right .login-signup-->
-      <ul class="site-nav"><!-- page nav goes here as ul --></ul>
+    <nav class="site-nav" role="primary">
+      <% if user_signed_in? %>
+        <div class="login-signup navbar-text pull-right"><ul class="nav nav-tabs"><%= render "logged_in_navbar" %></ul></div>
+      <% else %>
+        <ul class="nav nav-tabs"><%= render "logged_out_navbar" %></ul>
+      <% end %>
     </nav><!-- .site-nav -->
     <div class="devise notices">
       <% if notice %>
@@ -35,13 +33,12 @@
       <% end %>
     </div>
     <header class="brand">
-      <h1><a href="/">Recipe App</a></h1>
+      <h1><a href="/">RecipEase/GrocerEase</a></h1>
     </header>
-    
   </div><!-- .site-header-wrapper .row -->
 
   <div class="content-wrapper row">
-    <section class="content">
+    <section class="content" role="main">
       <%= yield %>
     </section>
   </div><!-- .content-wrapper .row -->
