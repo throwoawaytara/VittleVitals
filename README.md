@@ -1,4 +1,4 @@
-#Adding a card to trello
+#Adding a card to Trello
 
 The title is one of two formats:
 
