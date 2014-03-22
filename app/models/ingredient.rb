@@ -1,3 +1,7 @@
+require 'net/http'
+require 'uri'
+require 'json'
+
 class Ingredient < ActiveRecord::Base
 
   has_many :recipe_ingredients
@@ -8,14 +12,16 @@ class Ingredient < ActiveRecord::Base
   validates :name, presence: true
   validates :brand, presence: true
 
-  before_save get_nutrition_information
+  after_create :get_nutrition_information
 
   def get_nutrition_information
-    nutrition_json = query_nutritionix
+
+    
+    nutrition_json = query_nutritionix(self.name)
 
     args = {}
     args[:ingredient_id] = self.id
-
+    binding.pry
     nutrition_json["hits"]["fields"].each do |field, value|
       args[:field] = value
     end
@@ -23,12 +29,12 @@ class Ingredient < ActiveRecord::Base
     
   end
 
-  def query_nutritionix
+  def query_nutritionix(name)
     uri = URI.parse("https://api.nutritionix.com/v1_1/search")
 
     @json_response = Net::HTTP.post_form(uri, {"appId" => ENV["appId"], 
                                                "appKey" => ENV["appKey"], 
-                                               query: self.name, 
+                                               query: name, 
                                                offset: 0,
                                                limit: 1,
                                                fields: ['brand_id', 
