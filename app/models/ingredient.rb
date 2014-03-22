@@ -22,11 +22,15 @@ class Ingredient < ActiveRecord::Base
     args = {}
     args[:ingredient_id] = self.id
     # binding.pry
-    nutrition_json["hits"]["fields"].each do |field, value|
-      args[:field] = value
+    nutrition_json["hits"][0]["fields"].each do |field, value|
+      unless value.is_a? Array
+        args[field] = value
+      else
+        args[field] = value[0]
+      end
     end
 
-    # binding.pry
+    binding.pry
     NutritionInformation.create(args)
     
   end
