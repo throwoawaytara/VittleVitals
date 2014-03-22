@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20140321181531) do
     t.integer  "item_id"
     t.integer  "upc"
     t.string   "item_type"
-    t.string   "item_description"
+    t.text     "item_description"
     t.string   "nf_ingredient_statement"
     t.float    "nf_water_grams"
     t.float    "nf_calories"

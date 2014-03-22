@@ -24,13 +24,13 @@ class Ingredient < ActiveRecord::Base
     # binding.pry
     nutrition_json["hits"][0]["fields"].each do |field, value|
       unless value.is_a? Array
-        args[field] = value
+        args[field.to_sym] = value
       else
-        args[field] = value[0]
+        args[field.to_sym] = value[0]
       end
     end
 
-    binding.pry
+    # binding.pry
     NutritionInformation.create(args)
     
   end
