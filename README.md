@@ -39,6 +39,61 @@ Once you are done writing up the issue, feel free to claim it.
 
 Git is a distributed version control system. Every Git working directory is a full-fledged repository with complete history and full version tracking capabilities, not dependent on network access or a central server.
 
+## Bash Make git workflow easy 
+
+Copy this script into your bash profile.  
+
+Every time you commit, we want you to pull the latest master branch.  This means that we won't have giant merge conflicts because you will be making sure every commit still works with the master branch.  
+
+```bash
+git()
+{
+  if [ $# -gt 0 ] && [ "$1" == "status" ] ; then
+     shift
+     /usr/bin/git status  "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git diff  \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "diff" ] && [ "$2" == "--cached" ] ; then
+     shift
+     /usr/bin/git diff --cached "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git commit -v  \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "diff" ] ; then
+     shift
+     /usr/bin/git diff  "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git add -p -u .  \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "add" ] ; then
+     shift
+     /usr/bin/git add -p -u .  "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git diff --cached  \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "commit" ] && [ "$2" == "-v" ]; then
+     shift
+     /usr/bin/git commit -v "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git checkout master  \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "checkout" ] && [ "$2" == "master" ]; then
+     shift
+     /usr/bin/git checkout "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git fetch origin  \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "fetch" ] && [ "$2" == "origin" ]; then
+     shift
+     /usr/bin/git fetch "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git rebase origin/master  \n\n*********"  
+  elif [ $# -gt 0 ] && [ "$1" == "rebase" ] && [ "$2" == "origin/master" ]; then
+     shift
+     /usr/bin/git rebase "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git checkout MY-BRANCH-NAME  \n\n*********"   
+  elif [ $# -gt 0 ] && [ "$1" == "checkout" ]; then
+     shift
+     /usr/bin/git checkout "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git rebase master   \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "rebase" ] && [ "$2" == "master" ]; then
+     shift
+     /usr/bin/git rebase master
+     echo -e "\n****NEXT COMMAND***\n\n      You are ready to keep working!   \n\n*********"
+  else
+     /usr/bin/git "$@"
+  fi
+}
+```
+
 ## Getting Started
 
 ### Creating a repo on your machine
