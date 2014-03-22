@@ -41,6 +41,8 @@ Git is a distributed version control system. Every Git working directory is a fu
 
 ## Bash Make git workflow easy 
 
+Note: the first script is out of date since we switched from a fetch/rebase workflow to a pull/merge workflow.  the second script, the one specifically for diana's DevBootcamp workstation reflects the new workflow. So copy the second script, not the first. 
+
 Copy this script into your bash profile.  
 
 Every time you commit, we want you to pull the latest master branch.  This means that we won't have giant merge conflicts because you will be making sure every commit still works with the master branch.  
@@ -93,6 +95,43 @@ git()
   fi
 }
 ```
+
+For diana's specific machine
+
+git()
+{
+  if [ $# -gt 0 ] && [ "$1" == "status" ] ; then
+     shift
+     /usr/bin/git status  "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git add -p -u .  \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "add" ] ; then
+     shift
+     /usr/bin/git add "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git commit -v  \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "commit" ] && [ "$2" == "-v" ]; then
+     shift
+     /usr/bin/git commit -v "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git checkout master  \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "checkout" ] && [ "$2" == "master" ]; then
+     shift
+     /usr/bin/git checkout "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git pull origin master   \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "pull" ] && [ "$2" == "origin" ]; then
+     shift
+     /usr/bin/git pull "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git checkout MY-BRANCH-NAME  \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "checkout" ]; then
+     shift
+     /usr/bin/git checkout "$@"
+     echo -e "\n****NEXT COMMAND***\n\n      git merge master   \n\n*********"
+  elif [ $# -gt 0 ] && [ "$1" == "merge" ] && [ "$2" == "master" ]; then
+     shift
+     /usr/bin/git merge master
+     echo -e "\n****NEXT COMMAND***\n\n      You are ready to keep working!   \n\n*********"
+  else
+     /usr/bin/git "$@"
+  fi
+}
 
 ## Getting Started
 
@@ -178,18 +217,19 @@ In the course of collaborating with other developers, you'll likely want to get 
 
 So, let's say that a teammate has pushed some changes that she made into the `master` branch of our remote repository. We'd like to get the changes into our local repository and then use them in the branch we're working in (let's call it `my-feature`).
 
+Note: we switched to a pull/merge workflow instead of a fetch/rebase workflow due to the fact tht rebase kept deleting our authentication key file for the nutritionx api.  We are sacrificing our clean git history for the ability to not have to copy the darned apikeys file from a seperate file into our project every time we rebase. 
+
     $ git checkout master
-    $ git fetch origin
-    $ git rebase origin/master
-    $ git checkout my-feature
-    $ git rebase master
+    $ git pull origin master
+    $ git checkout mybranch
+    $ git merge master
     
+
 1. `$ git checkout master` switch into the local master branch
-2. `$ git fetch origin` will fetch all of the changes that have been made to the remote repository. This only downloads the changes, it doesn't merge them into our local repo, though.
-3. `$ git rebase origin/master` in the previous step we fetched all the changes from origin, git now has references to the various branches from origin in the form of "<remote-name>/<remote-branch-name>". In this command we're telling git to rebase our current branch to start from origin's master branch. This effectively pulls in the changes from the origin to our branch.
+2. `$ git pull origin master` will grab all of the changes that have been made to the remote repository and merge them into the master branch of your local repository.  
 4. `$ git checkout my-feature` now switch back to our feature branch
-5. `$ git rebase master` and rebase it to our master branch, which now has the changes from origin/master from step 3.
-    
+5. `$ git merge master` and merge any changes in the master branch into our feature branch.
+ 
 Issue a pull request (https://help.github.com/articles/creating-a-pull-request) and
 solicit feedback from your team. Once approved, merge the pull request
 (https://help.github.com/articles/merging-a-pull-request). This will merge your
