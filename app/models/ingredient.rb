@@ -10,7 +10,6 @@ class Ingredient < ActiveRecord::Base
   has_one :nutrition_information
 
   validates :name, presence: true
-  validates :brand, presence: true
 
   after_create :get_nutrition_information
 
@@ -20,16 +19,17 @@ class Ingredient < ActiveRecord::Base
     nutrition_json = query_nutritionix(self.name)
 
     args = {}
-    args[:ingredient_id] = self.id
+    args["ingredient_id"] = self.id
     # binding.pry
     nutrition_json["hits"][0]["fields"].each do |field, value|
       unless value.is_a? Array
-        args[field.to_sym] = value
+        args[field] = value
       else
-        args[field.to_sym] = value[0]
+        args[field] = value[0]
       end
     end
-
+    # puts "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+    # puts args
     # binding.pry
     NutritionInformation.create(args)
     
@@ -43,11 +43,11 @@ class Ingredient < ActiveRecord::Base
                                                query: name, 
                                                offset: 0,
                                                limit: 1,
-                                               fields: ['brand_id', 
-                                                        'brand_name', 
-                                                        'item_id', 
-                                                        'item_name', 
-                                                        'nf_calories',
+                                               fields: ["brand_id", 
+                                                        "brand_name", 
+                                                        "item_id", 
+                                                        "item_name", 
+                                                        "nf_calories",
                                                         "upc",
                                                         "item_type",
                                                         "item_description",
