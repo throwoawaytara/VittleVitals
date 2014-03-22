@@ -1,35 +1,3 @@
-<h1>Scheduled Recipes</h1>
-<h3>Monday:</h3>
-<% @monday_recipes.each do |recipe| %>
-<ul>
-  <li><%= recipe[0].name %></li>
-</ul>
-<% end %>
+<h2 class="page-title">This Week's Recipes</h2>
 
-<h3>Tuesday: </h3>
-<% @tuesday_recipes.each do |recipe| %>
-<ul>
-  <li><%= recipe[0].name %></li>
-</ul>
-<% end %>
-
-<h3>Wednesday: </h3>
-<% @wednesday_recipes.each do |recipe| %>
-<ul>
-  <li><%= recipe[0].name %></li>
-</ul>
-<% end %>
-
-<h3>Thursday: </h3>
-<% @thursday_recipes.each do |recipe| %>
-<ul>
-  <li><%= recipe[0].name %></li>
-</ul>
-<% end %>
-
-<h3>Friday: </h3>
-<% @friday_recipes.each do |recipe| %>
-<ul>
-  <li><%= recipe[0].name %></li>
-</ul>
-<% end %>
+<%= render partial: "application/weekday_recipes", locals: {weekday_recipes: @weekday_recipes} %>
