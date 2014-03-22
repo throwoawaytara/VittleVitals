@@ -1,3 +1,19 @@
+#How to start this app
+
+1. Clone the repo
+
+Assume you have rails and a postgres server installed. 
+
+On the command line, typ
+     
+    $bundle
+    $rake db:create
+    $rake db:migrate
+    $rake db:seed
+    $rails s
+
+The server will start on localhost:3000
+
 #Adding a card to Trello
 
 The title is one of two formats:
