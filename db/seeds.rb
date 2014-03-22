@@ -7,6 +7,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# Need to had a favorite recipe for a user
+# Need to add a recipe to the schedule for a user
+
 user = User.create(email: 'cat@cat.com', password: 'password')
 
 recipe_1 = Recipe.create(name: 'Mac & Cheese', directions: "Cook macaroni according to the package directions. Drain. In a saucepan, melt butter or margarine over medium heat. Stir in enough flour to make a roux. Add milk to roux slowly, stirring constantly. Stir in cheeses, and cook over low heat until cheese is melted and the sauce is a little thick. Put macaroni in large casserole dish, and pour sauce over macaroni. Stir well. Melt butter or margarine in a skillet over medium heat. Add breadcrumbs and brown. Spread over the macaroni and cheese to cover. Sprinkle with a little paprika. Bake at 350 degrees F for 30 minutes. Serve.")
@@ -106,5 +110,24 @@ grocery_list = GroceryList.create(user_id: user.id, name: "Grocery List")
 grocery_list.recipes << recipe_1
 grocery_list.recipes << recipe_2
 
+ScheduledRecipe.create(date: '2014-03-24', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(date: '2014-03-24', recipe_id: 4, user_id: 1)
+ScheduledRecipe.create(date: '2014-03-24', recipe_id: 1, user_id: 1)
 
+# Only need the recipes for a given day (order does not currently matter)
 
+ScheduledRecipe.create(date: '2014-03-25', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(date: '2014-03-25', recipe_id: 2, user_id: 1)
+ScheduledRecipe.create(date: '2014-03-25', recipe_id: 1, user_id: 1)
+
+ScheduledRecipe.create(date: '2014-03-26', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(date: '2014-03-26', recipe_id: 5, user_id: 1)
+ScheduledRecipe.create(date: '2014-03-26', recipe_id: 4, user_id: 1)
+
+ScheduledRecipe.create(date: '2014-03-27', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(date: '2014-03-27', recipe_id: 4, user_id: 1)
+ScheduledRecipe.create(date: '2014-03-27', recipe_id: 2, user_id: 1)
+
+ScheduledRecipe.create(date: '2014-03-28', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(date: '2014-03-28', recipe_id: 5, user_id: 1)
+ScheduledRecipe.create(date: '2014-03-28', recipe_id: 1, user_id: 1)
