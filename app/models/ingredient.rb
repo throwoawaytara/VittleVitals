@@ -12,6 +12,8 @@ class Ingredient < ActiveRecord::Base
 
   def get_nutrition_information
     nutrition_json = query_nutritionix
+
+    nutrition_json["hits"]["fields"].each do |field, |
     
   end
 
