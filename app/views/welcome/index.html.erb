@@ -23,7 +23,15 @@
           <article class="recipe">
             <div class="thumbnail overlays">
             <% if user_signed_in? %>
-              <span class="add-opt"></span>
+              <% if current_user.recipes.exists?(recipe.id) %>
+                <span class="add-opt">added</span>
+              <% else %>
+                <span class="add-opt">
+                  <form id="sign-up" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>"> 
+                    <input type="submit" value="Add">
+                  </form> 
+                </span>
+              <%end%>
               <span class="fav-opt"></span>
             <% end %>
               <p class="thumbnail"><img src="" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
