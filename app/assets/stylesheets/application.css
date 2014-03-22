@@ -90,11 +90,34 @@ input[type="submit"].btn.btn-default {
     max-width:250px;  
     margin-right:1em;
   }
+  .full-recipe .ingredients-list {
+    float:left;
+    max-width:275px;
+  }
+    .full-recipe .thumbnail {
+    float:right;
+    max-width:300px;
+  }
+}
 
+@media screen and (min-width:850px) {
+  .full-recipe .ingredients-list {
+    float:left;
+    max-width:350px;
+  }
+    .full-recipe .thumbnail {
+    float:right;
+    max-width:450px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
-
+  .full-recipe .ingredients-list {
+    max-width:500px;
+  }
+  .full-recipe .thumbnail {
+    max-width:500px;
+  }
 }
 
 
