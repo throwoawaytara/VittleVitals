@@ -3,6 +3,7 @@ TestRailsOnDigitalOcean::Application.routes.draw do
 
   resources :users do
     get '/recipes', to: 'user_recipes#index'
+    post '/recipes', to: 'user_recipes#create'
     resources :recipes, only: [:show]
     resources :grocerylists, only: [:show]
     resources :scheduled_recipes
