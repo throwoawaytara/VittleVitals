@@ -11,3 +11,13 @@
  *= require_self
  *= require_tree .
  */
+/* global styles */
+* {box-sizing:border-box;}
+
+.site-wrapper {
+  width:95%;
+  margin:0 auto;
+}
+
+
+
