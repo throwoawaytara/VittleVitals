@@ -114,6 +114,8 @@ ScheduledRecipe.create(date: '2014-03-24', recipe_id: 3, user_id: 1)
 ScheduledRecipe.create(date: '2014-03-24', recipe_id: 4, user_id: 1)
 ScheduledRecipe.create(date: '2014-03-24', recipe_id: 1, user_id: 1)
 
+# Only need the recipes for a given day (order does not currently matter)
+
 ScheduledRecipe.create(date: '2014-03-25', recipe_id: 3, user_id: 1)
 ScheduledRecipe.create(date: '2014-03-25', recipe_id: 2, user_id: 1)
 ScheduledRecipe.create(date: '2014-03-25', recipe_id: 1, user_id: 1)
