@@ -1,8 +1,8 @@
 <ul class="recipes grid-list">
   <% recipes.each do |recipe| %>
     <li class="item">
-      <article class="recipe">
-        <div class="thumbnail overlays">
+      <article class="recipe thumbnail">
+        <div class="img overlays">
            <% if user_signed_in? %>
             <% if current_user.recipes.exists?(recipe.id) %>
               <span class="add-opt">added</span>
