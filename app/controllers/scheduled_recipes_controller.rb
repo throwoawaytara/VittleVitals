@@ -1,11 +1,14 @@
 class ScheduledRecipesController < ApplicationController
   def index
     if current_user
-      @monday_recipes = meals_scheduled_for('Monday')
-      @tuesday_recipes = meals_scheduled_for('Tuesday')
-      @wednesday_recipes = meals_scheduled_for('Wednesday')
-      @thursday_recipes = meals_scheduled_for('Thursday')
-      @friday_recipes = meals_scheduled_for('Friday')
+
+      @weekday_recipes = {
+        'monday' => meals_scheduled_for('monday'),
+        'tuesday' => meals_scheduled_for('tuesday'),
+        'wednesday' => meals_scheduled_for('wednesday'),
+        'thursday' => meals_scheduled_for('thursday'),
+        'friday' => meals_scheduled_for('friday')
+      }
 
       # Need to link up each recipe
       # Need to make some tables for the weekly recipes

@@ -1,18 +1,30 @@
 <h2><%= @recipe.name %></h2>
-<div class="page-content">
-  <% @recipe.ingredients.each do |ingredient| %>
-  <ul>
-    <li><%= ingredient.name %> - <%= ingredient.brand %></li>
-  </ul>
-  <% end %>
 
-  <%= form_for [@user, :scheduled_recipe], user_recipes_path do |f| %>
-  <%= f.select :day, [['Monday'],['Tuesday'],['Wednesday']] %>
-  <%= f.submit %>
-  <% end %>
+  <%# form_for [@user, :scheduled_recipe], user_recipes_path do |f| %>
+  <%# f.select :day, [['Monday'],['Tuesday'],['Wednesday']] %>
+  <%# f.submit %>
+  <%# end %>
 
-  <p>[ Some IMG Goes Here ]</p>
-  <h3>Instructions: </h3>
-  <p><%= @recipe.directions %></p>
-  <p>Nutrition Info here</p>
+<div class="page-content full-recipe">
+
+  <section class="ingredients">
+    <div class="thumbnail"><img src="<%= @recipe.img_path %>" alt="<%= @recipe.name %>" title="<%= @recipe.name %>"></div>
+    <h3>Ingredients</h3>
+    <ul class="ingredient-list">
+      <% @recipe.ingredients.each do |ingredient| %>
+        <li class="ingredient"><b><%= ingredient.name %></b> - <%= ingredient.brand %></li>
+      <% end %>
+    </ul>
+
+  </section>
+
+  <section class="instructions">
+    <h3>Instructions: </h3>
+    <p><%= @recipe.directions %></p>
+  </section>
+
+  <section class="nutrition-info">
+    <h3>Nutrition Information</h3>
+    <p>Nutrition Info here</p>
+  </section>
 </div>

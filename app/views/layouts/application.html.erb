@@ -7,18 +7,25 @@
   <meta name="description" content="An app to make shopping for healthy ingredients easier.">
   <meta name="author" content="Built by Diana Calvache, Dustin Fox, Cristin O'Connor and Tara Roys at Dev Bootcamp Chicago">
   <title>RecipEase/GrocerEase</title>
-  <%= stylesheet_link_tag     "application","bootstrap-theme","bootstrap", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag     "reset","application","bootstrap-theme","bootstrap", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag  "jquery","application","bootstrap","data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="site-wrapper">
   <div class="container-fluid">
     <div class="site-header-wrapper row">
       <nav class="site-nav" role="primary">
         <% if user_signed_in? %>
-          <div class="login-signup navbar-text pull-right"><ul class="nav nav-tabs"><%= render "logged_in_navbar" %></ul></div>
+          <div class="login-signup navbar-text pull-right">
+            <ul class="nav nav-pills">
+              <%= render "logged_in_navbar" %>
+            </ul>
+          </div>
         <% else %>
-          <ul class="nav nav-tabs"><%= render "logged_out_navbar" %></ul>
+          <ul class="nav nav-pills">
+            <%= render "logged_out_navbar" %>
+          </ul>
         <% end %>
       </nav><!-- .site-nav -->
       <div class="devise notices">
@@ -29,9 +36,7 @@
           <p class="alert alert-error"><%= alert %></p>
         <% end %>
       </div>
-      <header class="brand">
-        <h1><a href="/">RecipEase/GrocerEase</a></h1>
-      </header>
+
     </div><!-- .site-header-wrapper .row -->
 
     <div class="content-wrapper row">
@@ -45,5 +50,6 @@
     </div><!-- .footer-wrapper .row-->
 
   </div><!-- .container-fluid -->
+</div><!-- .site-wrapper-->
 </body>
 </html>
