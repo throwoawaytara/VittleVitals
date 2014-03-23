@@ -51,14 +51,43 @@ input[type="submit"].btn.btn-default {
   margin-top:0;
   margin-bottom:0.5em;
 }
+.grid-list .overlays {
+  position:relative;
+}
+.grid-list p {
+  margin-top:-35px; /* 35 */
+}
+.grid-list .overlays .glyphicon {
+  font-size:35px;
+  line-height:35px;
+  color:yellow;
+}
+.grid-list .overlays .right {
+  position:absolute;
+  right:16px;
+  top:16px;
+  cursor:pointer;
+}
+.grid-list .overlays .left {
+  left:16px;
+  top:16px;
+}
+.grid-list .overlays .add-opt .left {
+  left:10px;
+}
 
 .grid-list button {
-  -webkit-appearance: none;
   background:transparent;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+
+  box-shadow:none;
   padding:0;
   margin:0;
-  color:#121212;
-
+  color:#fff;
+  text-shadow:none;
+  border:none;
+  padding:0;
 }
 
 .grocery-list .grocery-item.well {
@@ -69,9 +98,7 @@ input[type="submit"].btn.btn-default {
   margin-bottom:5px;
 }
 
-.glyphicon {
-  font-size:25px;
-}
+
 
 @media screen and (min-width:400px) {
   .grocery-list .grocery-item.well {
