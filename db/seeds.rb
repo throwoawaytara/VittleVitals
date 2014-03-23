@@ -110,22 +110,22 @@ grocery_list = GroceryList.create(user_id: user.id, name: "Grocery List")
 grocery_list.recipes << recipe_1
 grocery_list.recipes << recipe_2
 
-ScheduledRecipe.create(day: 'monday', recipe_id: 3, user_id: 1)
-ScheduledRecipe.create(day: 'monday', recipe_id: 4, user_id: 1)
-ScheduledRecipe.create(day: 'monday', recipe_id: 1, user_id: 1)
+ScheduledRecipe.create(day: 'Monday', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(day: 'Monday', recipe_id: 4, user_id: 1)
+ScheduledRecipe.create(day: 'Monday', recipe_id: 1, user_id: 1)
 
-ScheduledRecipe.create(day: 'tuesday', recipe_id: 3, user_id: 1)
-ScheduledRecipe.create(day: 'tuesday', recipe_id: 2, user_id: 1)
-ScheduledRecipe.create(day: 'tuesday', recipe_id: 1, user_id: 1)
+ScheduledRecipe.create(day: 'Tuesday', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(day: 'Tuesday', recipe_id: 2, user_id: 1)
+ScheduledRecipe.create(day: 'Tuesday', recipe_id: 1, user_id: 1)
 
-ScheduledRecipe.create(day: 'wednesday', recipe_id: 3, user_id: 1)
-ScheduledRecipe.create(day: 'wednesday', recipe_id: 5, user_id: 1)
-ScheduledRecipe.create(day: 'wednesday', recipe_id: 4, user_id: 1)
+ScheduledRecipe.create(day: 'Wednesday', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(day: 'Wednesday', recipe_id: 5, user_id: 1)
+ScheduledRecipe.create(day: 'Wednesday', recipe_id: 4, user_id: 1)
 
-ScheduledRecipe.create(day: 'thursday', recipe_id: 3, user_id: 1)
-ScheduledRecipe.create(day: 'thursday', recipe_id: 4, user_id: 1)
-ScheduledRecipe.create(day: 'thursday', recipe_id: 2, user_id: 1)
+ScheduledRecipe.create(day: 'Thursday', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(day: 'Thursday', recipe_id: 4, user_id: 1)
+ScheduledRecipe.create(day: 'Thursday', recipe_id: 2, user_id: 1)
 
-ScheduledRecipe.create(day: 'friday', recipe_id: 3, user_id: 1)
-ScheduledRecipe.create(day: 'friday', recipe_id: 5, user_id: 1)
-ScheduledRecipe.create(day: 'friday', recipe_id: 1, user_id: 1)
+ScheduledRecipe.create(day: 'Friday', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(day: 'Friday', recipe_id: 5, user_id: 1)
+ScheduledRecipe.create(day: 'Friday', recipe_id: 1, user_id: 1)
