@@ -89,13 +89,13 @@ class Ingredient < ActiveRecord::Base
                                                         "created_at",
                                                         "updated_at"]}).body
 
-  begin
-    return JSON.parse(@json_response)
-  rescue Exception => e
-    puts e.message
-    puts "retrying.."
-    retry
-  end
+    begin
+      return JSON.parse(@json_response)
+    rescue Exception => e
+      puts e.message
+      puts "retrying.."
+      retry
+    end
 
   end
 
