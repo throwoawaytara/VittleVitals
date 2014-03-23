@@ -9,7 +9,6 @@ class ScheduledRecipesController < ApplicationController
         'thursday' => meals_scheduled_for('thursday'),
         'friday' => meals_scheduled_for('friday')
       }
-
     else
       redirect_to '/'
     end

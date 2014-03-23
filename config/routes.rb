@@ -14,5 +14,4 @@ TestRailsOnDigitalOcean::Application.routes.draw do
   resources :recipes, only: [:show, :index]
 
   root 'welcome#index'
-
 end
