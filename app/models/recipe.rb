@@ -11,6 +11,7 @@ class Recipe < ActiveRecord::Base
   validates :directions, presence: true
 
   def self.search(search, method)
+    # binding.pry
     if method == "By Recipe Name"
       @recipes = Recipe.where("name ILike ?", "%#{search}%") #find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
     elsif method == "By Ingredient"
