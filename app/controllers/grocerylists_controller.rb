@@ -7,8 +7,9 @@ class GrocerylistsController < ApplicationController
         @grocery_list.recipes.map do |recipe|
           @list_items << recipe.ingredients.to_a
         end
+        @list_items.flatten!
       end
-      @list_items.flatten!
+      @list_items
     else
       redirect_to '/'
     end
