@@ -13,10 +13,9 @@
 
   </section>
 
-  <%= form_tag do %>
-    <%= label_tag(:q, "Search for:") %>
-    <%= text_field_tag(:q) %>
-    <%= submit_tag("Search") %>
+  <%= form_tag("/users/#{current_user.id}/recipe/#{@recipe.id}", method: 'post') do %>
+    <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday']])) %>
+    <%= submit_tag("Add") %>
   <% end %>
 
   <section class="instructions">
