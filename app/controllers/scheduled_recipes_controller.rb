@@ -29,9 +29,3 @@ class ScheduledRecipesController < ApplicationController
       @day_recipes
   end
 end
-
-
- # <li><a href="/users/<%= current_user.id %>/scheduled_recipes/<%= recipe[0].id %>/destroy">Delete</a></li>
- # <li><%= link_to 'Delete', recipe, :method => :delete, :confirm => "Are you sure?" %></li>
- # <%= button_to "Delete", { action: 'destroy', recipe_id: recipe[0].id }, method: :delete, data: { confirm: 'Are you sure?'} %>
- # <%= button_to "Delete", { action: 'destroy', recipe_id: recipe[0].id }, method: :delete, data: { confirm: 'Are you sure?'} %>
