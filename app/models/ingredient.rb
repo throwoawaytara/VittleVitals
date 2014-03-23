@@ -11,7 +11,7 @@ class Ingredient < ActiveRecord::Base
 
   validates :name, presence: true
 
-  after_create :get_nutrition_information
+  #after_create :get_nutrition_information
 
   def get_nutrition_information
 
