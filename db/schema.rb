@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140321181531) do
 
   create_table "grocery_list_recipes", force: true do |t|
     t.integer "recipe_id"
+    t.integer "ingredient_id"
     t.integer "grocery_list_id"
   end
 
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140321181531) do
 
   create_table "nutrition_informations", force: true do |t|
     t.integer  "ingredient_id"
+    t.string   "name"
     t.string   "brand_name"
     t.string   "item_name"
     t.integer  "brand_id"
