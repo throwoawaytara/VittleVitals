@@ -13,4 +13,3 @@ class GrocerylistsController < ApplicationController
   end
 end
 
-
