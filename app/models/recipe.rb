@@ -10,8 +10,6 @@ class Recipe < ActiveRecord::Base
   validates :name, presence: true
   validates :directions, presence: true
 
-  # validates_presence_of :creator_id
-
   def self.search(search, method)
     if method == "By Recipe Name"
       @recipes = Recipe.where("name ILike ?", "%#{search}%") #find(:all, :conditions => ['name LIKE ?', "%#{search}%"])

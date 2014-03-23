@@ -147,6 +147,8 @@ grocery_list = GroceryList.create(user_id: user.id, name: "Grocery List")
 
 grocery_list.recipes << recipe_1
 grocery_list.recipes << recipe_2
+grocery_list.ingredients << recipe_1.ingredients
+grocery_list.ingredients << recipe_2.ingredients
 
 ScheduledRecipe.create(day: 'Monday', recipe_id: 3, user_id: 1)
 ScheduledRecipe.create(day: 'Monday', recipe_id: 4, user_id: 1)
