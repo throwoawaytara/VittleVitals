@@ -19,6 +19,7 @@ class Ingredient < ActiveRecord::Base
 
     args = {}
     args["ingredient_id"] = self.id
+    args["name"] = self.name
     nutrition_json["hits"][0]["fields"].each do |field, value|
       unless value.is_a? Array
         args[field] = value
@@ -86,9 +87,15 @@ class Ingredient < ActiveRecord::Base
                                                         "nutrition_tags",
                                                         "created_at",
                                                         "updated_at"]}).body
-  puts @json_response
 
-  JSON.parse(@json_response)
+    begin
+      return JSON.parse(@json_response)
+    rescue Exception => e
+      puts e.message
+      puts "retrying.."
+      retry
+    end
+
   end
 
 end

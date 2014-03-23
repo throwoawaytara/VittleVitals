@@ -2,6 +2,7 @@ class CreateNutritionInformation < ActiveRecord::Migration
   def change
     create_table :nutrition_informations do |t|
       t.integer  :ingredient_id
+      t.string   :name
       t.string   :brand_name
       t.string   :item_name
       t.integer  :brand_id
