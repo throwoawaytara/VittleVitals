@@ -10,7 +10,7 @@ class UserRecipesController < ApplicationController
 
   def create
     ScheduledRecipe.create(recipe_params)
-    redirect_to '/'
+    redirect_to "/users/#{current_user.id}/scheduled_recipes"
   end
 
   private
