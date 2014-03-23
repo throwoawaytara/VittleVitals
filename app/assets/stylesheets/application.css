@@ -14,16 +14,16 @@
 /* global styles */
 
 .site-wrapper {
-  width:95%;
-  margin:0 auto;
+  width:auto;
+  margin:0 5%;
+  max-width:2000px;
+
 }
 
 section {
   clear:both;
   padding-bottom:1em;
 }
-
-
 
 .form-group {
   overflow:hidden;
@@ -55,22 +55,27 @@ input[type="submit"].btn.btn-default {
   position:relative;
 }
 .logged-in .grid-list p {
-  margin-top:-35px; /* 35 */
+  margin-top:-55px; /* 35 */
 }
 .logged-in .grid-list .overlays .glyphicon {
-  font-size:35px;
-  line-height:35px;
-  color:yellow;
+  font-size:25px;
+  line-height:25px;
+  color:brown;
+  background:#fff;
+  padding:10px;
+  border-radius:50%;
+
 }
 .logged-in .grid-list .overlays .right {
   position:absolute;
   right:16px;
-  top:16px;
+  top:32px;
   cursor:pointer;
 }
 .logged-in .grid-list .overlays .left {
   left:16px;
-  top:16px;
+  top:32px;
+  cursor:pointer;
 }
 .logged-in .grid-list .overlays .add-opt .left {
   left:10px;
@@ -78,7 +83,6 @@ input[type="submit"].btn.btn-default {
 .logged-in .grid-list button:focus {
   background:none;
   border-image:none;
-  
   outline: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -89,7 +93,6 @@ input[type="submit"].btn.btn-default {
   background:transparent;
   -moz-box-shadow:none;
   -webkit-box-shadow:none;
-
   box-shadow:none;
   padding:0;
   margin:0;
@@ -109,9 +112,16 @@ input[type="submit"].btn.btn-default {
 
 
 
-@media screen and (min-width:400px) {
+@media screen and (min-width:350px) {
   .grocery-list .grocery-item.well {
-    max-width:400px;
+    max-width:350px;
+  }
+  .grid-list {
+
+  }
+  .grid-list li {
+
+    max-width:350px;
   }
 }
 
