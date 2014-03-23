@@ -12,16 +12,29 @@
 # Need to add a recipe to the schedule for a user
 
 user = User.create(email: 'cat@cat.com', password: 'password')
-images = ["http://farm6.staticflickr.com/5506/11593981716_a09d9ff30b.jpg","http://farm4.staticflickr.com/3690/11593332413_2e0d112cc8.jpg","http://placehold.it/350x150"]
-recipe_1 = Recipe.create(name: 'Mac & Cheese', directions: "Cook macaroni according to the package directions. Drain. In a saucepan, melt butter or margarine over medium heat. Stir in enough flour to make a roux. Add milk to roux slowly, stirring constantly. Stir in cheeses, and cook over low heat until cheese is melted and the sauce is a little thick. Put macaroni in large casserole dish, and pour sauce over macaroni. Stir well. Melt butter or margarine in a skillet over medium heat. Add breadcrumbs and brown. Spread over the macaroni and cheese to cover. Sprinkle with a little paprika. Bake at 350 degrees F for 30 minutes. Serve.", img_path: "#{images.sample}")
+#,"http://farm4.staticflickr.com/3690/11593332413_2e0d112cc8.jpg","http://placehold.it/350x150"
 
-recipe_2 = Recipe.create(name: 'Ramen Noodle Salads', directions: "A tasty broccoli and ramen noodle salad requires two packages of raw broken ramen noodles, a 16-ounce package of broccoli slaw mix, a bunch of green onions chopped, and a cup each of unsalted peanuts and sunflower seeds. Mix these ingredients and pour over a dressing of cup vegetable oil, 1/3 cup cider vinegar, cup white sugar, and 1 seasoning packet. A squirt of lime juice and some chopped cilantro can also be added.",img_path: "#{images.sample}")
 
-recipe_3 = Recipe.create(name: 'Tofu Scramble', directions: "Preheat a large, heavy bottomed pan over medium high heat. Saute the garlic in olive oil for about a minute. Break the tofu apart into bite sized pieces and saute for about 10 minutes, using a spatula to stir often. Get under the tofu when you are stirring, scrape the bottom and don’t let it stick to the pan, that is where the good, crispy stuff is. Use a thin metal spatula to get the job done, a wooden or plastic one won’t really cut it. The tofu should get browned on at least one side, but you don’t need to be too precise about it. The water should cook out of it and not collect too much at the bottom of the ban. If that is happening, turn the heat up and let the water evaporate. Add the spice blend and mix to incorporate. Add the nutritional yeast and fresh black pepper. Cook for about 5 more minutes. Serve warm.",img_path: "#{images.sample}")
 
-recipe_4 = Recipe.create(name: 'Greenbean Casserole', directions: "Stir the soup, milk, soy sauce, black pepper, beans and 2/3 cup onions in a 1 1/2-quart casserole.Bake at 350°F. for 25 minutes or until the bean mixture is hot and bubbling.  Stir the bean mixture. Sprinkle with the remaining onions. Bake for 5 minutes or until the onions are golden brown.",img_path: "#{images.sample}")
 
-recipe_5 = Recipe.create(name: 'Turkish Delight', directions: "Bring 1 1/2 cups water, sugar, and corn syrup to a boil over medium-high heat in a large saucepan. Cook, stirring frequently, until the temperature reaches 240 degrees F (115 degrees C) on a candy thermometer. Set aside and keep hot. Stir together orange juice and orange zest, sprinkle with gelatin, and set aside. In a small bowl, dissolve cornstarch in 1/2 cup cold water, then stir into hot syrup. Place over medium-low heat, and simmer, stirring gently, until very thick. Remove syrup from heat, stir in orange juice mixture, vanilla, and pistachios. Sprinkle a 8x8-inch pan generously with confectioners' sugar. Pour the Turkish delight into the pan, and let cool in a cool, dry place (not the refrigerator) until set, 3 to 4 hours. When cool, sprinkle the top with another thick layer of powdered sugar. Cut into 1-inch squares, and dredge each well with confectioners' sugar. Store at room temperature in an airtight container.",img_path: "#{images.sample}")
+remote_images = ["http://farm6.staticflickr.com/5506/11593981716_a09d9ff30b.jpg","http://farm4.staticflickr.com/3690/11593332413_2e0d112cc8.jpg","http://placehold.it/350x150"]
+images = ["/images/neon-green.gif","/images/forest-green.gif","/images/brown.gif","/images/orange.gif","/images/purple.gif"]
+recipe_3 = Recipe.create(name: 'Tofu Scramble', directions: "Preheat a large, heavy bottomed pan over medium high heat. Saute the garlic in olive oil for about a minute. Break the tofu apart into bite sized pieces and saute for about 10 minutes, using a spatula to stir often. Get under the tofu when you are stirring, scrape the bottom and don’t let it stick to the pan, that is where the good, crispy stuff is. Use a thin metal spatula to get the job done, a wooden or plastic one won’t really cut it. The tofu should get browned on at least one side, but you don’t need to be too precise about it. The water should cook out of it and not collect too much at the bottom of the ban. If that is happening, turn the heat up and let the water evaporate. Add the spice blend and mix to incorporate. Add the nutritional yeast and fresh black pepper. Cook for about 5 more minutes. Serve warm.",img_path:"#{remote_images.sample}")
+recipe_1 = Recipe.create(name: 'Mac & Cheese', directions: "Cook macaroni according to the package directions. Drain. In a saucepan, melt butter or margarine over medium heat. Stir in enough flour to make a roux. Add milk to roux slowly, stirring constantly. Stir in cheeses, and cook over low heat until cheese is melted and the sauce is a little thick. Put macaroni in large casserole dish, and pour sauce over macaroni. Stir well. Melt butter or margarine in a skillet over medium heat. Add breadcrumbs and brown. Spread over the macaroni and cheese to cover. Sprinkle with a little paprika. Bake at 350 degrees F for 30 minutes. Serve.", img_path:"#{remote_images.sample}")
+
+recipe_2 = Recipe.create(name: 'Ramen Noodle Salads', directions: "A tasty broccoli and ramen noodle salad requires two packages of raw broken ramen noodles, a 16-ounce package of broccoli slaw mix, a bunch of green onions chopped, and a cup each of unsalted peanuts and sunflower seeds. Mix these ingredients and pour over a dressing of cup vegetable oil, 1/3 cup cider vinegar, cup white sugar, and 1 seasoning packet. A squirt of lime juice and some chopped cilantro can also be added.",img_path:"#{remote_images.sample}")
+recipe_4 = Recipe.create(name: 'Greenbean Casserole', directions: "Stir the soup, milk, soy sauce, black pepper, beans and 2/3 cup onions in a 1 1/2-quart casserole.Bake at 350°F. for 25 minutes or until the bean mixture is hot and bubbling.  Stir the bean mixture. Sprinkle with the remaining onions. Bake for 5 minutes or until the onions are golden brown.",img_path:"#{remote_images.sample}")
+
+recipe_5 = Recipe.create(name: 'Turkish Delight', directions: "Bring 1 1/2 cups water, sugar, and corn syrup to a boil over medium-high heat in a large saucepan. Cook, stirring frequently, until the temperature reaches 240 degrees F (115 degrees C) on a candy thermometer. Set aside and keep hot. Stir together orange juice and orange zest, sprinkle with gelatin, and set aside. In a small bowl, dissolve cornstarch in 1/2 cup cold water, then stir into hot syrup. Place over medium-low heat, and simmer, stirring gently, until very thick. Remove syrup from heat, stir in orange juice mixture, vanilla, and pistachios. Sprinkle a 8x8-inch pan generously with confectioners' sugar. Pour the Turkish delight into the pan, and let cool in a cool, dry place (not the refrigerator) until set, 3 to 4 hours. When cool, sprinkle the top with another thick layer of powdered sugar. Cut into 1-inch squares, and dredge each well with confectioners' sugar. Store at room temperature in an airtight container.",img_path:"#{remote_images.sample}")
+recipe_6 = Recipe.create(name: 'Tabbouleh', directions: "Cook macaroni according to the package directions. Drain. In a saucepan, melt butter or margarine over medium heat. Stir in enough flour to make a roux. Add milk to roux slowly, stirring constantly. Stir in cheeses, and cook over low heat until cheese is melted and the sauce is a little thick. Put macaroni in large casserole dish, and pour sauce over macaroni. Stir well. Melt butter or margarine in a skillet over medium heat. Add breadcrumbs and brown. Spread over the macaroni and cheese to cover. Sprinkle with a little paprika. Bake at 350 degrees F for 30 minutes. Serve.", img_path:"#{remote_images.sample}")
+recipe_10 = Recipe.create(name: 'Low-fat Mocha Frappucino', directions: "Bring 1 1/2 cups water, sugar, and corn syrup to a boil over medium-high heat in a large saucepan. Cook, stirring frequently, until the temperature reaches 240 degrees F (115 degrees C) on a candy thermometer. Set aside and keep hot. Stir together orange juice and orange zest, sprinkle with gelatin, and set aside. In a small bowl, dissolve cornstarch in 1/2 cup cold water, then stir into hot syrup. Place over medium-low heat, and simmer, stirring gently, until very thick. Remove syrup from heat, stir in orange juice mixture, vanilla, and pistachios. Sprinkle a 8x8-inch pan generously with confectioners' sugar. Pour the Turkish delight into the pan, and let cool in a cool, dry place (not the refrigerator) until set, 3 to 4 hours. When cool, sprinkle the top with another thick layer of powdered sugar. Cut into 1-inch squares, and dredge each well with confectioners' sugar. Store at room temperature in an airtight container.",img_path:"#{remote_images.sample}")
+recipe_7 = Recipe.create(name: 'Waldorf Salad', directions: "A tasty broccoli and ramen noodle salad requires two packages of raw broken ramen noodles, a 16-ounce package of broccoli slaw mix, a bunch of green onions chopped, and a cup each of unsalted peanuts and sunflower seeds. Mix these ingredients and pour over a dressing of cup vegetable oil, 1/3 cup cider vinegar, cup white sugar, and 1 seasoning packet. A squirt of lime juice and some chopped cilantro can also be added.",img_path: "#{images[2]}")
+
+recipe_8 = Recipe.create(name: 'Barbeque Tofu Nuggets', directions: "Preheat a large, heavy bottomed pan over medium high heat. Saute the garlic in olive oil for about a minute. Break the tofu apart into bite sized pieces and saute for about 10 minutes, using a spatula to stir often. Get under the tofu when you are stirring, scrape the bottom and don’t let it stick to the pan, that is where the good, crispy stuff is. Use a thin metal spatula to get the job done, a wooden or plastic one won’t really cut it. The tofu should get browned on at least one side, but you don’t need to be too precise about it. The water should cook out of it and not collect too much at the bottom of the ban. If that is happening, turn the heat up and let the water evaporate. Add the spice blend and mix to incorporate. Add the nutritional yeast and fresh black pepper. Cook for about 5 more minutes. Serve warm.",img_path:"#{remote_images.sample}")
+
+recipe_9 = Recipe.create(name: 'Spicy Texas Meatloaf', directions: "Stir the soup, milk, soy sauce, black pepper, beans and 2/3 cup onions in a 1 1/2-quart casserole.Bake at 350°F. for 25 minutes or until the bean mixture is hot and bubbling.  Stir the bean mixture. Sprinkle with the remaining onions. Bake for 5 minutes or until the onions are golden brown.",img_path:"#{remote_images.sample}")
+
+
 
 user.recipes << recipe_4
 user.recipes << recipe_1
@@ -74,6 +87,15 @@ RecipeIngredient.create(ingredient_id: ingredient_5.id, recipe_id: recipe_1.id, 
 RecipeIngredient.create(ingredient_id: ingredient_6.id, recipe_id: recipe_1.id, ingredient_quantity: 1)
 RecipeIngredient.create(ingredient_id: ingredient_7.id, recipe_id: recipe_1.id, ingredient_quantity: 5)
 
+
+RecipeIngredient.create(ingredient_id: ingredient_1.id, recipe_id: recipe_6.id, ingredient_quantity: 2)
+RecipeIngredient.create(ingredient_id: ingredient_2.id, recipe_id: recipe_6.id, ingredient_quantity: 1)
+RecipeIngredient.create(ingredient_id: ingredient_3.id, recipe_id: recipe_6.id, ingredient_quantity: 3)
+RecipeIngredient.create(ingredient_id: ingredient_4.id, recipe_id: recipe_6.id, ingredient_quantity: 1)
+RecipeIngredient.create(ingredient_id: ingredient_5.id, recipe_id: recipe_6.id, ingredient_quantity: 2)
+RecipeIngredient.create(ingredient_id: ingredient_6.id, recipe_id: recipe_6.id, ingredient_quantity: 1)
+RecipeIngredient.create(ingredient_id: ingredient_7.id, recipe_id: recipe_6.id, ingredient_quantity: 5)
+
 RecipeIngredient.create(ingredient_id: ingredient_8.id, recipe_id: recipe_2.id, ingredient_quantity: 2)
 RecipeIngredient.create(ingredient_id: ingredient_9.id, recipe_id: recipe_2.id, ingredient_quantity: 1)
 RecipeIngredient.create(ingredient_id: ingredient_10.id, recipe_id: recipe_2.id, ingredient_quantity: 3)
@@ -84,11 +106,27 @@ RecipeIngredient.create(ingredient_id: ingredient_14.id, recipe_id: recipe_2.id,
 RecipeIngredient.create(ingredient_id: ingredient_15.id, recipe_id: recipe_2.id, ingredient_quantity: 1)
 RecipeIngredient.create(ingredient_id: ingredient_16.id, recipe_id: recipe_2.id, ingredient_quantity: 5)
 
+ RecipeIngredient.create(ingredient_id: ingredient_8.id, recipe_id: recipe_7.id, ingredient_quantity: 2)
+ RecipeIngredient.create(ingredient_id: ingredient_9.id, recipe_id: recipe_7.id, ingredient_quantity: 1)
+RecipeIngredient.create(ingredient_id: ingredient_10.id, recipe_id: recipe_7.id, ingredient_quantity: 3)
+RecipeIngredient.create(ingredient_id: ingredient_11.id, recipe_id: recipe_7.id, ingredient_quantity: 1)
+RecipeIngredient.create(ingredient_id: ingredient_12.id, recipe_id: recipe_7.id, ingredient_quantity: 2)
+RecipeIngredient.create(ingredient_id: ingredient_13.id, recipe_id: recipe_7.id, ingredient_quantity: 1)
+RecipeIngredient.create(ingredient_id: ingredient_14.id, recipe_id: recipe_7.id, ingredient_quantity: 5)
+RecipeIngredient.create(ingredient_id: ingredient_15.id, recipe_id: recipe_7.id, ingredient_quantity: 1)
+RecipeIngredient.create(ingredient_id: ingredient_16.id, recipe_id: recipe_7.id, ingredient_quantity: 5)
+
 RecipeIngredient.create(ingredient_id: ingredient_17.id, recipe_id: recipe_3.id, ingredient_quantity: 2)
 RecipeIngredient.create(ingredient_id: ingredient_18.id, recipe_id: recipe_3.id, ingredient_quantity: 1)
 RecipeIngredient.create(ingredient_id: ingredient_19.id, recipe_id: recipe_3.id, ingredient_quantity: 3)
 RecipeIngredient.create(ingredient_id: ingredient_20.id, recipe_id: recipe_3.id, ingredient_quantity: 1)
 RecipeIngredient.create(ingredient_id: ingredient_21.id, recipe_id: recipe_3.id, ingredient_quantity: 2)
+
+RecipeIngredient.create(ingredient_id: ingredient_17.id, recipe_id: recipe_8.id, ingredient_quantity: 2)
+RecipeIngredient.create(ingredient_id: ingredient_18.id, recipe_id: recipe_8.id, ingredient_quantity: 1)
+RecipeIngredient.create(ingredient_id: ingredient_19.id, recipe_id: recipe_8.id, ingredient_quantity: 3)
+RecipeIngredient.create(ingredient_id: ingredient_20.id, recipe_id: recipe_8.id, ingredient_quantity: 1)
+RecipeIngredient.create(ingredient_id: ingredient_21.id, recipe_id: recipe_8.id, ingredient_quantity: 2)
 
 RecipeIngredient.create(ingredient_id: ingredient_22.id, recipe_id: recipe_4.id, ingredient_quantity: 2)
 RecipeIngredient.create(ingredient_id: ingredient_23.id, recipe_id: recipe_4.id, ingredient_quantity: 1)

@@ -1,33 +1,33 @@
-<ul class="recipes all grid-list logged-out">
-  <% @recipes.each do |recipe| %>
+<ul class="recipes all grid-list logged-in">
+  <% recipes.each do |recipe| %>
     <li class="item">
-      <article class="recipe">
-        <div class="thumbnail overlays">
-        <% if user_signed_in? %>
-          <% if current_user.recipes.exists?(recipe.id) %>
-            <span class="add-opt">added</span>
-          <% else %>
-            <span class="add-opt">
-              <form id="sign-up" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>"> 
-                <input type="submit" value="Add">
-              </form> 
-            </span>
-          <%end%>
-
-          <% if current_user.recipes.exists?(recipe.id) && current_user.collected_recipes.where(recipe_id: recipe.id).first.favorite == true%>
-            <span class="fave-opt">faved</span>
-          <% else %>
-            <span class="fave-opt">
-              <form id="fave" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>&favorite=true"> 
-                <input type="submit" value="fave">
-              </form> 
-            </span>
-          <%end%>
-
-
-        <% end %>
-          <p class="thumbnail"><img src="" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
-        </div>
+      <article class="recipe thumbnail">
+        <div class="img overlays">
+          <% if user_signed_in? %>
+            <% if current_user.recipes.exists?(recipe.id) %>
+              <span class="left glyphicon glyphicon-ok"></span>
+            <% else %>
+              <span class="add-opt">
+                <form id="sign-up" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>"> 
+                  <button type="submit">
+                    <span class="left glyphicon glyphicon-plus-sign"></span>
+                  </button>
+                </form> 
+              </span>
+            <% end %>
+            <% if current_user.recipes.exists?(recipe.id) && current_user.collected_recipes.where(recipe_id: recipe.id).first.favorite == true%>
+                <span class="right glyphicon glyphicon-star faved"></span>
+            <% else %>
+                <form id="not-faved" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>&favorite=true"> 
+                  <button type="submit">
+                     <span class="right glyphicon glyphicon-star not-faved"></span>
+                  </button>
+                </form> 
+              </span>
+            <% end %>
+          <% end %>
+          <p class="img-thumbnail"><img src="<%= recipe.img_path %>" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
+        </div><!-- .image-overlays -->
         <header>
           <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
         </header>
