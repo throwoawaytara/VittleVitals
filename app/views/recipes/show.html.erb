@@ -1,4 +1,5 @@
 <h2><%= @recipe.name %></h2>
+
 <div class="page-content full-recipe">
 
   <section class="ingredients">
@@ -11,6 +12,13 @@
     </ul>
 
   </section>
+
+  <% if current_user %>
+    <%= form_tag("/users/#{current_user.id}/recipe/#{@recipe.id}", method: 'post') do %>
+      <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday']])) %>
+      <%= submit_tag("Add") %>
+    <% end %>
+  <% end %>
 
   <section class="instructions">
     <h3>Instructions: </h3>

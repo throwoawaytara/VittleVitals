@@ -11,11 +11,11 @@ class Ingredient < ActiveRecord::Base
 
   validates :name, presence: true
 
-  #after_create :get_nutrition_information
+
+  after_create :get_nutrition_information
 
   def get_nutrition_information
 
-    
     nutrition_json = query_nutritionix(self.name)
 
     args = {}
@@ -28,21 +28,21 @@ class Ingredient < ActiveRecord::Base
       end
     end
     NutritionInformation.create(args)
-    
+
   end
 
   def query_nutritionix(name)
     uri = URI.parse("https://api.nutritionix.com/v1_1/search")
 
-    @json_response = Net::HTTP.post_form(uri, {"appId" => ENV["appId"], 
-                                               "appKey" => ENV["appKey"], 
-                                               query: name, 
+    @json_response = Net::HTTP.post_form(uri, {"appId" => ENV["appId"],
+                                               "appKey" => ENV["appKey"],
+                                               query: name,
                                                offset: 0,
                                                limit: 1,
-                                               fields: ["brand_id", 
-                                                        "brand_name", 
-                                                        "item_id", 
-                                                        "item_name", 
+                                               fields: ["brand_id",
+                                                        "brand_name",
+                                                        "item_id",
+                                                        "item_name",
                                                         "nf_calories",
                                                         "upc",
                                                         "item_type",
@@ -87,6 +87,7 @@ class Ingredient < ActiveRecord::Base
                                                         "nutrition_tags",
                                                         "created_at",
                                                         "updated_at"]}).body
+ # puts @json_response
 
   JSON.parse(@json_response)
   end
