@@ -5,15 +5,21 @@
         <div class="img overlays">
            <% if user_signed_in? %>
             <% if current_user.recipes.exists?(recipe.id) %>
-              <span class="add-opt">added</span>
+              <span class="glyphicon glyphicon-check"></span>
             <% else %>
               <span class="add-opt">
                 <form id="sign-up" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>"> 
-                  <input type="submit" value="Add">
+                  <button type="submit" class="btn btn-default btn-lg">
+                    <span class="glyphicon glyphicon-plus-sign"></span>
+                  </button>
                 </form> 
               </span>
-            <%end%>
-            <span class="fav-opt"></span>
+            <% end %>
+            <span class="fav-opt">
+              <button type="submit" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-star"></span>
+              </button>
+            </span>
           <% end %>
           <p class="thumbnail"><img src="<%= recipe.img_path %>" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
         </div>
