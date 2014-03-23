@@ -1,7 +1,6 @@
 class ScheduledRecipesController < ApplicationController
   def index
     if current_user
-
       @weekday_recipes = {
         'monday' => meals_scheduled_for('monday'),
         'tuesday' => meals_scheduled_for('tuesday'),
@@ -15,14 +14,11 @@ class ScheduledRecipesController < ApplicationController
   end
 
   def destroy
-    puts "++++++++++++++++++++++++++++++++++++++ I AM PARAMS ++++++++++++++++++++++++++++++++++++++"
-    p params[:day]
-    p params[:id]
-    p params[:user_id]
-    p recipe = Recipe.find(params[:id]).scheduled_recipes
-    puts '======================== I AM THE SCHEDULE =========================='
-    # p recipe.where(recipe_params, recipe_id: params[:id])
-
+    all_scheduled_recipes = Recipe.find(params[:id]).scheduled_recipes
+    all_scheduled_recipes.where(user_id: current_user.id,
+                                day: params[:day],
+                                recipe_id: params[:id]).first.destroy
+    redirect_to "/users/#{current_user.id}/scheduled_recipes"
   end
 
   def meals_scheduled_for(day)
@@ -32,11 +28,6 @@ class ScheduledRecipesController < ApplicationController
       end
       @day_recipes
   end
-
-  # private
-  # def recipe_params
-  #   params.permit(:day, :user_id)
-  # end
 end
 
 
