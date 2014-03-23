@@ -1,9 +1,9 @@
-<ul class="recipes grid-list">
-  <% recipes.each do |recipe| %>
+<ul class="recipes all grid-list logged-out">
+  <% @recipes.each do |recipe| %>
     <li class="item">
       <article class="recipe thumbnail">
         <div class="img overlays">
-           <% if user_signed_in? %>
+          <% if user_signed_in? %>
             <% if current_user.recipes.exists?(recipe.id) %>
               <span class="left glyphicon glyphicon-ok"></span>
             <% else %>
@@ -15,7 +15,16 @@
                 </form> 
               </span>
             <% end %>
-            <span class="right glyphicon glyphicon-star"></span>
+            <% if current_user.recipes.exists?(recipe.id) && current_user.collected_recipes.where(recipe_id: recipe.id).first.favorite == true%>
+                <span class="right glyphicon glyphicon-star faved"></span>
+            <% else %>
+                <form id="not-faved" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>&favorite=true"> 
+                  <button type="submit">
+                     <span class="right glyphicon glyphicon-star not-faved"></span>
+                  </button>
+                </form> 
+              </span>
+            <% end %>
           <% end %>
           <p class="img-thumbnail"><img src="<%= recipe.img_path %>" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
         </div>
