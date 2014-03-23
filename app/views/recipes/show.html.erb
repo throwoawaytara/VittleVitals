@@ -13,6 +13,8 @@
 
   </section>
 
+
+
   <% if current_user %>
     <%= form_tag("/users/#{current_user.id}/recipe/#{@recipe.id}", method: 'post') do %>
       <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday']])) %>
@@ -27,6 +29,10 @@
 
   <section class="nutrition-info">
     <h3>Nutrition Information</h3>
-    <p>Nutrition Info here</p>
+      <ul>
+  <% @nutrition_info.each do |value| %> 
+    <li><b><%= value[0] %></b>: <%= value[1] %></li>
+  <% end %>
+</ul>
   </section>
 </div>
