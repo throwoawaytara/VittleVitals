@@ -86,6 +86,7 @@ class Ingredient < ActiveRecord::Base
                                                         "nutrition_tags",
                                                         "created_at",
                                                         "updated_at"]}).body
+  puts @json_response
 
   JSON.parse(@json_response)
   end
