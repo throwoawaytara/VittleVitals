@@ -11,8 +11,5 @@ class GrocerylistsController < ApplicationController
       redirect_to '/'
     end
   end
-
-
 end
-
 

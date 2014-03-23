@@ -1,7 +1,6 @@
 class ScheduledRecipesController < ApplicationController
   def index
     if current_user
-
       @weekday_recipes = {
         'monday' => meals_scheduled_for('monday'),
         'tuesday' => meals_scheduled_for('tuesday'),
@@ -9,10 +8,17 @@ class ScheduledRecipesController < ApplicationController
         'thursday' => meals_scheduled_for('thursday'),
         'friday' => meals_scheduled_for('friday')
       }
-
     else
       redirect_to '/'
     end
+  end
+
+  def destroy
+    all_scheduled_recipes = Recipe.find(params[:id]).scheduled_recipes
+    all_scheduled_recipes.where(user_id: current_user.id,
+                                day: params[:day],
+                                recipe_id: params[:id]).first.destroy
+    redirect_to "/users/#{current_user.id}/scheduled_recipes"
   end
 
   def meals_scheduled_for(day)
