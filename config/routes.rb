@@ -7,12 +7,12 @@ TestRailsOnDigitalOcean::Application.routes.draw do
     resources :recipes, only: [:show]
     resources :collected_recipes, only: [:create]
     resources :grocerylists, only: [:show]
-    resources :scheduled_recipes, only: [:index]
+    resources :scheduled_recipes, only: [:index, :destroy]
   end
 
   resources :ingredient
   resources :recipes, only: [:show, :index]
 
   root 'welcome#index'
-
 end
+
