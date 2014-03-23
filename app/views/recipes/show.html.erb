@@ -1,10 +1,5 @@
 <h2><%= @recipe.name %></h2>
 
-  <%# form_for [@user, :scheduled_recipe], user_recipes_path do |f| %>
-  <%# f.select :day, [['Monday'],['Tuesday'],['Wednesday']] %>
-  <%# f.submit %>
-  <%# end %>
-
 <div class="page-content full-recipe">
 
   <section class="ingredients">
@@ -17,6 +12,12 @@
     </ul>
 
   </section>
+
+  <%= form_tag do %>
+    <%= label_tag(:q, "Search for:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Search") %>
+  <% end %>
 
   <section class="instructions">
     <h3>Instructions: </h3>

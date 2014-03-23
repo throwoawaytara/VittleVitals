@@ -10,8 +10,6 @@ class ScheduledRecipesController < ApplicationController
         'friday' => meals_scheduled_for('friday')
       }
 
-      # Need to link up each recipe
-      # Need to make some tables for the weekly recipes
     else
       redirect_to '/'
     end

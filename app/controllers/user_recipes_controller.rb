@@ -11,6 +11,6 @@ class UserRecipesController < ApplicationController
 
   private
   def recipe_params
-    params.require(:scheduled_recipe).permit(:day, :recipe_id, :user_id)
+    params.permit(:day, :recipe_id, :user_id)
   end
 end
