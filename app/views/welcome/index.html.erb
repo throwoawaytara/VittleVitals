@@ -3,24 +3,26 @@
 <div class="page-content logged-out">
   <section class="search-form">
     <%= form_tag recipes_path, class: "form", role: "form", method: 'get' do %>
-      <div class="form-group">
-        <p class="help-block">Search for recipes based on a keyword in the recipe name.</p>
-        <%= text_field_tag :search, params[:search], autofocus: true, class: "form-control", placeholder: "E.g. thai" %>
-        <%= submit_tag "By Recipe Name", name: "method", class: "btn btn-default" %>
-      </div>
-      <div class="form-group">
-        <p class="help-block">Search for recipes containing a particular ingredient.</p>
-        <%= text_field_tag :search, params[:search], class: "form-control",placeholder: "E.g. milk" %>
-        <%= submit_tag "By Ingredient", name: "method", class: "btn btn-default"  %>
-      </div>
-    <% end %>
+    <div class="form-group">
+      <%= text_field_tag :search, params[:search], class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= radio_button_tag(:search_type, "ingredient") %>
+      <%= label_tag(:search_type, "Find by Ingredient") %>
+    </div>
+    <div class="form-group">
+      <%= radio_button_tag(:search_type, "recipe_name") %>
+      <%= label_tag(:search_type, "Find by Recipe Name") %>
+    </div>
+    <div class="form-group">
+      <%= button_tag "Search Recipes", class: "btn btn-default" %>
+    </div>
+  <% end %>
   </section><!-- .search-form -->
 
   <section class="search-results">
-
     <% if user_signed_in? %><div class="logged-in"><% end %>
         <%= render partial: "application/recipe_list", locals: {recipes: @recipes} %>
     <% if user_signed_in? %></div><% end %>
-
   </section><!-- .search-results -->
 </div><!-- .page-content -->
