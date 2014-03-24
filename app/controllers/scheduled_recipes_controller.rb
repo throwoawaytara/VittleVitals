@@ -18,7 +18,8 @@ class ScheduledRecipesController < ApplicationController
     all_scheduled_recipes.where(user_id: current_user.id,
                                 day: params[:day],
                                 recipe_id: params[:id]).first.destroy
-    redirect_to "/users/#{current_user.id}/scheduled_recipes"
+
+    redirect_to user_scheduled_recipes_path(current_user.id)
   end
 
   def meals_scheduled_for(day)
