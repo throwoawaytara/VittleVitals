@@ -27,12 +27,15 @@
   </section>
 
   <section class="nutrition-info">
+    <aside class="ingredients-w-nutifo">@loaded_ingredients</aside>
     <h3>Nutrition Information</h3>
       <ul>
   <% @nutrition_info.each do |key, value| %> 
-    <li><b><%= key %></b><br>
-      <%= value %></li>
+    <li><ul>
+      <% value.each do |k, v| %>
+        <li><%= k %>: <%= v %></li>
+      <% end %>
+    </ul></li>
   <% end %>
-</ul>
   </section>
 </div>
