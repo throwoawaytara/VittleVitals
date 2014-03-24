@@ -8,8 +8,8 @@
               <span class="left glyphicon glyphicon-ok"></span>
             <% else %>
               <span class="add-opt">
-                <form id="sign-up" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>">
-                  <button type="submit">
+                <form id="not-collected" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>">
+                  <button id="not-collected-button" type="submit">
                     <span class="left glyphicon glyphicon-plus-sign"></span>
                   </button>
                 </form>
