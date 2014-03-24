@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature "CollectRecipes" do
-  scenario "add a recipe to weekly list" do
+  scenario "add a recipe to weekly list from my recipes" do
     create_recipe
     sign_up_user
     expect(current_path).to eq(root_path)
@@ -9,13 +9,31 @@ feature "CollectRecipes" do
     collect_recipe
     visit user_recipes_path(User.last)
     expect(page.all(".item").count).to eq(1)
-    assign_day_to_recipe
+    assign_day_to_recipe("Monday")
     click_link "My Week"
     expect(page.find("#monday")).to have_content("Tofu Scramble")
   end
 
-  def assign_day_to_recipe
-    select "Monday", from: "day"
+  scenario "add a recipe to teh weekly list from an individual recipe" do
+    create_recipe
+    sign_up_user
+    expect(current_path).to eq(root_path)
+    collect_recipe
+    click_link "Tofu Scramble"
+
+    click_link "My Recipes"
+    expect(page).to have_content("Tofu Scramble")
+
+    assign_day_to_recipe("Tuesday")
+    click_link "My Week"
+    expect(page.find("#tuesday")).to have_content("Tofu Scramble")
+
+
+
+  end
+
+  def assign_day_to_recipe(day)
+    select day, from: "day"
     click_on "Add"
   end
 
