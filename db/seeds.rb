@@ -1,4 +1,3 @@
-require "CSV"
 # encoding: utf-8
 
 # This file should contain all the record creation needed to seed the database with its default values.
@@ -166,8 +165,13 @@ ScheduledRecipe.create(day: 'Friday', recipe_id: 3, user_id: 1)
 ScheduledRecipe.create(day: 'Friday', recipe_id: 5, user_id: 1)
 ScheduledRecipe.create(day: 'Friday', recipe_id: 1, user_id: 1)
 
-
-# Create Nutrition Information
-CSV.foreach(usda_nutinfo.csv, :headers => true) do |row|
-  NutritionInfo.create!(row)
+require 'csv'
+file = "#{Rails.root}/db/usda_test.csv"
+CSV.foreach(file, :headers => true, :encoding => 'ISO-8859-1:UTF-8') do |row|
+    NutritionInformation.create(row)
 end
+
+# # Create Nutrition Information
+# CSV.foreach(file) do |row|
+#   NutritionInformation.create(row)
+# end

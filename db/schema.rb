@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20140324135426) do
   end
 
   create_table "nutrition_informations", force: true do |t|
-    t.integer  "ingredient_id"
-    t.integer  "NDB_No"
-    t.string   "name"
+    t.integer  "ingredient_id",      default: 0
+    t.string   "db_no"
+    t.text     "name"
     t.float    "water"
     t.integer  "calories"
     t.float    "protein"
