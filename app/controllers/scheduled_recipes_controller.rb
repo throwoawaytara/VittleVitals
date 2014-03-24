@@ -9,6 +9,7 @@ class ScheduledRecipesController < ApplicationController
         'friday' => meals_scheduled_for('friday')
       }
     else
+      flash[:notice] = "Please Sign in to view scheduled recipes"
       redirect_to '/'
     end
   end
