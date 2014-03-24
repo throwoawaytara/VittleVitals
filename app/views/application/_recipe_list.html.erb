@@ -29,6 +29,12 @@
           <p class="img-thumbnail"><img src="<%= recipe.img_path %>" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
         </div><!-- .image-overlays -->
         <header>
+          <% if current_user %>
+            <%= form_tag("/users/#{current_user.id}/recipe/#{recipe.id}", method: 'post') do %>
+              <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday']])) %>
+              <%= submit_tag("Add") %>
+            <% end %>
+          <% end %>
           <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
         </header>
       </article>
