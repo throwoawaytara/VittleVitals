@@ -76,7 +76,7 @@ user.recipes << recipe_2
 
 require 'csv'
 
-file = "#{Rails.root}/db/usda_test.csv"
+file = "#{Rails.root}/db/usda_nutrition_db.csv"
 CSV.foreach(file, headers: true) do |row|
   ingredient = Ingredient.create!(name: row[1])
   NutritionInformation.create(
