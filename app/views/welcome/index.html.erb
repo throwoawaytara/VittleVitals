@@ -21,8 +21,10 @@
   </section><!-- .search-form -->
 
   <section class="search-results">
-    <% if user_signed_in? %><div class="logged-in"><% end %>
-        <%= render partial: "application/recipe_list", locals: {recipes: @recipes} %>
-    <% if user_signed_in? %></div><% end %>
+    <% if user_signed_in? %>
+      <div class="logged-in"><%= render partial: "application/recipe_list", locals: {recipes: @recipes} %></div>
+    <% else %>
+      <%= render partial: "application/recipe_list", locals: {recipes: @recipes} %>
+    <% end %>
   </section><!-- .search-results -->
 </div><!-- .page-content -->
