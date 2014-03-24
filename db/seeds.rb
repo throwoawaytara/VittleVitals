@@ -1,4 +1,5 @@
-#encoding: utf-8
+require "CSV"
+# encoding: utf-8
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
@@ -12,13 +13,10 @@
 # Need to add a recipe to the schedule for a user
 
 user = User.create(email: 'cat@cat.com', password: 'password')
-#,"http://farm4.staticflickr.com/3690/11593332413_2e0d112cc8.jpg","http://placehold.it/350x150"
-
-
-
 
 remote_images = ["http://farm6.staticflickr.com/5506/11593981716_a09d9ff30b.jpg","http://farm4.staticflickr.com/3690/11593332413_2e0d112cc8.jpg","http://placehold.it/350x150"]
 images = ["/images/neon-green.gif","/images/forest-green.gif","/images/brown.gif","/images/orange.gif","/images/purple.gif"]
+
 recipe_3 = Recipe.create(name: 'Tofu Scramble', directions: "Preheat a large, heavy bottomed pan over medium high heat. Saute the garlic in olive oil for about a minute. Break the tofu apart into bite sized pieces and saute for about 10 minutes, using a spatula to stir often. Get under the tofu when you are stirring, scrape the bottom and don’t let it stick to the pan, that is where the good, crispy stuff is. Use a thin metal spatula to get the job done, a wooden or plastic one won’t really cut it. The tofu should get browned on at least one side, but you don’t need to be too precise about it. The water should cook out of it and not collect too much at the bottom of the ban. If that is happening, turn the heat up and let the water evaporate. Add the spice blend and mix to incorporate. Add the nutritional yeast and fresh black pepper. Cook for about 5 more minutes. Serve warm.",img_path:"#{remote_images.sample}")
 recipe_1 = Recipe.create(name: 'Mac & Cheese', directions: "Cook macaroni according to the package directions. Drain. In a saucepan, melt butter or margarine over medium heat. Stir in enough flour to make a roux. Add milk to roux slowly, stirring constantly. Stir in cheeses, and cook over low heat until cheese is melted and the sauce is a little thick. Put macaroni in large casserole dish, and pour sauce over macaroni. Stir well. Melt butter or margarine in a skillet over medium heat. Add breadcrumbs and brown. Spread over the macaroni and cheese to cover. Sprinkle with a little paprika. Bake at 350 degrees F for 30 minutes. Serve.", img_path:"#{remote_images.sample}")
 
@@ -33,8 +31,6 @@ recipe_7 = Recipe.create(name: 'Waldorf Salad', directions: "A tasty broccoli an
 recipe_8 = Recipe.create(name: 'Barbeque Tofu Nuggets', directions: "Preheat a large, heavy bottomed pan over medium high heat. Saute the garlic in olive oil for about a minute. Break the tofu apart into bite sized pieces and saute for about 10 minutes, using a spatula to stir often. Get under the tofu when you are stirring, scrape the bottom and don’t let it stick to the pan, that is where the good, crispy stuff is. Use a thin metal spatula to get the job done, a wooden or plastic one won’t really cut it. The tofu should get browned on at least one side, but you don’t need to be too precise about it. The water should cook out of it and not collect too much at the bottom of the ban. If that is happening, turn the heat up and let the water evaporate. Add the spice blend and mix to incorporate. Add the nutritional yeast and fresh black pepper. Cook for about 5 more minutes. Serve warm.",img_path:"#{remote_images.sample}")
 
 recipe_9 = Recipe.create(name: 'Spicy Texas Meatloaf', directions: "Stir the soup, milk, soy sauce, black pepper, beans and 2/3 cup onions in a 1 1/2-quart casserole.Bake at 350°F. for 25 minutes or until the bean mixture is hot and bubbling.  Stir the bean mixture. Sprinkle with the remaining onions. Bake for 5 minutes or until the onions are golden brown.",img_path:"#{remote_images.sample}")
-
-
 
 user.recipes << recipe_4
 user.recipes << recipe_1
@@ -106,8 +102,8 @@ RecipeIngredient.create(ingredient_id: ingredient_14.id, recipe_id: recipe_2.id,
 RecipeIngredient.create(ingredient_id: ingredient_15.id, recipe_id: recipe_2.id, ingredient_quantity: 1)
 RecipeIngredient.create(ingredient_id: ingredient_16.id, recipe_id: recipe_2.id, ingredient_quantity: 5)
 
- RecipeIngredient.create(ingredient_id: ingredient_8.id, recipe_id: recipe_7.id, ingredient_quantity: 2)
- RecipeIngredient.create(ingredient_id: ingredient_9.id, recipe_id: recipe_7.id, ingredient_quantity: 1)
+RecipeIngredient.create(ingredient_id: ingredient_8.id, recipe_id: recipe_7.id, ingredient_quantity: 2)
+RecipeIngredient.create(ingredient_id: ingredient_9.id, recipe_id: recipe_7.id, ingredient_quantity: 1)
 RecipeIngredient.create(ingredient_id: ingredient_10.id, recipe_id: recipe_7.id, ingredient_quantity: 3)
 RecipeIngredient.create(ingredient_id: ingredient_11.id, recipe_id: recipe_7.id, ingredient_quantity: 1)
 RecipeIngredient.create(ingredient_id: ingredient_12.id, recipe_id: recipe_7.id, ingredient_quantity: 2)
@@ -169,3 +165,9 @@ ScheduledRecipe.create(day: 'Thursday', recipe_id: 2, user_id: 1)
 ScheduledRecipe.create(day: 'Friday', recipe_id: 3, user_id: 1)
 ScheduledRecipe.create(day: 'Friday', recipe_id: 5, user_id: 1)
 ScheduledRecipe.create(day: 'Friday', recipe_id: 1, user_id: 1)
+
+
+# Create Nutrition Information
+CSV.foreach(usda_nutinfo.csv, :headers => true) do |row|
+  NutritionInfo.create!(row)
+end

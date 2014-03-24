@@ -4,6 +4,10 @@ class NutritionInformation < ActiveRecord::Base
 
   validates_presence_of :ingredient_id
 
+
+
   #before_save normalize quantity to grams
 
 end
+
+
