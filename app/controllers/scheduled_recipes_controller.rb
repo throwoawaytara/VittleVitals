@@ -30,7 +30,8 @@ class ScheduledRecipesController < ApplicationController
   def meals_scheduled_for(day)
      @day_recipes = []
       current_user.scheduled_recipes.where(day: day).each do |schedule|
-        @day_recipes << Recipe.where(id: schedule.recipe_id)
+        schedule.recipe?
+        # @day_recipes << Recipe.where(id: schedule.recipe_id)
       end
       @day_recipes
   end
