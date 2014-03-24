@@ -31,7 +31,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
-group :development do
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'pry'
 end
 
