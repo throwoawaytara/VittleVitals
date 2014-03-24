@@ -13,6 +13,11 @@ class ScheduledRecipesController < ApplicationController
     end
   end
 
+  def create
+    ScheduledRecipe.create(recipe_params)
+    redirect_to "/users/#{current_user.id}/scheduled_recipes"
+  end
+
   def destroy
     all_scheduled_recipes = Recipe.find(params[:id]).scheduled_recipes
     all_scheduled_recipes.where(user_id: current_user.id,
@@ -28,5 +33,10 @@ class ScheduledRecipesController < ApplicationController
         @day_recipes << Recipe.where(id: schedule.recipe_id)
       end
       @day_recipes
+  end
+
+  private
+  def recipe_params
+    params.permit(:day, :recipe_id, :user_id)
   end
 end

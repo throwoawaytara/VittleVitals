@@ -11,6 +11,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @nutrition_info = @recipe.nutrition_calc
     @loaded_ingredients = "if not all ingredients were returned with nutrition data, list the ones that weren't here"
-
   end
+  # If no nutrition data is avaiable then do not load the nutrition section in the view
 end
