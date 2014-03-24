@@ -8,6 +8,7 @@ class UserRecipesController < ApplicationController
     end
   end
 
+  # CODE REVIEW: Why does this controller create a ScheduledRecipe?
   def create
     ScheduledRecipe.create(recipe_params)
     redirect_to "/users/#{current_user.id}/scheduled_recipes"

@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
+# CODE REVIEW: This should be in your development bundle
 gem 'pry'
 
 group :doc do

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # CODE REVIEW: everywhere I see grocery_lists used in code, it's used in
+  # conjunction #first. Should user "has one grocery_list"?
   has_many :grocery_lists
 
   has_many :created_recipes, class_name: "Recipe",  foreign_key: "creator_id"
