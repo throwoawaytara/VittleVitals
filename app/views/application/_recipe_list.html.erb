@@ -30,7 +30,7 @@
         </div><!-- .image-overlays -->
         <header>
           <% if current_user %>
-            <%= form_tag("/users/#{current_user.id}/recipe/#{recipe.id}", method: 'post') do %>
+            <%= form_tag("/users/#{current_user.id}/scheduled_recipes/#{recipe.id}", method: 'post') do %>
               <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday']])) %>
               <%= submit_tag("Add") %>
             <% end %>
