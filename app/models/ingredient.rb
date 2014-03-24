@@ -6,7 +6,6 @@ class Ingredient < ActiveRecord::Base
 
   has_many :recipe_ingredients
   has_many :recipes, through: :recipe_ingredients
-
   has_one :nutrition_information
 
   validates :name, presence: true
@@ -14,7 +13,6 @@ class Ingredient < ActiveRecord::Base
   after_create :get_nutrition_information
 
   def get_nutrition_information
-
     nutrition_json = query_nutritionix(self.name)
     # binding.pry
     args = {}

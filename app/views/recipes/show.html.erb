@@ -13,7 +13,7 @@
   </section>
   <% if user_signed_in? %>
   <section class="add-to-schedule">
-    <%= form_tag("/users/#{current_user.id}/recipe/#{@recipe.id}", method: 'post') do %>
+    <%= form_tag("/users/#{current_user.id}/scheduled_recipes/#{@recipe.id}", method: 'post') do %>
       <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday']])) %>
       <%= submit_tag("Add") %>
     <% end %>
@@ -33,12 +33,12 @@
     <aside class="ingredients-w-nutifo"><%= @unloaded_ingredients %></aside>
     <h3>Nutrition Information</h3>
       <ul>
-  <% @nutrition_info.each do |key, value| %>
-    <li><ul>
-      <% value.each do |k, v| %>
-        <li><%= k %>: <%= v %></li>
-      <% end %>
-    </ul></li>
-  <% end %>
+    <% @nutrition_info.each do |key, value| %>
+      <li><ul>
+        <% value.each do |k, v| %>
+          <li><%= k %>: <%= v %></li>
+        <% end %>
+      </ul></li>
+    <% end %>
   </section>
 </div>
