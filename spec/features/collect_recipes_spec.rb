@@ -14,6 +14,24 @@ feature "CollectRecipes" do
     expect(page.find("#monday")).to have_content("Tofu Scramble")
   end
 
+  scenario "add a recipe to teh weekly list from an individual recipe" do
+    create_recipe
+    sign_up_user
+    expect(current_path).to eq(root_path)
+    collect_recipe
+    click_link "Tofu Scramble"
+
+    click_link "My Recipes"
+    expect(page).to have_content("Tofu Scramble")
+
+    assign_day_to_recipe("Tuesday")
+    click_link "My Week"
+    expect(page.find("#tuesday")).to have_content("Tofu Scramble")
+
+
+
+  end
+
   def assign_day_to_recipe(day)
     select day, from: "day"
     click_on "Add"
