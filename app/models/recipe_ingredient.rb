@@ -5,5 +5,7 @@ class RecipeIngredient < ActiveRecord::Base
   validates :ingredient_quantity, presence: true
 
   validates_presence_of :ingredient_id, :recipe_id
+
+  
 end
 
