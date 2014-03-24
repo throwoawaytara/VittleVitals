@@ -31,7 +31,9 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 
-gem 'pry'
+group :development do
+  gem 'pry'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
