@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :grocery_lists
+  has_one :grocery_list
 
   has_many :created_recipes, class_name: "Recipe",  foreign_key: "creator_id"
 

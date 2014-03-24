@@ -2,10 +2,10 @@ class GrocerylistsController < ApplicationController
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @ingredients = @recipe.ingredients
-    unless current_user.grocery_lists.first
+    unless current_user.grocery_list
       @grocery_list = GroceryList.create(user_id: current_user.id, name: "GroceryList")
     else
-      @grocery_list = current_user.grocery_lists.first
+      @grocery_list = current_user.grocery_list
     end
     # @grocery_list.recipes << @recipe
     # @grocery_list.ingredients << @ingredients
@@ -28,7 +28,7 @@ class GrocerylistsController < ApplicationController
   def show
     if current_user
       @list_items = []
-      @grocery_list = current_user.grocery_lists.first
+      @grocery_list = current_user.grocery_list
       if @grocery_list
         @list_items = @grocery_list.ingredients
       end
