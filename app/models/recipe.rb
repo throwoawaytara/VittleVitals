@@ -10,6 +10,18 @@ class Recipe < ActiveRecord::Base
   validates :name, presence: true
   validates :directions, presence: true
 
+  def collect_ingredients_quantities_units
+    recipe_ingredients = self.ingredients
+    recipe_ingredients_qty_units = {}
+    recipe_ingredients.each do |ingredient|
+      join_record = RecipeIngredient.where(ingredient_id: ingredient.id, recipe_id: self.id).first
+      qty = join_record.ingredient_quantity
+      unit = join_record.measuring_unit
+      recipe_ingredients_qty_units[ingredient] = {qty: qty, unit: unit}
+    end
+    recipe_ingredients_qty_units
+  end
+
   def self.search(search, method)
     if method == "recipe_name"
       @recipes = Recipe.where("name ILike ?", "%#{search}%")

@@ -43,15 +43,14 @@ ActiveRecord::Schema.define(version: 20140324135426) do
 
   create_table "ingredients", force: true do |t|
     t.string   "name"
-    t.string   "brand"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "nutrition_informations", force: true do |t|
     t.integer  "ingredient_id"
-    t.integer  "NDB_No"
-    t.string   "name"
+    t.string   "db_no"
+    t.text     "name"
     t.float    "water"
     t.integer  "calories"
     t.float    "protein"
@@ -113,6 +112,7 @@ ActiveRecord::Schema.define(version: 20140324135426) do
     t.integer  "ingredient_id"
     t.integer  "recipe_id"
     t.integer  "ingredient_quantity"
+    t.string   "measuring_unit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
