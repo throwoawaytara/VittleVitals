@@ -9,7 +9,6 @@ class ScheduledRecipesController < ApplicationController
         'friday' => meals_scheduled_for('friday')
       }
     else
-      flash[:error] = "Please create an Account or Sign to schedule recipes"
       redirect_to '/'
     end
   end
