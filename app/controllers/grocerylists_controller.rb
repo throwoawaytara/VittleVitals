@@ -27,8 +27,11 @@ class GrocerylistsController < ApplicationController
   end
   def show
     if current_user
+      @list_items = []
       @grocery_list = current_user.grocery_lists.first
-      @list_items = @grocery_list.ingredients
+      if @grocery_list
+        @list_items = @grocery_list.ingredients
+      end
     else
       redirect_to '/'
     end
@@ -37,6 +40,9 @@ class GrocerylistsController < ApplicationController
   def destroy
     @grocery_list = GroceryList.find(params[:id])
     @grocery_list.ingredients.delete( Ingredient.find(params[:ingredient_id]))
+    if @grocery_list.ingredients.all.empty?
+      @grocery_list.destroy
+    end
 
     redirect_to "/users/#{current_user.id}/grocerylists/#{@grocery_list.id}"
 
