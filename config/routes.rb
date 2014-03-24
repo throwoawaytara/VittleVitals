@@ -13,8 +13,6 @@ TestRailsOnDigitalOcean::Application.routes.draw do
     resources :scheduled_recipes, only: [:index, :destroy]
   end
 
-  # CODE REVIEW: where is this controller?
-  resources :ingredient
   resources :recipes, only: [:show, :index]
 
   root 'welcome#index'
