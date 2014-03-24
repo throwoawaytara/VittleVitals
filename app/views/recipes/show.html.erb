@@ -17,6 +17,8 @@
       <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday']])) %>
       <%= submit_tag("Add") %>
     <% end %>
+    <%= link_to("Add to Grocery List", user_grocerylists_path(current_user.id,  recipe_id: @recipe.id), method: 'post') %>
+  <% end %>
 
   <section class="instructions">
     <h3>Instructions: </h3>
