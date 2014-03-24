@@ -10,7 +10,6 @@ TestRailsOnDigitalOcean::Application.routes.draw do
     resources :scheduled_recipes, only: [:index, :destroy]
   end
 
-  resources :ingredient
   resources :recipes, only: [:show, :index]
 
   root 'welcome#index'
