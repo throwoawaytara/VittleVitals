@@ -1,55 +1,63 @@
 class CreateNutritionInformation < ActiveRecord::Migration
   def change
     create_table :nutrition_informations do |t|
-      t.integer  :ingredient_id
-      t.string   :name
-      t.string   :brand_name
-      t.string   :item_name
-      t.integer  :brand_id
-      t.integer  :item_id
-      t.integer  :upc
-      t.string   :item_type
-      t.string   :item_description
-      t.text   :nf_ingredient_statement
-      t.float  :nf_water_grams
-      t.float  :nf_calories
-      t.float  :nf_calories_from_fat
-      t.float  :nf_total_fat
-      t.float  :nf_saturated_fat
-      t.float  :nf_monounsaturated_fat
-      t.float  :nf_polyunsaturated_fat
-      t.float  :nf_trans_fatty_acid
-      t.float  :nf_cholesterol
-      t.float  :nf_sodium
-      t.float  :nf_total_carbohydrate
-      t.float  :nf_dietary_fiber
-      t.float  :nf_sugars
-      t.float  :nf_protein
-      t.float  :nf_vitamin_a_iu
-      t.float  :nf_vitamin_a_dv
-      t.float  :nf_vitamin_c_mg
-      t.float  :nf_vitamin_c_dv
-      t.float  :nf_calcium_mg
-      t.float  :nf_calcium_dv
-      t.float  :nf_iron_mg
-      t.float  :nf_iron_dv
-      t.float  :nf_refuse_pct
-      t.float  :nf_servings_per_container
-      t.float  :nf_serving_size_qty
-      t.float  :nf_serving_size_unit
-      t.float  :nf_serving_weight_grams
-      t.boolean  :allergen_contains_milk
-      t.boolean  :allergen_contains_eggs
-      t.boolean  :allergen_contains_fish
-      t.boolean  :allergen_contains_shellfish
-      t.boolean  :allergen_contains_tree_nuts
-      t.boolean  :allergen_contains_peanuts
-      t.boolean  :allergen_contains_wheat
-      t.boolean  :allergen_contains_soybeans
-      t.boolean  :allergen_contains_gluten
-      t.string   :nutrition_tags
+      t.integer  :ingredient_id 
+      t.integer :NDB_No               # 5-digit Nutrient Databank number
+      t.string  :name                 # short ingredient description/name
+      t.float   :water                # g/100g
+      t.integer :calories             # kcal/100g
+      t.float   :protein              # g/100g
+      t.float   :total_fat            # g/100g
+      t.float   :ash                  # g/100g   
+      t.float   :carbs                # Carbohydrate, by difference (g/100g)
+      t.float   :fiber                # g/100g
+      t.float   :sugars               # g/100g
+      t.float   :calcium              # mg/100g
+      t.float   :iron                 # mg/100g
+      t.float   :magnesium            # mg/100g
+      t.float   :phosphorus           # mg/100g
+      t.float   :potassium            # mg/100g
+      t.float   :sodium               # mg/100g
+      t.float   :zinc                 # mg/100g
+      t.float   :copper               # mg/100g
+      t.float   :manganese            # mg/100g
+      t.float   :selenium             # micrograms/100g
+      t.float   :vit_c                # mg/100g
+      t.float   :thiamin              # mg/100g
+      t.float   :riboflavin           # mg/100g
+      t.float   :niacin               # mg/100g
+      t.float   :panto_acid           # mg/100g
+      t.float   :vit_b6               # mg/100g
+      t.float   :folate_total         # micrograms/100g
+      t.float   :folic_acid           # micrograms/100g
+      t.float   :food_folate          # micrograms/100g
+      t.float   :folate_dfe           # (microgram dietary folate equivalents)/100g
+      t.float   :choline_tot          # mg/100g
+      t.float   :vit_b12              # micrograms/100g
+      t.integer :vit_a_iu             # IU/100g
+      t.float   :vit_a_rae            # (micrograms retinol activity equivalents / 100g)
+      t.float   :retinol              # micrograms/100g
+      t.float   :alpha_carot          # micrograms/100g
+      t.float   :beta_carot           # micrograms/100g
+      t.float   :beta_crypt           # micrograms/100g
+      t.float   :lycopene             # micrograms/100g
+      t.float   :lut_zeaz             # Lutein+zeazanthin (micrograms/100g)
+      t.float   :vit_e                # Vitamin E (alpha-tocopherol) (mg/100g)
+      t.float   :vit_d_mcg            # Vitamin D (micrograms/100g)
+      t.integer :vivit_d_iu           # Vitamin D ( IU/100g )
+      t.float   :vit_k                # micrograms/100g
+      t.float   :fa_sat               # g/100g
+      t.float   :fa_mono              # g/100g
+      t.float   :fa_poly              # g/100g
+      t.float   :cholestrl            # mg/100g
+      t.float   :gram_weight_a        # Gram weight of gram_weight_unit_a
+      t.string  :gram_weight_unit_a   # Unit containing the number of grams from gram_we  ght_a 
+      t.float   :gram_weight_b        # Gram weight of gram_weight_unit_b
+      t.string  :gram_weight_unit_b   # Unit containing the number of grams from gram_we  ght_b
+      t.float :refuse_pc              # Percent refuse (?)
 
       t.timestamps
     end
+    add_index :nutrition_informations, :ingredient_id
   end
 end
