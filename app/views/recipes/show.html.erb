@@ -19,6 +19,10 @@
       <%= submit_tag("Add") %>
     <% end %>
   </section>
+
+  <section class="add-to-grocery-list">
+    <%= link_to("Add to Grocery List", user_grocerylists_path(current_user.id,  recipe_id: @recipe.id), method: 'post') %>
+  </section>
   <% end %>
 
   <section class="instructions">
