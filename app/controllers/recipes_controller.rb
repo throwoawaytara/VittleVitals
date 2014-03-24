@@ -9,6 +9,9 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @nutrition_info = @recipe.nutrition_calc
+    @loaded_ingredients = "if not all ingredients were returned with nutrition data, list the ones that weren't here"
+
   end
 end
 
