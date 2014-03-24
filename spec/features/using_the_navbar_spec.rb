@@ -6,16 +6,26 @@ feature "navbar" do
     create_recipe
     log_in(user)
     expect(current_path).to eq(root_path)
+    
     click_link "Search All Recipes"
     expect(current_path).to eq(root_path)
+    expect(page.find(".page-title")).to have_content("Search Recipes")
+    
     click_link "My Recipes"
     expect(current_path).to eq(user_recipes_path(user))
+    expect(page.find(".page-title")).to have_content("My Recipes")
+
     click_link "My Grocery List"
     expect(current_path).to eq(user_grocerylist_path(user, 1)) #this is a smell.  User should have one grocery list
+    expect(page.find(".page-title")).to have_content("Grocery List")
+
     click_link "My Week"
     expect(current_path).to eq(user_scheduled_recipes_path(user))
+    expect(page.find(".page-title")).to have_content("This Week's Recipes")
+
     click_link "My Account"
     expect(current_path).to eq(edit_user_registration_path)
+    expect(page).to have_content("Edit User")
 
 
 
