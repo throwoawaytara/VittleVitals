@@ -6,7 +6,7 @@ class GroceryList < ActiveRecord::Base
   has_many :recipes, through: :grocery_list_recipes
 
   has_many :ingredients, through: :grocery_list_ingredients
-   has_many :ingredients
+  has_many :ingredients
 
   validates :name, presence: true
 
