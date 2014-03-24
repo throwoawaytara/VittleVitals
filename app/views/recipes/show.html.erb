@@ -6,8 +6,8 @@
     <div class="thumbnail"><img src="<%= @recipe.img_path %>" alt="<%= @recipe.name %>" title="<%= @recipe.name %>"></div>
     <h3>Ingredients</h3>
     <ul class="ingredient-list">
-      <% @recipe.ingredients.each do |ingredient| %>
-        <li class="ingredient"><b><%= ingredient.name %></b> - <%= ingredient.brand %></li>
+      <% @ingredients_qty_units.each do |ingredient, values| %>
+        <li class="ingredient"><i><%= values[:qty] %> <%= values[:unit] %></i> - <b><%= ingredient.name.downcase %></b></li>
       <% end %>
     </ul>
   </section>

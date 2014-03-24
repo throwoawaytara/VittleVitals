@@ -1,9 +1,10 @@
 class CreateNutritionInformation < ActiveRecord::Migration
   def change
     create_table :nutrition_informations do |t|
-      t.integer  :ingredient_id 
-      t.integer :NDB_No               # 5-digit Nutrient Databank number
-      t.string  :name                 # short ingredient description/name
+
+      t.integer :ingredient_id
+      t.string  :db_no                # 5-digit Nutrient Databank number
+      t.text    :name                 # short ingredient description/name
       t.float   :water                # g/100g
       t.integer :calories             # kcal/100g
       t.float   :protein              # g/100g
@@ -54,7 +55,7 @@ class CreateNutritionInformation < ActiveRecord::Migration
       t.string  :gram_weight_unit_a   # Unit containing the number of grams from gram_we  ght_a 
       t.float   :gram_weight_b        # Gram weight of gram_weight_unit_b
       t.string  :gram_weight_unit_b   # Unit containing the number of grams from gram_we  ght_b
-      t.float :refuse_pc              # Percent refuse (?)
+      t.float   :refuse_pc              # Percent refuse (?)
 
       t.timestamps
     end
