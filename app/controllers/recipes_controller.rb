@@ -10,8 +10,10 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @ingredients_qty_units = @recipe.collect_ingredients_quantities_units
+    
     @nutrition_info = @recipe.nutrition[:stats]
     @unloaded_ingredients = @recipe.nutrition[:unloaded]
+    @ingredient_units = @recipe.nutrition[:ingredient_units]
     
 
   end

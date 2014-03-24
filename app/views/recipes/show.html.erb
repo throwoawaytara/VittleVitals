@@ -30,8 +30,12 @@
   </section>
 
   <section class="nutrition-info">
-    <aside class="ingredients-w-o-nutifo"><%= @unloaded_ingredients %></aside>
+    <aside class="ingredients-w-o-nutifo"></aside>
     <h3>Nutrition Information</h3>
      <%= @nutrition_info.inspect %>
+     <hr>
+     <%= @ingredient_units.inspect %>
+     <hr>
+     <%= @unloaded_ingredients.inspect %>
   </section>
 </div>
