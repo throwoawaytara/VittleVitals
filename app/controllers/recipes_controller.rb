@@ -1,11 +1,14 @@
 class RecipesController < ApplicationController
   def index
+    @results = Yummly.search('lasagna')
     if params[:search]
       @recipes = Recipe.search(params[:search], params[:search_type])
     else
       @recipes =  Recipe.all
     end
   end
+
+  # work on where to create recipe objects
 
   def show
     @recipe = Recipe.find(params[:id])
