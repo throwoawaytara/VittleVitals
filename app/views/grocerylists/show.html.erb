@@ -1,8 +1,8 @@
 <h2>Grocery List</h2>
 <div class="page-content">
   <ul class="grocery-list">
-    <% @list_items.each do |ingredient| %>
-      <li class="grocery-item well"><b class="name"><%= ingredient.name %></li>
+    <% @list_items.map(&:name).uniq.each do |name| %>
+      <li class="grocery-item well"><b class="name"><%= name %></li>
     <% end %>
   </ul>
 </div><!-- .page-content -->
