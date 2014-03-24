@@ -35,144 +35,54 @@ user.recipes << recipe_4
 user.recipes << recipe_1
 user.recipes << recipe_2
 
-ingredient_1 = Ingredient.create(name: 'Cheese', brand: 'Kraft')
-ingredient_2 = Ingredient.create(name: 'Butter', brand: "I can't believe it's not Butter!")
-ingredient_3 = Ingredient.create(name: 'Flour', brand: 'SomeBrand')
-ingredient_4 = Ingredient.create(name: 'Milk', brand: 'CowMilk')
-ingredient_5 = Ingredient.create(name: 'Paprika', brand: 'OffBrand')
-ingredient_6 = Ingredient.create(name: 'Macaroni', brand: 'Noodles.com')
-ingredient_7 = Ingredient.create(name: 'Mystery Powder', brand: 'ShadyPlace.co')
+# ingredient_1 = Ingredient.create(name: 'Cheese', brand: 'Kraft')
+# ingredient_2 = Ingredient.create(name: 'Butter', brand: "I can't believe it's not Butter!")
+# ingredient_3 = Ingredient.create(name: 'Flour', brand: 'SomeBrand')
+# ingredient_4 = Ingredient.create(name: 'Milk', brand: 'CowMilk')
+# ingredient_5 = Ingredient.create(name: 'Paprika', brand: 'OffBrand')
+# ingredient_6 = Ingredient.create(name: 'Macaroni', brand: 'Noodles.com')
+# ingredient_7 = Ingredient.create(name: 'Mystery Powder', brand: 'ShadyPlace.co')
 
-ingredient_8 = Ingredient.create(name: 'Broccoli', brand: 'Nature')
-ingredient_9 = Ingredient.create(name: 'Green Onions', brand: 'Nature')
-ingredient_10 = Ingredient.create(name: 'Unsalted Peanuts', brand: 'Nature')
-ingredient_11 = Ingredient.create(name: 'Sunflower Seeds', brand: 'Nature')
-ingredient_12 = Ingredient.create(name: 'Vegetable Oil', brand: 'Slick')
-ingredient_13 = Ingredient.create(name: 'Cider Vineger', brand: 'Vineger inc')
-ingredient_14 = Ingredient.create(name: 'White Sugar', brand: 'Domino')
-ingredient_15 = Ingredient.create(name: 'Lime Juice', brand: 'Nature')
-ingredient_16 = Ingredient.create(name: 'Cilantro', brand: 'Nature')
+# ingredient_8 = Ingredient.create(name: 'Broccoli', brand: 'Nature')
+# ingredient_9 = Ingredient.create(name: 'Green Onions', brand: 'Nature')
+# ingredient_10 = Ingredient.create(name: 'Unsalted Peanuts', brand: 'Nature')
+# ingredient_11 = Ingredient.create(name: 'Sunflower Seeds', brand: 'Nature')
+# ingredient_12 = Ingredient.create(name: 'Vegetable Oil', brand: 'Slick')
+# ingredient_13 = Ingredient.create(name: 'Cider Vineger', brand: 'Vineger inc')
+# ingredient_14 = Ingredient.create(name: 'White Sugar', brand: 'Domino')
+# ingredient_15 = Ingredient.create(name: 'Lime Juice', brand: 'Nature')
+# ingredient_16 = Ingredient.create(name: 'Cilantro', brand: 'Nature')
 
-ingredient_17 = Ingredient.create(name: 'Tofu', brand: 'TofuIsAwesome')
-ingredient_18 = Ingredient.create(name: 'Garlic', brand: 'Nature')
-ingredient_19 = Ingredient.create(name: 'Black Pepper', brand: 'Nature')
-ingredient_20 = Ingredient.create(name: 'Yeast', brand: 'Nature')
-ingredient_21 = Ingredient.create(name: 'Garlic', brand: 'Nature')
+# ingredient_17 = Ingredient.create(name: 'Tofu', brand: 'TofuIsAwesome')
+# ingredient_18 = Ingredient.create(name: 'Garlic', brand: 'Nature')
+# ingredient_19 = Ingredient.create(name: 'Black Pepper', brand: 'Nature')
+# ingredient_20 = Ingredient.create(name: 'Yeast', brand: 'Nature')
+# ingredient_21 = Ingredient.create(name: 'Garlic', brand: 'Nature')
 
-ingredient_22 = Ingredient.create(name: 'Milk', brand: 'Nature')
-ingredient_23 = Ingredient.create(name: 'Soy Sauce', brand: 'Kikkoman')
-ingredient_24 = Ingredient.create(name: 'Black Pepper', brand: 'Nature')
-ingredient_25 = Ingredient.create(name: 'Greenbeans', brand: 'Nature')
-ingredient_26 = Ingredient.create(name: 'Onions', brand: 'Nature')
+# ingredient_22 = Ingredient.create(name: 'Milk', brand: 'Nature')
+# ingredient_23 = Ingredient.create(name: 'Soy Sauce', brand: 'Kikkoman')
+# ingredient_24 = Ingredient.create(name: 'Black Pepper', brand: 'Nature')
+# ingredient_25 = Ingredient.create(name: 'Greenbeans', brand: 'Nature')
+# ingredient_26 = Ingredient.create(name: 'Onions', brand: 'Nature')
 
-ingredient_27 = Ingredient.create(name: 'Water', brand: 'Dasani')
-ingredient_28 = Ingredient.create(name: 'Sugar', brand: 'Nature')
-ingredient_29 = Ingredient.create(name: 'Corn Syrup', brand: 'Nature')
-ingredient_30 = Ingredient.create(name: 'Orange Juice', brand: 'Tropicana')
-ingredient_31 = Ingredient.create(name: 'Orange Zest', brand: 'Nature')
-ingredient_32 = Ingredient.create(name: 'Gelatin', brand: 'Nature')
-ingredient_33 = Ingredient.create(name: 'Vanilla', brand: 'Nature')
-ingredient_34 = Ingredient.create(name: 'Pistachios', brand: 'Nature')
-
-RecipeIngredient.create(ingredient_id: ingredient_1.id, recipe_id: recipe_1.id, ingredient_quantity: 2)
-RecipeIngredient.create(ingredient_id: ingredient_2.id, recipe_id: recipe_1.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_3.id, recipe_id: recipe_1.id, ingredient_quantity: 3)
-RecipeIngredient.create(ingredient_id: ingredient_4.id, recipe_id: recipe_1.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_5.id, recipe_id: recipe_1.id, ingredient_quantity: 2)
-RecipeIngredient.create(ingredient_id: ingredient_6.id, recipe_id: recipe_1.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_7.id, recipe_id: recipe_1.id, ingredient_quantity: 5)
-
-
-RecipeIngredient.create(ingredient_id: ingredient_1.id, recipe_id: recipe_6.id, ingredient_quantity: 2)
-RecipeIngredient.create(ingredient_id: ingredient_2.id, recipe_id: recipe_6.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_3.id, recipe_id: recipe_6.id, ingredient_quantity: 3)
-RecipeIngredient.create(ingredient_id: ingredient_4.id, recipe_id: recipe_6.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_5.id, recipe_id: recipe_6.id, ingredient_quantity: 2)
-RecipeIngredient.create(ingredient_id: ingredient_6.id, recipe_id: recipe_6.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_7.id, recipe_id: recipe_6.id, ingredient_quantity: 5)
-
-RecipeIngredient.create(ingredient_id: ingredient_8.id, recipe_id: recipe_2.id, ingredient_quantity: 2)
-RecipeIngredient.create(ingredient_id: ingredient_9.id, recipe_id: recipe_2.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_10.id, recipe_id: recipe_2.id, ingredient_quantity: 3)
-RecipeIngredient.create(ingredient_id: ingredient_11.id, recipe_id: recipe_2.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_12.id, recipe_id: recipe_2.id, ingredient_quantity: 2)
-RecipeIngredient.create(ingredient_id: ingredient_13.id, recipe_id: recipe_2.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_14.id, recipe_id: recipe_2.id, ingredient_quantity: 5)
-RecipeIngredient.create(ingredient_id: ingredient_15.id, recipe_id: recipe_2.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_16.id, recipe_id: recipe_2.id, ingredient_quantity: 5)
-
-RecipeIngredient.create(ingredient_id: ingredient_8.id, recipe_id: recipe_7.id, ingredient_quantity: 2)
-RecipeIngredient.create(ingredient_id: ingredient_9.id, recipe_id: recipe_7.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_10.id, recipe_id: recipe_7.id, ingredient_quantity: 3)
-RecipeIngredient.create(ingredient_id: ingredient_11.id, recipe_id: recipe_7.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_12.id, recipe_id: recipe_7.id, ingredient_quantity: 2)
-RecipeIngredient.create(ingredient_id: ingredient_13.id, recipe_id: recipe_7.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_14.id, recipe_id: recipe_7.id, ingredient_quantity: 5)
-RecipeIngredient.create(ingredient_id: ingredient_15.id, recipe_id: recipe_7.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_16.id, recipe_id: recipe_7.id, ingredient_quantity: 5)
-
-RecipeIngredient.create(ingredient_id: ingredient_17.id, recipe_id: recipe_3.id, ingredient_quantity: 2)
-RecipeIngredient.create(ingredient_id: ingredient_18.id, recipe_id: recipe_3.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_19.id, recipe_id: recipe_3.id, ingredient_quantity: 3)
-RecipeIngredient.create(ingredient_id: ingredient_20.id, recipe_id: recipe_3.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_21.id, recipe_id: recipe_3.id, ingredient_quantity: 2)
-
-RecipeIngredient.create(ingredient_id: ingredient_17.id, recipe_id: recipe_8.id, ingredient_quantity: 2)
-RecipeIngredient.create(ingredient_id: ingredient_18.id, recipe_id: recipe_8.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_19.id, recipe_id: recipe_8.id, ingredient_quantity: 3)
-RecipeIngredient.create(ingredient_id: ingredient_20.id, recipe_id: recipe_8.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_21.id, recipe_id: recipe_8.id, ingredient_quantity: 2)
-
-RecipeIngredient.create(ingredient_id: ingredient_22.id, recipe_id: recipe_4.id, ingredient_quantity: 2)
-RecipeIngredient.create(ingredient_id: ingredient_23.id, recipe_id: recipe_4.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_24.id, recipe_id: recipe_4.id, ingredient_quantity: 3)
-RecipeIngredient.create(ingredient_id: ingredient_25.id, recipe_id: recipe_4.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_26.id, recipe_id: recipe_4.id, ingredient_quantity: 2)
-
-RecipeIngredient.create(ingredient_id: ingredient_27.id, recipe_id: recipe_5.id, ingredient_quantity: 2)
-RecipeIngredient.create(ingredient_id: ingredient_28.id, recipe_id: recipe_5.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_29.id, recipe_id: recipe_5.id, ingredient_quantity: 3)
-RecipeIngredient.create(ingredient_id: ingredient_30.id, recipe_id: recipe_5.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_31.id, recipe_id: recipe_5.id, ingredient_quantity: 2)
-RecipeIngredient.create(ingredient_id: ingredient_32.id, recipe_id: recipe_5.id, ingredient_quantity: 3)
-RecipeIngredient.create(ingredient_id: ingredient_33.id, recipe_id: recipe_5.id, ingredient_quantity: 1)
-RecipeIngredient.create(ingredient_id: ingredient_34.id, recipe_id: recipe_5.id, ingredient_quantity: 2)
-
-grocery_list = GroceryList.create(user_id: user.id, name: "Grocery List")
-
-grocery_list.recipes << recipe_1
-grocery_list.recipes << recipe_2
-grocery_list.ingredients << recipe_1.ingredients
-grocery_list.ingredients << recipe_2.ingredients
-
-ScheduledRecipe.create(day: 'Monday', recipe_id: 3, user_id: 1)
-ScheduledRecipe.create(day: 'Monday', recipe_id: 4, user_id: 1)
-ScheduledRecipe.create(day: 'Monday', recipe_id: 1, user_id: 1)
-
-ScheduledRecipe.create(day: 'Tuesday', recipe_id: 3, user_id: 1)
-ScheduledRecipe.create(day: 'Tuesday', recipe_id: 2, user_id: 1)
-ScheduledRecipe.create(day: 'Tuesday', recipe_id: 1, user_id: 1)
-
-ScheduledRecipe.create(day: 'Wednesday', recipe_id: 3, user_id: 1)
-ScheduledRecipe.create(day: 'Wednesday', recipe_id: 5, user_id: 1)
-ScheduledRecipe.create(day: 'Wednesday', recipe_id: 4, user_id: 1)
-
-ScheduledRecipe.create(day: 'Thursday', recipe_id: 3, user_id: 1)
-ScheduledRecipe.create(day: 'Thursday', recipe_id: 4, user_id: 1)
-ScheduledRecipe.create(day: 'Thursday', recipe_id: 2, user_id: 1)
-
-ScheduledRecipe.create(day: 'Friday', recipe_id: 3, user_id: 1)
-ScheduledRecipe.create(day: 'Friday', recipe_id: 5, user_id: 1)
-ScheduledRecipe.create(day: 'Friday', recipe_id: 1, user_id: 1)
+# ingredient_27 = Ingredient.create(name: 'Water', brand: 'Dasani')
+# ingredient_28 = Ingredient.create(name: 'Sugar', brand: 'Nature')
+# ingredient_29 = Ingredient.create(name: 'Corn Syrup', brand: 'Nature')
+# ingredient_30 = Ingredient.create(name: 'Orange Juice', brand: 'Tropicana')
+# ingredient_31 = Ingredient.create(name: 'Orange Zest', brand: 'Nature')
+# ingredient_32 = Ingredient.create(name: 'Gelatin', brand: 'Nature')
+# ingredient_33 = Ingredient.create(name: 'Vanilla', brand: 'Nature')
+# ingredient_34 = Ingredient.create(name: 'Pistachios', brand: 'Nature')
 
 require 'csv'
+
 file = "#{Rails.root}/db/usda_test.csv"
 CSV.foreach(file, headers: true) do |row|
-  id = Ingredient.where("name ILike ?", "#{row[1]}").first.id
+  ingredient = Ingredient.create!(name: row[1])
   NutritionInformation.create(
-    ingredient_id: id,
+    ingredient_id: ingredient.id,
     db_no: row[0],
-    name: row[1],
+    name: row[1].downcase,
     water: row[2],
     calories: row[3],
     protein: row[4],
@@ -226,7 +136,92 @@ CSV.foreach(file, headers: true) do |row|
     refuse_pc: row[52])
   end
 
-# # Create Nutrition Information
-# CSV.foreach(file) do |row|
-#   NutritionInformation.create(row)
-# end
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_1.id, ingredient_quantity: 2, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_1.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_1.id, ingredient_quantity: 3, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_1.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_1.id, ingredient_quantity: 2, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_1.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_1.id, ingredient_quantity: 5, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_6.id, ingredient_quantity: 2, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_6.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_6.id, ingredient_quantity: 3, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_6.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_6.id, ingredient_quantity: 2, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_6.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_6.id, ingredient_quantity: 5, measuring_unit: "g") 
+
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_2.id, ingredient_quantity: 2, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_2.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_2.id, ingredient_quantity: 3, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_2.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_2.id, ingredient_quantity: 2, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_2.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_2.id, ingredient_quantity: 5, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_2.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_2.id, ingredient_quantity: 5, measuring_unit: "g") 
+
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_7.id, ingredient_quantity: 2, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_7.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_7.id, ingredient_quantity: 3, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_7.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_7.id, ingredient_quantity: 2, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_7.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_7.id, ingredient_quantity: 5, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_7.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_7.id, ingredient_quantity: 5, measuring_unit: "g")
+
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_3.id, ingredient_quantity: 2, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_3.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_3.id, ingredient_quantity: 3, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_3.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_3.id, ingredient_quantity: 2, measuring_unit: "g") 
+
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_8.id, ingredient_quantity: 2, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_8.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_8.id, ingredient_quantity: 3, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_8.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_8.id, ingredient_quantity: 2, measuring_unit: "g")
+
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_4.id, ingredient_quantity: 2, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_4.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_4.id, ingredient_quantity: 3, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_4.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_4.id, ingredient_quantity: 2, measuring_unit: "g") 
+
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_5.id, ingredient_quantity: 2, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_5.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_5.id, ingredient_quantity: 3, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_5.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_5.id, ingredient_quantity: 2, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_5.id, ingredient_quantity: 3, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_5.id, ingredient_quantity: 1, measuring_unit: "g")
+RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_5.id, ingredient_quantity: 2, measuring_unit: "g")
+
+grocery_list = GroceryList.create(user_id: user.id, name: "Grocery List")
+
+grocery_list.recipes << recipe_1
+grocery_list.recipes << recipe_2
+grocery_list.ingredients << recipe_1.ingredients
+grocery_list.ingredients << recipe_2.ingredients
+
+ScheduledRecipe.create(day: 'Monday', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(day: 'Monday', recipe_id: 4, user_id: 1)
+ScheduledRecipe.create(day: 'Monday', recipe_id: 1, user_id: 1)
+
+ScheduledRecipe.create(day: 'Tuesday', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(day: 'Tuesday', recipe_id: 2, user_id: 1)
+ScheduledRecipe.create(day: 'Tuesday', recipe_id: 1, user_id: 1)
+
+ScheduledRecipe.create(day: 'Wednesday', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(day: 'Wednesday', recipe_id: 5, user_id: 1)
+ScheduledRecipe.create(day: 'Wednesday', recipe_id: 4, user_id: 1)
+
+ScheduledRecipe.create(day: 'Thursday', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(day: 'Thursday', recipe_id: 4, user_id: 1)
+ScheduledRecipe.create(day: 'Thursday', recipe_id: 2, user_id: 1)
+
+ScheduledRecipe.create(day: 'Friday', recipe_id: 3, user_id: 1)
+ScheduledRecipe.create(day: 'Friday', recipe_id: 5, user_id: 1)
+ScheduledRecipe.create(day: 'Friday', recipe_id: 1, user_id: 1)
+
