@@ -12,6 +12,41 @@ class Recipe < ActiveRecord::Base
   validates :name, presence: true
   validates :directions, presence: true
 
+  # after_create :get_nutrition_information
+
+  def get_nutrition_information
+    nutrition_json = query_nutritionix(self.name)
+    # binding.pry
+    args = {}
+    args["recipe_id"] = self.id
+    nutrition_json["hits"][0]["fields"].each do |field, value|
+      unless value.is_a? Array
+        args[field] = value
+      else
+        args[field] = value[0]
+      end
+    end
+    NutritionInformation.create(args)
+
+  end
+
+  def query_edamam
+    uri = URI.parse("https://api.edamam.com/api/nutrient-info?extractOnly&app_id=$#{ENV["APP_ID"]}&app_key=$#{ENV["APP_KEY"]}")
+
+    @json_response = Net::HTTP.post_form(uri, {title: self.name,
+                                               "yield" => self.serving_size,
+                                               ingr: self.ingredients.map(&:name)}).body
+
+    begin
+      return JSON.parse(@json_response)
+    rescue Exception => e
+      puts e.message
+      puts "retrying.."
+      retry
+    end
+
+  end
+
   def collect_ingredients_quantities_units
     recipe_ingredients = self.ingredients
     recipe_ingredients_qty_units = {}
