@@ -5,10 +5,49 @@ class Recipe < ActiveRecord::Base
   has_many :scheduled_recipes
   has_many :users, through: :scheduled_recipes
 
+  has_one :nutrition_information
+
+  has_many :health_labels
+
   belongs_to :creator, class_name: "User", foreign_key: "creator_id"
 
   validates :name, presence: true
   validates :directions, presence: true
+
+  def get_nutrition_information
+    nutrition = query_edamam
+    # binding.pry
+    args = {}
+    args["recipe_id"] = self.id
+    args["calories"] = nutrition["calories"]
+    args.delete("uri")
+    args.delete("yield")
+    # binding.pry
+    nutrition_information = NutritionInformation.create(args)
+    nutrition["healthLabels"].each { |label_name| HealthLabel.create(recipe_id: self.id, label_name: label_name)}
+
+  end
+
+  def query_edamam
+
+    params = {title: self.name,"yield" => self.serving_size.to_s, ingr: self.ingredients.map(&:name)}.to_json
+    uri = URI.parse("https://api.edamam.com/api/nutrient-info?extractOnly&app_id=#{ENV["EDAMAM_APP_ID"]}&app_key=#{ENV["EDAMAM_APP_KEY"]}")
+    https = Net::HTTP.new(uri.host, uri.port)
+    https.use_ssl = true
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.content_type = "application/json"
+    request.body = params
+    response = https.request(request).body
+
+    begin
+      return JSON.parse(response)
+    rescue Exception => e
+      puts e.message
+      puts "retrying.."
+      retry
+    end
+
+  end
 
   def instruction_url_split
     link = self.directions
@@ -34,7 +73,6 @@ class Recipe < ActiveRecord::Base
   def self.import_recipes(query)
     recipe = get_recipe_from_yummly(query)
     recipe_id = recipe.matches.first["id"]
-    # ingredients_arr = recipe.matches.first["ingredients"]
     recipe_details = get_details_from_yummly(recipe_id)
     ingredients_quantity = recipe_details.json['ingredientLines']
     serving_size = recipe_details.json['numberOfServings']

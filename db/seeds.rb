@@ -38,6 +38,8 @@ Recipe.import_recipes("apple")
 Recipe.import_recipes("noodles")
 Recipe.import_recipes("honey")
 
+Recipe.all.each { |recipe| recipe.get_nutrition_information }
+
 user.recipes << Recipe.find(4)
 user.recipes << Recipe.find(1)
 user.recipes << Recipe.find(10)
