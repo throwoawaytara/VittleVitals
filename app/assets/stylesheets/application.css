@@ -12,6 +12,7 @@
  *= require_tree .
  */
 /* global styles */
+
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,200);
 * {border-radius:0 !important;}
 body {
@@ -59,6 +60,7 @@ label {
 .content {
   padding-left:15px;
   padding-right:15px;
+  overflow:hidden;
 }
 
 .well.feature-recipe {
@@ -66,10 +68,6 @@ label {
 }
 .form-group {
   overflow:hidden;
-}
-input.form-control {
-  display:block;
-  float:left;
 }
 input[type="submit"].btn.btn-default {
 
@@ -84,6 +82,34 @@ input[type="submit"].btn.btn-default {
   margin:0;
   width:100%;
   overflow:visible;
+}
+
+input {
+  vertical-align:top;
+}
+input, 
+.button-cluster {
+  margin-top:1em;
+  display:block;
+}
+.form-inline.home .form-control {
+  margin-bottom:1em;
+  display:block !important;
+  width:100%;
+}
+.form-inline.home .submit.form-group {
+  display:inline-block;
+}
+
+.button-cluster .submit.form-group {
+  float:left;
+  margin-right:10px;
+}
+
+.button-cluster {
+  list-style:none;
+  padding:0; 
+  margin:0;
 }
 
 .grid-list {
@@ -105,38 +131,37 @@ input[type="submit"].btn.btn-default {
 .grid-list .item {
   padding:1em;
 }
-
+/*
 .grid-list .item:hover {
-  background:#92D115;
+
       -webkit-transition: all 1s ease;
      -moz-transition: all 1s ease;
        -o-transition: all 1s ease;
       -ms-transition: all 1s ease;
           transition: all 1s ease;
-}
+}*/
 
 .grid-list .thumbnail {
   background:#333;
 }
 
-.grid-list .overlays {
-}
 .grid-list .img-thumbnail {
   border:0;
   padding:0;
-}
-
-
-.grid-list .img-thumbnail {
-  display: block;
+  position:relative;
+  top:-20px;
+  z-index:0;
+  display: inline-block;
   margin: 0 0 10px;
   border: 1px solid #000;
   -webkit-box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.5);
+
 }
 
 .grid-list img {
+  display:block;
 }
 .grid-list header {
   text-align:center;
@@ -144,6 +169,10 @@ input[type="submit"].btn.btn-default {
 
 .grid-list article {
   margin-bottom:0;
+}
+
+.grid-list form {
+  display:inline-block;
 }
 
 .grid-list h3 a ,
@@ -161,32 +190,48 @@ input[type="submit"].btn.btn-default {
 }
 .logged-in .grid-list .overlays {
   position:relative;
-}
-.logged-in .grid-list p {
 
 }
+.logged-in .grid-list .overlays span {
+  background:rgba(0,0,0,0.45);
+  width:50%;
+  overflow:hidden;
+}
+
 .logged-in .grid-list .overlays .glyphicon {
   font-size:25px;
   line-height:25px;
-  color:brown;
-  background:#fff;
   padding:10px;
-  border-radius:50%;
-
+  position:absolute;
+  z-index:2;
+  color:#fff;
 }
+
 .logged-in .grid-list .overlays .right {
   position:absolute;
-  right:16px;
-  top:32px;
+  right:0;
   cursor:pointer;
+  text-align:right;
 }
-.logged-in .grid-list .overlays .left {
-  left:16px;
-  top:32px;
+
+.logged-in .grid-list .overlays .left{
+  text-align:left;
   cursor:pointer;
+  left:0;
 }
-.logged-in .grid-list .overlays .add-opt .left {
-  left:10px;
+.logged-in .grid-list .overlays .glyphicon.glyphicon-ok {
+  cursor:auto;
+  text-align:left;
+  color:#92D115;
+}
+.logged-in .grid-list .overlays .glyphicon.glyphicon-star {
+  color:#ff8800;
+  } 
+.logged-in .grid-list .overlays .glyphicon.glyphicon-plus-sign,
+.logged-in .grid-list .overlays .glyphicon.glyphicon-star.not-faved,
+.logged-in .grid-list .overlays .glyphicon.glyphicon-plus-sign {
+  color:#fff !important;
+  z-index:2;
 }
 .logged-in .grid-list button:focus {
   background:none;
@@ -195,7 +240,6 @@ input[type="submit"].btn.btn-default {
   -webkit-box-shadow: none;
   box-shadow: none;
   border:none;
-
 }
 .logged-in .grid-list button {
   background:transparent;

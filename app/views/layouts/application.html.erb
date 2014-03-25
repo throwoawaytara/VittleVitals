@@ -47,7 +47,6 @@
                    </ul>
                  <% end %>
                   <ul class="nav navbar-nav navbar-right">
-
                     <% if !user_signed_in? %>
                       <%= render "logged_out_navbar" %>
                     <% end %>
@@ -55,15 +54,7 @@
                 </div>
               </div>
             </div>
-      <div class="page-header" id="banner">
-        <div class="row">
-          <div class="col-lg-6">
-            <h1>Grocer<i>EASE</i></h1>
-            <p class="lead">Turning online recipes into tools for nutritous living and easy grocery shopping.</p>
-          </div>
-
-        </div>
-      </div><!-- page-header-->
+      
     <div class="content-wrapper row">
       <section class="content" role="main">
         <%= yield %>

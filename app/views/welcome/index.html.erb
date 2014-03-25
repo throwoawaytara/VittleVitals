@@ -1,37 +1,44 @@
 <!-- logged out recipe search -->
 
-<div class="col-lg-6">
-            <div class="well feature-recipe">
-              <section class="search-form">
-                <h2>Search Recipes</h2>
-    <%= form_tag recipes_path, class: "form", role: "form", method: 'get' do %>
-    <div class="form-group">
-      <%= text_field_tag :search, params[:search], class: "form-control" %>
-    </div>
-    <div class="form-group">
-      <%= radio_button_tag(:search_type, "ingredient") %>
-      <%= label_tag(:search_type, "Find by Ingredient") %>
-    </div>
-    <div class="form-group">
-      <%= radio_button_tag(:search_type, "recipe_name") %>
-      <%= label_tag(:search_type, "Find by Recipe Name") %>
-    </div>
-    <div class="form-group">
-      <%= button_tag "Search Recipes", type: "submit", class: "btn btn-warning" %>
-    </div>
-  <% end %>
-  </section><!-- .search-form -->
-            </div>
-          </div>
-<div class="page-content">
-  
-  
 
-  <section class="search-results">
-    <% if user_signed_in? %>
-      <div class="logged-in"><%= render partial: "application/recipe_list", locals: {recipes: @recipes} %></div>
-    <% else %>
-      <%= render partial: "application/recipe_list", locals: {recipes: @recipes} %>
-    <% end %>
-  </section><!-- .search-results -->
-</div><!-- .page-content -->
+  <div class="well feature-recipe col-lg-9">
+    <section class="home search-form form-inline">
+      <h2>Search Recipes</h2>
+        <%= form_tag recipes_path, class: "form", role: "form", method: 'get' do %>
+        <div class="form-group">
+          
+          <ul class="button-cluster form-group">
+            <li class="textfield"><%= text_field_tag :search, params[:search], class: "form-control search" %></li>
+            <li>
+                <%= radio_button_tag(:search_type, "ingredient") %>
+                <%= label_tag(:search_type, "Find by Ingredient") %>
+            </li>
+            <li>
+                <%= radio_button_tag(:search_type, "recipe_name") %>
+                <%= label_tag(:search_type, "Find by Recipe Name") %>
+            </li>
+        </ul>
+        </div>
+        <div class="submit form-group">
+          <%= button_tag "Search Recipes", type: "submit", class: "btn btn-warning" %>
+        </div>
+      <% end %>
+    </section><!-- .search-form -->
+  </div>
+  <div class="col-lg-3" id="banner">
+    <h1>Grocer<i>EASE</i></h1>
+    <p class="lead">Making it easier to plan and shop for healthy meals.</p>
+  </div><!--#banner-->
+</div><!-- row-->
+
+<div class="row">
+  <div class="page-content col-xs-12">
+    <section class="search-results">
+      <% if user_signed_in? %>
+        <div class="logged-in"><%= render partial: "application/recipe_list", locals: {recipes: @recipes} %></div>
+      <% else %>
+        <%= render partial: "application/recipe_list", locals: {recipes: @recipes} %>
+      <% end %>
+    </section><!-- .search-results -->
+  </div><!-- .page-content -->
+</div><!--.row-->
