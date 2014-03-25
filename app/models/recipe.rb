@@ -64,7 +64,7 @@ class Recipe < ActiveRecord::Base
       @ingredients.each do |ingredient|
         @recipes += ingredient.recipes
       end
-      @recipes
+      @recipes.uniq!
     else
       @recipes = Recipe.take(20)
     end
