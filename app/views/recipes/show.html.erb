@@ -6,8 +6,8 @@
     <div class="thumbnail"><img src="<%= @recipe.img_path %>" alt="<%= @recipe.name %>" title="<%= @recipe.name %>"></div>
     <h3>Ingredients</h3>
     <ul class="ingredient-list">
-      <% @ingredients_qty_units.each do |ingredient, values| %>
-        <li class="ingredient"><i>Qty Ing</i> - <b><%= ingredient.name.downcase %></b></li>
+      <% @ingredients.each do |ingredient| %>
+        <li class="ingredient"><%= ingredient.name %></b></li>
       <% end %>
     </ul>
   </section>
@@ -29,6 +29,7 @@
     <p><%= @recipe.directions %></p>
   </section>
 
+  <% if @nutrition_info %>
   <section class="nutrition-info">
     <aside class="ingredients-w-o-nutifo"></aside>
     <h3>Nutrition Information</h3>
@@ -40,9 +41,11 @@
       <li><b><%= key.capitalize %></b>: <%= val %></li>
      <% end %>
    </ul>
-
+   <% end %>
+   
+  <% if @unloaded_ingredients %>
    <aside class="no-info">
-    <% if @unloaded_ingredients.length > 0 %>
+    
     <p>The nutrition information for the following ingredients were not available in the USDA's database. The aggregated nutrition data does not include the missing data.</p>
     <ul>
       <% @unloaded_ingredients.each do |i| %>
