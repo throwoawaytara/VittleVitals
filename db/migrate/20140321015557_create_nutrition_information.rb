@@ -3,7 +3,7 @@ class CreateNutritionInformation < ActiveRecord::Migration
     create_table :nutrition_informations do |t|
 
       t.integer :recipe_id
-
+      t.integer :calories
 
       t.timestamps
     end

@@ -14,20 +14,17 @@ class Recipe < ActiveRecord::Base
   validates :name, presence: true
   validates :directions, presence: true
 
-  # after_create :get_nutrition_information
-
   def get_nutrition_information
     nutrition = query_edamam
     # binding.pry
     args = {}
     args["recipe_id"] = self.id
-    nutrition.each do |field, value|
-      args[field] = value unless value.is_a? Array || value.respond_to(Hash)
-    end
+    args["calories"] = nutrition["calories"]
     args.delete("uri")
-
-    nutrirtion_information = NutritionInformation.create(args)
-    nutrition["healthLabels"].each { |label_name| HealthLabel.create(nutrition_information_id: nutrition_information.id, label_name: label_name)}
+    args.delete("yield")
+    # binding.pry
+    nutrition_information = NutritionInformation.create(args)
+    nutrition["healthLabels"].each { |label_name| HealthLabel.create(recipe_id: self.id, label_name: label_name)}
 
   end
 
@@ -76,7 +73,6 @@ class Recipe < ActiveRecord::Base
   def self.import_recipes(query)
     recipe = get_recipe_from_yummly(query)
     recipe_id = recipe.matches.first["id"]
-    # ingredients_arr = recipe.matches.first["ingredients"]
     recipe_details = get_details_from_yummly(recipe_id)
     ingredients_quantity = recipe_details.json['ingredientLines']
     serving_size = recipe_details.json['numberOfServings']
