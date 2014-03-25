@@ -4,4 +4,5 @@ class ScheduledRecipe < ActiveRecord::Base
 
   validates :day, presence: true
   validates_presence_of :user_id, :recipe_id
+
 end

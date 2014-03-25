@@ -7,8 +7,12 @@ class RecipesController < ApplicationController
     end
   end
 
+  # work on where to create recipe objects
+
   def show
     @recipe = Recipe.find(params[:id])
+    @nutrition_info = @recipe.nutrition_calc
+    @loaded_ingredients = "if not all ingredients were returned with nutrition data, list the ones that weren't here"
     @ingredients_qty_units = @recipe.collect_ingredients_quantities_units
 
     @nutrition_info = @recipe.nutrition[:stats]
@@ -17,7 +21,7 @@ class RecipesController < ApplicationController
      # in it right now to make sure the shoveling only pushed the ingredient name in once
     @unloaded_ingredients = @recipe.nutrition[:unloaded]
     @ingredient_units = @recipe.nutrition[:ingredient_units]
-    
   end
   # If no nutrition data is avaiable then do not load the nutrition section in the view
+
 end
