@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20140324135426) do
 
   create_table "ingredients", force: true do |t|
     t.string   "name"
-    t.string   "yummly_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
