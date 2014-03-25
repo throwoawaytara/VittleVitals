@@ -7,7 +7,7 @@
   <meta name="description" content="An app to make shopping for healthy ingredients easier.">
   <meta name="author" content="Built by Diana Calvache, Dustin Fox, Cristin O'Connor and Tara Roys at Dev Bootcamp Chicago">
   <title>RecipEase/GrocerEase</title>
-  <%= stylesheet_link_tag     "reset","application","bootstrap-theme","bootstrap", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag     "bootstrap", "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag  "jquery","application","bootstrap","data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -47,7 +47,6 @@
                    </ul>
                  <% end %>
                   <ul class="nav navbar-nav navbar-right">
-
                     <% if !user_signed_in? %>
                       <%= render "logged_out_navbar" %>
                     <% end %>
@@ -55,15 +54,7 @@
                 </div>
               </div>
             </div>
-      <div class="page-header" id="banner">
-        <div class="row">
-          <div class="col-lg-6">
-            <h1>Grocer<i>EASE</i></h1>
-            <p class="lead">Turning online recipes into tools for nutritous living and easy grocery shopping.</p>
-          </div>
-
-        </div>
-      </div><!-- page-header-->
+      
     <div class="content-wrapper row">
       <section class="content" role="main">
         <%= yield %>
