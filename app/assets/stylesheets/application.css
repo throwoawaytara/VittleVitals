@@ -32,10 +32,7 @@ h1 i,
 .navbar-default .navbar-nav li.dropdown .dropdown-toggle {
   color:#1CBA92;
 }
-.navbar-form {
-  margin-left:0;
-  margin-right:0;
-}
+
 .navbar-default .navbar-nav li a,
 .lead {
   color:#999;
@@ -161,12 +158,6 @@ input,
   -webkit-box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.5);
-}
-
-.button-cluster.form-group,
-.textfield,
-.textfield.form-control {
-  width:80%;
 }
 
 .grid-list img {
@@ -302,7 +293,7 @@ input,
 @media screen and (min-width: 600px) {
   #banner {display:block;}
   form {
-    /*max-width:550px;*/
+    max-width:550px;
   }
   .grid-list {
     display:block;
