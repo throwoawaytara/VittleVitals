@@ -2,6 +2,7 @@
   <% @recipes.each do |recipe| %>
     <li class="item">
       <article class="recipe thumbnail">
+        <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
         <div class="img overlays">
           <% if user_signed_in? %>
             <% if current_user.recipes.exists?(recipe.id) %>
@@ -26,6 +27,7 @@
               </span>
             <% end %>
           <% end %>
+
           <p class="img-thumbnail"><img src="<%= recipe.img_path %>" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
         </div><!-- .image-overlays -->
         <header>
@@ -35,7 +37,7 @@
               <%= submit_tag("Add") %>
             <% end %>
           <% end %>
-          <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
+          
         </header>
       </article>
     </li>
