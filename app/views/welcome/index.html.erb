@@ -1,8 +1,8 @@
 <!-- logged out recipe search -->
 <h2 class="page-title">Search Recipes</h2>
-<div class="page-content logged-out">
-  
-  <section class="search-form">
+<div class="col-lg-6" style="padding: 15px 15px 0 15px;">
+            <div class="well feature-recipe">
+              <section class="search-form">
     <%= form_tag recipes_path, class: "form", role: "form", method: 'get' do %>
     <div class="form-group">
       <%= text_field_tag :search, params[:search], class: "form-control" %>
@@ -16,10 +16,15 @@
       <%= label_tag(:search_type, "Find by Recipe Name") %>
     </div>
     <div class="form-group">
-      <%= button_tag "Search Recipes", type: "submit", class: "btn btn-default" %>
+      <%= button_tag "Search Recipes", type: "submit", class: "btn btn-warning" %>
     </div>
   <% end %>
   </section><!-- .search-form -->
+            </div>
+          </div>
+<div class="page-content">
+  
+  
 
   <section class="search-results">
     <% if user_signed_in? %>
