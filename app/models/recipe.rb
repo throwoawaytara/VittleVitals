@@ -14,6 +14,44 @@ class Recipe < ActiveRecord::Base
   validates :name, presence: true
   validates :directions, presence: true
 
+  # after_create :get_nutrition_information
+
+  def get_nutrition_information
+    nutrition = query_edamam
+    # binding.pry
+    args = {}
+    args["recipe_id"] = self.id
+    nutrition.each do |field, value|
+      args[field] = value unless value.is_a? Array || value.respond_to(Hash)
+    end
+    args.delete("uri")
+
+    nutrirtion_information = NutritionInformation.create(args)
+    nutrition["healthLabels"].each { |label_name| HealthLabel.create(nutrition_information_id: nutrition_information.id, label_name: label_name)}
+
+  end
+
+  def query_edamam
+
+    params = {title: self.name,"yield" => self.serving_size.to_s, ingr: self.ingredients.map(&:name)}.to_json
+    uri = URI.parse("https://api.edamam.com/api/nutrient-info?extractOnly&app_id=#{ENV["EDAMAM_APP_ID"]}&app_key=#{ENV["EDAMAM_APP_KEY"]}")
+    https = Net::HTTP.new(uri.host, uri.port)
+    https.use_ssl = true
+    request = Net::HTTP::Post.new(uri.request_uri)
+    request.content_type = "application/json"
+    request.body = params
+    response = https.request(request).body
+
+    begin
+      return JSON.parse(response)
+    rescue Exception => e
+      puts e.message
+      puts "retrying.."
+      retry
+    end
+
+  end
+
   def instruction_url_split
     link = self.directions
     domain = link.split("//")[1].split("/")[0]
