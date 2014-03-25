@@ -90,6 +90,7 @@ input[type="submit"].btn.btn-default {
 input {
   vertical-align:top;
 }
+
 input, 
 .button-cluster {
   margin-top:1em;
@@ -160,7 +161,6 @@ input,
   -webkit-box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.5);
-
 }
 
 .button-cluster.form-group,
@@ -191,8 +191,10 @@ input,
   text-align:center;
   vertical-align:baseline;
 }
+
 .grid-list h3 {
-  min-height:2em;
+  min-height:1.5em;
+  font-size:1.3em;
   vertical-align:center;
   padding:0;
   margin:1em 0;
@@ -202,8 +204,7 @@ input,
 
 }
 .logged-in .grid-list .overlays span {
-  background:rgba(0,0,0,0.45);
-  width:50%;
+  background:rgba(0,0,0,0.55);
   overflow:hidden;
 }
 
@@ -215,7 +216,21 @@ input,
   z-index:2;
   color:#fff;
 }
-
+.add-to-week {
+  /*background:#000;*/
+  margin:0 auto;
+  padding:10px;
+  border-radius:10px;
+}
+.add-to-week.inline-form {
+  text-align:center;
+  margin:0 auto;
+  width:90%;
+}
+.add-to-week .btn.btn-info {
+  padding:5px;
+  margin-top:-5px;
+}
 .logged-in .grid-list .overlays .right {
   position:absolute;
   right:0;

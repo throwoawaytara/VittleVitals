@@ -38,9 +38,9 @@
         </div><!-- .image-overlays -->
         <div class="add-to-week">
           <% if current_user %>
-            <%= form_tag("/users/#{current_user.id}/scheduled_recipes/#{recipe.id}", method: 'post') do %>
+            <%= form_tag("/users/#{current_user.id}/scheduled_recipes/#{recipe.id}", class: "form inline-form", method: 'post') do %>
               <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday']])) %>
-              <%= submit_tag("Add") %>
+              <%= submit_tag("Add", class: "btn btn-info") %>
             <% end %>
           <% end %>
         </div>
