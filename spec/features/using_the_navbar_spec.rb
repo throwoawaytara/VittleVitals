@@ -27,8 +27,10 @@ feature "navbar" do
     expect(current_path).to eq(edit_user_registration_path)
     expect(page).to have_content("Edit User")
 
+  end
 
-
+  scenario "thing" do
+    
   end
 
   def log_in(user)
