@@ -10,6 +10,12 @@ class Recipe < ActiveRecord::Base
   validates :name, presence: true
   validates :directions, presence: true
 
+  def instruction_url_split
+    link = self.directions
+    domain = link.split("//")[1].split("/")[0]
+    domain
+  end
+
   def self.search(search, method)
     if method == "recipe_name"
       @recipes = Recipe.where("name ILike ?", "%#{search}%")

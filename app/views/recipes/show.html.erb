@@ -6,7 +6,9 @@
     <div class="thumbnail"><img src="<%= @recipe.img_path %>" alt="<%= @recipe.name %>" title="<%= @recipe.name %>"></div>
     <h3>Ingredients</h3>
     <ul class="ingredient-list">
-      <li>recipe.ingredients</li>
+      <% @ingredients.each do |ingredient| %>
+        <li class="ingredient"><%= ingredient.name %></b></li>
+      <% end %>
     </ul>
   </section>
   <% if user_signed_in? %>
@@ -23,38 +25,23 @@
   <% end %>
 
   <section class="instructions">
-    <h3>Instructions: </h3>
-    <p><%= @recipe.directions %></p>
+    <h3>Prep Instructions: </h3>
+    <p>Find the full instructions for <a href="<%= @recipe.directions %>"><%= @recipe.name %> at <%= @instructions_domain %></a></p>
   </section>
 
   <% if @nutrition_info %>
-  <section class="nutrition-info">
-    <aside class="ingredients-w-o-nutifo"></aside>
-    <h3>Nutrition Information</h3>
-    <!-- 4 will be replaced with recipe.num_servings -->
-
-    <p><b>Servings</b>: 4 </p>
-    <h4>Per Serving:</h4>
-    <ul>
-     <% @nutrition_info.each do |key, val| %>
-      <li><b><%= key.capitalize %></b>: <%= val %></li>
-     <% end %>
-   </ul>
-  <% end %>
-
-  <% if @unloaded_ingredients %>
-   <aside class="no-info">
-    <% if @unloaded_ingredients.length > 0 %>
-    <p>The nutrition information for the following ingredients were not available in the USDA's database. The aggregated nutrition data does not include the missing data.</p>
-    <ul>
-      <% @unloaded_ingredients.each do |i| %>
-        <li><%= i.downcase.capitalize %></li>
-      <% end %>
-    </ul>
-    <% end %>
-
-    </aside>
-  <% end %>
+    <section class="nutrition-info">
+      <aside class="ingredients-w-o-nutifo"></aside>
+      <h3>Nutrition Information</h3>
+      <!-- 4 will be replaced with recipe.num_servings -->
+      <p><b>Servings</b>: 4 </p>
+      <h4>Per Serving:</h4>
+      <ul>
+       <% @nutrition_info.each do |key, val| %>
+        <li><b><%= key.capitalize %></b>: <%= val %></li>
+       <% end %>
+     </ul>
+   <% end %>
  
      
   </section>
