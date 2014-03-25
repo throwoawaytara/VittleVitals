@@ -5,6 +5,8 @@ class Recipe < ActiveRecord::Base
   has_many :scheduled_recipes
   has_many :users, through: :scheduled_recipes
 
+  has_one :nutrition_information
+
   belongs_to :creator, class_name: "User", foreign_key: "creator_id"
 
   validates :name, presence: true
