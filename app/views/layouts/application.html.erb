@@ -29,25 +29,28 @@
                   <a class="navbar-brand" href="#">RecipEASE</a>
                 </div>
                 <div class="navbar-collapse collapse navbar-responsive-collapse">
-                  <ul class="nav navbar-nav">                    
-                    
-                    <% if user_signed_in? %>  
+                  <ul class="nav navbar-nav">
+
+                    <% if user_signed_in? %>
                       <%= render "logged_in_navbar" %>
-                    <% end %>
-               
+
+
                   <form class="navbar-form navbar-left">
                     <input type="text" class="form-control col-lg-8" placeholder="Search">
                   </form>
                   <li class="dropdown">
+
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                        <%= render "user_account_nav" %>
                       </ul>
 
                     </li>
-   </ul>
+                   </ul>
+                 <% end %>
                   <ul class="nav navbar-nav navbar-right">
-                    <% if !user_signed_in? %>  
+
+                    <% if !user_signed_in? %>
                       <%= render "logged_out_navbar" %>
                     <% end %>
                   </ul>
@@ -60,7 +63,7 @@
             <h1>Grocer<i>EASE</i></h1>
             <p class="lead">Turning online recipes into tools for nutritous living and easy grocery shopping.</p>
           </div>
-          
+
         </div>
       </div><!-- page-header-->
     <div class="content-wrapper row">
@@ -68,7 +71,7 @@
         <%= yield %>
       </section>
     </div><!-- .content-wrapper .row -->
-    
+
     <div class="footer-wrapper row">
      <%= render "footer" %>
     </div><!-- .footer-wrapper .row-->
