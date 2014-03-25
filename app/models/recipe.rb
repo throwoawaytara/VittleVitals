@@ -37,8 +37,10 @@ class Recipe < ActiveRecord::Base
 
   def query_edamam
 
-    params = {title: self.name,"yield" => self.serving_size, ingr: self.ingredients.map(&:name)}
-    uri = URI.parse("https://api.edamam.com/api/nutrient-info?extractOnly&app_id=#{ENV["EDAMAM_APP_ID"]}app_key=$#{ENV["EDAMAM_APP_KEY"]}")
+    puts ENV["EDAMAM_APP_KEY"]
+
+    params = {extractOnly: true, app_id: ENV["EDAMAM_APP_ID"], app_key: ENV["EDAMAM_APP_KEY"],title: self.name,"yield" => self.serving_size, ingr: self.ingredients.map(&:name)}
+    uri = URI.parse("https://api.edamam.com/api/nutrient-info")
     https = Net::HTTP.new(uri.host, uri.port)
     https.use_ssl = true
     request = Net::HTTP::Post.new(uri.path, initheader = {'Content-Type' => 'application/json'})
@@ -49,7 +51,7 @@ class Recipe < ActiveRecord::Base
     #                                            "yield" => self.serving_size,
     #                                            ingr: self.ingredients.map(&:name)})
     puts "+++++++++++++++++++++++++++++++++++++++++++++++"
-    puts response 
+    puts response
 
     # begin
     #   return JSON.parse(@json_response)
