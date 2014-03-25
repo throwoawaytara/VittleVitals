@@ -13,8 +13,6 @@
 </head>
 <body>
     <div class="container">
-      <!-- Navbar
-      ================================================== -->
       <div class="clearfix">
         <div class="row">
           <div class="col-lg-12">
@@ -26,7 +24,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="#">RecipEASE</a>
+                  <a class="navbar-brand" href="/">Grocer<i>ease</i></a>
                 </div>
                 <div class="navbar-collapse collapse navbar-responsive-collapse">
                   <ul class="nav navbar-nav">
@@ -40,7 +38,7 @@
                   </form>
                   <li class="dropdown">
 
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <b class="caret"></b></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <%= current_user.email %> <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                        <%= render "user_account_nav" %>
                       </ul>

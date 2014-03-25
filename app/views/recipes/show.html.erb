@@ -7,7 +7,7 @@
     <h3>Ingredients</h3>
     <ul class="ingredient-list">
       <% @ingredients_qty_units.each do |ingredient, values| %>
-        <li class="ingredient"><i><%= values[:qty] %> <%= values[:unit] %></i> - <b><%= ingredient.name.downcase %></b></li>
+        <li class="ingredient"><i>Qty Ing</i> - <b><%= ingredient.name.downcase %></b></li>
       <% end %>
     </ul>
   </section>

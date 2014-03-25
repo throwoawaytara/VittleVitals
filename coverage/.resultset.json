@@ -1,0 +1,38 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/cristinoconnor/devbootcamp/phase0-3/final-project/recipe-app/app/models/user.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/cristinoconnor/devbootcamp/phase0-3/final-project/recipe-app/app/helpers/application_helper.rb": [
+        1,
+        null,
+        null
+      ],
+      "/Users/cristinoconnor/devbootcamp/phase0-3/final-project/recipe-app/app/helpers/recipe_helper.rb": [
+        1,
+        1,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1395764595
+  }
+}
