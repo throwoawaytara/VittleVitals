@@ -5,7 +5,7 @@ class CreateRecipes < ActiveRecord::Migration
       t.string :name
       t.text :directions
       t.string :img_path
-      t.integer :serving_size
+      t.string :serving_size
 
       t.timestamps
     end

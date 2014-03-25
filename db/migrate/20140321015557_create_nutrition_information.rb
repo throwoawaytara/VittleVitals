@@ -2,7 +2,7 @@ class CreateNutritionInformation < ActiveRecord::Migration
   def change
     create_table :nutrition_informations do |t|
 
-      t.integer :recipe_id
+      t.integer :ingredient_id
       t.string  :db_no                # 5-digit Nutrient Databank number
       t.text    :name                 # short ingredient description/name
       t.float   :water                # g/100g

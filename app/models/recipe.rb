@@ -1,3 +1,8 @@
+require 'net/http'
+require 'net/https'
+require 'uri'
+require 'json'
+
 class Recipe < ActiveRecord::Base
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
@@ -14,36 +19,45 @@ class Recipe < ActiveRecord::Base
 
   # after_create :get_nutrition_information
 
-  def get_nutrition_information
-    nutrition_json = query_nutritionix(self.name)
-    # binding.pry
-    args = {}
-    args["recipe_id"] = self.id
-    nutrition_json["hits"][0]["fields"].each do |field, value|
-      unless value.is_a? Array
-        args[field] = value
-      else
-        args[field] = value[0]
-      end
-    end
-    NutritionInformation.create(args)
+  # def get_nutrition_information
+  #   nutrition_json = query_nutritionix(self.name)
+  #   # binding.pry
+  #   args = {}
+  #   args["recipe_id"] = self.id
+  #   nutrition_json["hits"][0]["fields"].each do |field, value|
+  #     unless value.is_a? Array
+  #       args[field] = value
+  #     else
+  #       args[field] = value[0]
+  #     end
+  #   end
+  #   NutritionInformation.create(args)
 
-  end
+  # end
 
   def query_edamam
-    uri = URI.parse("https://api.edamam.com/api/nutrient-info?extractOnly&app_id=$#{ENV["APP_ID"]}&app_key=$#{ENV["APP_KEY"]}")
 
-    @json_response = Net::HTTP.post_form(uri, {title: self.name,
-                                               "yield" => self.serving_size,
-                                               ingr: self.ingredients.map(&:name)}).body
+    params = {title: self.name,"yield" => self.serving_size, ingr: self.ingredients.map(&:name)}
+    uri = URI.parse("https://api.edamam.com/api/nutrient-info?extractOnly&app_id=#{ENV["EDAMAM_APP_ID"]}app_key=$#{ENV["EDAMAM_APP_KEY"]}")
+    https = Net::HTTP.new(uri.host, uri.port)
+    https.use_ssl = true
+    request = Net::HTTP::Post.new(uri.path, initheader = {'Content-Type' => 'application/json'})
+    request.body = "[ #{params} ]"
+    response = https.request(request)
 
-    begin
-      return JSON.parse(@json_response)
-    rescue Exception => e
-      puts e.message
-      puts "retrying.."
-      retry
-    end
+    # @json_response = Net::HTTP.post_form(uri, {title: self.name,
+    #                                            "yield" => self.serving_size,
+    #                                            ingr: self.ingredients.map(&:name)})
+    puts "+++++++++++++++++++++++++++++++++++++++++++++++"
+    puts response 
+
+    # begin
+    #   return JSON.parse(@json_response)
+    # rescue Exception => e
+    #   puts e.message
+    #   puts "retrying.."
+    #   retry
+    # end
 
   end
 
