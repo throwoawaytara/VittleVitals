@@ -112,8 +112,6 @@ ActiveRecord::Schema.define(version: 20140324135426) do
   create_table "recipe_ingredients", force: true do |t|
     t.integer  "ingredient_id"
     t.integer  "recipe_id"
-    t.integer  "ingredient_quantity"
-    t.string   "measuring_unit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -123,6 +121,7 @@ ActiveRecord::Schema.define(version: 20140324135426) do
     t.string   "name"
     t.text     "directions"
     t.string   "img_path"
+    t.integer  "serving_size"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
