@@ -37,6 +37,31 @@ class Recipe < ActiveRecord::Base
     end
   end
 
+  def self.import_recipes(query)
+    recipe = get_recipe_from_yummly(query)
+    recipe_id = recipe.matches.first["id"]
+    ingredients_arr = recipe.matches.first["ingredients"]
+    recipe_details = get_details_from_yummly(recipe_id)
+    serving_size = recipe_details.json['numberOfServings']
+    recipe_name = recipe.matches.first["recipeName"]
+    recipe_directions = recipe_details.json['source']['sourceRecipeUrl']
+    recipe_image = recipe_details.json['images'].first['hostedLargeUrl']
+
+    Recipe.create(name: recipe_name,
+                  directions: recipe_directions,
+                  img_path: recipe_image)
+
+  end
+
+  def self.get_recipe_from_yummly(query)
+    Yummly.search(query, {max: 1})
+  end
+
+  def self.get_details_from_yummly(recipe_id)
+    Yummly.find(recipe_id)
+  end
+
+
   def nutrition
     attributes = {
       :calories => "calories",
@@ -51,7 +76,7 @@ class Recipe < ActiveRecord::Base
       :protein => "protein"
       }
     #:calcium,:iron,:magnesium,:phosphorus,:potassium,:sodium,:zinc,:copper,:manganese,:selenium,:vit_c,:thiamin,:riboflavin,:niacin,:panto_acid,:vit_b6,:folate_total,:folic_acid,:food_folate,:folate_dfe,:choline_tot,:vit_b12,:vit_a_iu,:vit_a_rae,:retinol,:alpha_carot,:beta_carot,:beta_crypt,:lycopene,:lut_zeaz,:vit_e,:vit_d_mcg,:vivit_d_iu,:vit_k,:sodium => "sodium"
-    
+
     recipe_stats = {}
     unloaded = []
 
@@ -60,7 +85,7 @@ class Recipe < ActiveRecord::Base
     ingredient_units = {}
 
     ingredients.each do |ingredient|
-      
+
       ing_info = ingredient.nutrition_information
       ingredient_units[ingredient.name] = {
         :gram_weight_a => ing_info.gram_weight_a,
@@ -84,11 +109,11 @@ class Recipe < ActiveRecord::Base
         # ingredient quantity is in grams, and the nut data is g/100g for the attributes we're displaying, so we need to divide by 100
         multiplier = 100
         recipe_stats[name] << ing_info.send(a) * (ing_quant_per_recipe_serving.to_f/multiplier) unless ing_info.send(a) == nil
-        unloaded << ingredient.name unless unloaded.include?(ingredient.name) 
+        unloaded << ingredient.name unless unloaded.include?(ingredient.name)
       end
     end
 
-    # we still need a method to determine whether we have the ingredient or not    
+    # we still need a method to determine whether we have the ingredient or not
 
     recipe_stats.each_pair do |ingredient, nums|
       recipe_stats[ingredient] = nums.flatten.sum.to_f

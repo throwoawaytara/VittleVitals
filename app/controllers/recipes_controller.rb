@@ -24,20 +24,4 @@ class RecipesController < ApplicationController
   end
   # If no nutrition data is avaiable then do not load the nutrition section in the view
 
-  def cache_database(query)
-    recipe = get_recipe_from_yummly(query)
-    recipe_id = recipe.matches.first["id"]
-    ingredients_arr = recipe.matches.first["ingredients"]
-    recipe_details = get_details_from_yummly(recipe_id)
-    serving_size = recipe_details.json['numberOfServings']
-    # Recipe.create
-  end
-
-  def get_recipe_from_yummly(query)
-    Yummly.search(query, {max: 1})
-  end
-
-  def get_details_from_yummly(recipe_id)
-    Yummly.find(recipe_id)
-  end
 end
