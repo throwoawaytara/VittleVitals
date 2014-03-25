@@ -17,7 +17,7 @@ remote_images = ["http://farm6.staticflickr.com/5506/11593981716_a09d9ff30b.jpg"
 images = ["/images/neon-green.gif","/images/forest-green.gif","/images/brown.gif","/images/orange.gif","/images/purple.gif"]
 
 
-Recipe.import_recipes("lasagna")
+recipe = Recipe.import_recipes("lasagna")
 Recipe.import_recipes("tofu")
 Recipe.import_recipes("pulled pork")
 Recipe.import_recipes("meatloaf")
@@ -35,6 +35,13 @@ Recipe.import_recipes("pasta")
 user.recipes << Recipe.find(4)
 user.recipes << Recipe.find(1)
 user.recipes << Recipe.find(10)
+
+# recipe_1 = Yummly.search(Recipe.find(1).name)
+# ingredient_arr = recipe_1.matches.first['ingredients']
+
+# ingredient_arr.each do |ingredient|
+#     Ingredient.create(name: ingredient)
+# end
 
 # ingredient_1 = Ingredient.create(name: 'Cheese', brand: 'Kraft')
 # ingredient_2 = Ingredient.create(name: 'Butter', brand: "I can't believe it's not Butter!")
@@ -75,67 +82,67 @@ user.recipes << Recipe.find(10)
 # ingredient_33 = Ingredient.create(name: 'Vanilla', brand: 'Nature')
 # ingredient_34 = Ingredient.create(name: 'Pistachios', brand: 'Nature')
 
-require 'csv'
+# require 'csv'
 
-file = "#{Rails.root}/db/usda_nutrition_db.csv"
-CSV.foreach(file, headers: true) do |row|
-  ingredient = Ingredient.create!(name: row[1])
-  NutritionInformation.create(
-    ingredient_id: ingredient.id,
-    db_no: row[0],
-    name: row[1].downcase,
-    water: row[2],
-    calories: row[3],
-    protein: row[4],
-    total_fat: row[5],
-    ash: row[6],
-    carbs: row[7],
-    fiber: row[8],
-    sugars: row[9],
-    calcium: row[10],
-    iron: row[11],
-    magnesium: row[12],
-    phosphorus: row[13],
-    potassium: row[14],
-    sodium: row[15],
-    zinc: row[16],
-    copper: row[17],
-    manganese: row[18],
-    selenium: row[19],
-    vit_c: row[20],
-    thiamin: row[21],
-    riboflavin: row[22],
-    niacin: row[23],
-    panto_acid: row[24],
-    vit_b6: row[25],
-    folate_total: row[26],
-    folic_acid: row[27],
-    food_folate: row[28],
-    folate_dfe: row[29],
-    choline_tot: row[30],
-    vit_b12: row[31],
-    vit_a_iu: row[32],
-    vit_a_rae: row[33],
-    retinol: row[34],
-    alpha_carot: row[35],
-    beta_carot: row[36],
-    beta_crypt: row[37],
-    lycopene: row[38],
-    lut_zeaz: row[39],
-    vit_e: row[40],
-    vit_d_mcg: row[41],
-    vivit_d_iu: row[42],
-    vit_k: row[43],
-    fa_sat: row[44],
-    fa_mono: row[45],
-    fa_poly: row[46],
-    cholestrl: row[47],
-    gram_weight_a: row[48],
-    gram_weight_unit_a: row[49],
-    gram_weight_b: row[50],
-    gram_weight_unit_b: row[51],
-    refuse_pc: row[52])
-  end
+# file = "#{Rails.root}/db/usda_nutrition_db.csv"
+# CSV.foreach(file, headers: true) do |row|
+#   ingredient = Ingredient.create!(name: row[1])
+#   NutritionInformation.create(
+#     ingredient_id: ingredient.id,
+#     db_no: row[0],
+#     name: row[1].downcase,
+#     water: row[2],
+#     calories: row[3],
+#     protein: row[4],
+#     total_fat: row[5],
+#     ash: row[6],
+#     carbs: row[7],
+#     fiber: row[8],
+#     sugars: row[9],
+#     calcium: row[10],
+#     iron: row[11],
+#     magnesium: row[12],
+#     phosphorus: row[13],
+#     potassium: row[14],
+#     sodium: row[15],
+#     zinc: row[16],
+#     copper: row[17],
+#     manganese: row[18],
+#     selenium: row[19],
+#     vit_c: row[20],
+#     thiamin: row[21],
+#     riboflavin: row[22],
+#     niacin: row[23],
+#     panto_acid: row[24],
+#     vit_b6: row[25],
+#     folate_total: row[26],
+#     folic_acid: row[27],
+#     food_folate: row[28],
+#     folate_dfe: row[29],
+#     choline_tot: row[30],
+#     vit_b12: row[31],
+#     vit_a_iu: row[32],
+#     vit_a_rae: row[33],
+#     retinol: row[34],
+#     alpha_carot: row[35],
+#     beta_carot: row[36],
+#     beta_crypt: row[37],
+#     lycopene: row[38],
+#     lut_zeaz: row[39],
+#     vit_e: row[40],
+#     vit_d_mcg: row[41],
+#     vivit_d_iu: row[42],
+#     vit_k: row[43],
+#     fa_sat: row[44],
+#     fa_mono: row[45],
+#     fa_poly: row[46],
+#     cholestrl: row[47],
+#     gram_weight_a: row[48],
+#     gram_weight_unit_a: row[49],
+#     gram_weight_b: row[50],
+#     gram_weight_unit_b: row[51],
+#     refuse_pc: row[52])
+#   end
 
 RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_1.id, ingredient_quantity: 100 * 2, measuring_unit: "g")
 RecipeIngredient.create(ingredient_id: Ingredient.all.to_a.sample.id, recipe_id: recipe_1.id, ingredient_quantity: 100 * 1, measuring_unit: "g")

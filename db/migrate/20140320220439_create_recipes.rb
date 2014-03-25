@@ -5,7 +5,8 @@ class CreateRecipes < ActiveRecord::Migration
       t.string :name
       t.text :directions
       t.string :img_path
-      # How do we save an image?
+      t.string :serving_size
+
       t.timestamps
     end
   end

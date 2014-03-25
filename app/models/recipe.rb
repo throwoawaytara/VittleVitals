@@ -42,15 +42,20 @@ class Recipe < ActiveRecord::Base
     recipe_id = recipe.matches.first["id"]
     ingredients_arr = recipe.matches.first["ingredients"]
     recipe_details = get_details_from_yummly(recipe_id)
+    ingredients_quantity = recipe_details.json['ingredientLines']
     serving_size = recipe_details.json['numberOfServings']
     recipe_name = recipe.matches.first["recipeName"]
     recipe_directions = recipe_details.json['source']['sourceRecipeUrl']
     recipe_image = recipe_details.json['images'].first['hostedLargeUrl']
 
-    Recipe.create(name: recipe_name,
+    recipe = Recipe.create(name: recipe_name,
                   directions: recipe_directions,
-                  img_path: recipe_image)
+                  img_path: recipe_image
+                  serving_size: serving_size)
 
+    ingredients_arr.each do |ingredient|
+      recipe.ingredients << Ingredient.create(name: ingredient)
+    end
   end
 
   def self.get_recipe_from_yummly(query)
