@@ -126,9 +126,9 @@ DIRECTIONS
         refuse_pc: row[52])
       end
 
-    RecipeIngredient.create(ingredient_id: Ingredient.all[0].id, recipe_id: recipe_1.id, ingredient_quantity: 2, measuring_unit: "g")
-    RecipeIngredient.create(ingredient_id: Ingredient.all[1].id, recipe_id: recipe_1.id, ingredient_quantity: 1, measuring_unit: "g")
-    RecipeIngredient.create(ingredient_id: Ingredient.all[2].id, recipe_id: recipe_1.id, ingredient_quantity: 3, measuring_unit: "g")
+    RecipeIngredient.create(ingredient_id: Ingredient.all[0].id, recipe_id: recipe_1.id)
+    RecipeIngredient.create(ingredient_id: Ingredient.all[1].id, recipe_id: recipe_1.id)
+    RecipeIngredient.create(ingredient_id: Ingredient.all[2].id, recipe_id: recipe_1.id)
   
     recipe_1 
   end
