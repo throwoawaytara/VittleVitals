@@ -21,16 +21,17 @@ $(function() {
   var idUrlName = pathName.replace(regex, "_\$1");
   // console.log(idUrlName);
     // $("#" + idUrlName).parent().addClass('active');
+    $("#" + idUrlName).parent().addClass('active');
 
-    $(document).on("click", "div .navbar-collapse ul li", function(event) {
-      event.preventDefault();
-      console.log($(this).children());
+    // $(document).on("click", "div .navbar-collapse ul li", function(event) {
+    //   event.preventDefault();
+    //   console.log($(this).children());
       // $.ajax({
       //   url: ''
       // });
 
-      $("#" + idUrlName).parent().addClass('active');
-    });
+      // $("#" + idUrlName).parent().addClass('active');
+    // });
 
   // addButtonClassName = "left glyphicon glyphicon-plus-sign";
 
