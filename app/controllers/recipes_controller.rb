@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   def index
     if params[:search]
+      @search = params[:search]
       @recipes = Recipe.search(params[:search])
     else
       @recipes =  Recipe.all
