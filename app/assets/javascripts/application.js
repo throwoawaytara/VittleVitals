@@ -16,15 +16,32 @@
 //= require_tree .
 
 $(function() {
+  // Need to assign this variable the default class name so that if the plus button
+  // isn't clicked then fav can know what the current status is on that button
+
+  addButtonClassName = "left glyphicon glyphicon-plus-sign";
+
   $(".add-recipe-button").on("click", function(event) {
     event.preventDefault();
-    console.log(event.target);
-    console.log('bwahhhha! I prevented the default!');
+    // addRecipeTarget = event.target;
+    $(event.target).removeClass("glyphicon-plus-sign");
+    $(event.target).addClass("glyphicon-ok");
+    addButtonClassName = this.children[0].className;
   });
 
   $(".add-favorite-recipe-button").on("click", function(event) {
     event.preventDefault();
-    console.log(event.target);
-    console.log("wwooooahh, now you can't add a favorite!! mwaahhaha")
+    // console.log(addButtonClassName);
+    // $(event.target).removeClass("not-faved");
+    // $(event.target).addClass("faved");
+    $(this).first("span").addClass("glyphicon-ok")
+
+    if (addButtonClassName === "left glyphicon glyphicon-plus-sign") {
+      // console.log(addRecipeTarget);
+      console.log(this);
+      // $(someElement).removeClass("glyphicon-plus-sign");
+      // $(someElement).addClass("glyphicon-ok");
+    }
   });
 });
+
