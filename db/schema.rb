@@ -56,7 +56,9 @@ ActiveRecord::Schema.define(version: 20140325162905) do
 
   create_table "nutrition_informations", force: true do |t|
     t.integer  "recipe_id"
-    t.integer  "calories"
+    t.string   "name"
+    t.float    "value"
+    t.string   "unit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
