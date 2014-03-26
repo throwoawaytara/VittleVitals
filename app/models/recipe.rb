@@ -62,17 +62,13 @@ class Recipe < ActiveRecord::Base
     domain
   end
 
-  def self.search(search, method)
-    if method == "recipe_name"
-      @recipes = Recipe.where("name ILike ?", "%#{search}%")
-    else
-      @recipes = []
-      @ingredients = Ingredient.where("name ILike ?", "%#{search}%")
-      @ingredients.each do |ingredient|
-        @recipes += ingredient.recipes
-      end
-      @recipes.uniq
+  def self.search(search)
+    @recipes = Recipe.where("name ILike ?", "%#{search}%")
+    @ingredients = Ingredient.where("name ILike ?", "%#{search}%")
+    @ingredients.each do |ingredient|
+      @recipes += ingredient.recipes
     end
+    @recipes.uniq
   end
 
   def self.import_recipes(query)
