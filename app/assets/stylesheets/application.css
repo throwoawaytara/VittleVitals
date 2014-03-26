@@ -356,4 +356,18 @@ input,
   }
 }
 
+div.days-recipe ul li {
+  display: inline;
+}
+
+div.days-recipe {
+  float: left;
+}
+
+div.day {
+  overflow: auto;
+  width: 100%;
+  
+}
+
 

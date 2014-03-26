@@ -6,7 +6,9 @@ class ScheduledRecipesController < ApplicationController
         'tuesday' => meals_scheduled_for('tuesday'),
         'wednesday' => meals_scheduled_for('wednesday'),
         'thursday' => meals_scheduled_for('thursday'),
-        'friday' => meals_scheduled_for('friday')
+        'friday' => meals_scheduled_for('friday'),
+        'saturday' => meals_scheduled_for('saturday'),
+        'sunday' => meals_scheduled_for('sunday')
       }
     else
       flash[:notice] = "Please Sign in to view scheduled recipes"

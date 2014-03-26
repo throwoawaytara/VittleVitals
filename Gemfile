@@ -21,6 +21,8 @@ gem 'devise'
 
 gem 'yummly'
 
+gem 'twilio-ruby'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 
