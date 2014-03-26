@@ -33,7 +33,6 @@
     <section class="nutrition-info">
       <aside class="ingredients-w-o-nutifo"></aside>
       <h3>Nutrition Information</h3>
-      <!-- 4 will be replaced with recipe.num_servings -->
       <p><b>Servings</b>: <%= @recipe.serving_size %> </p>
       <h4>Per Serving:</h4>
       <ul>
@@ -42,7 +41,18 @@
        <% end %>
      </ul>
    <% end %>
- 
+  
+  <% if @health_labels %>
+    <section class="nutrition-info">
+      <aside class="ingredients-w-o-nutifo"></aside>
+      <h3>Dietary Information</h3>
+      <!-- 4 will be replaced with recipe.num_servings -->
+      <ul>
+       <% @health_labels.each do |label| %>
+        <li><%= label.label_name %></li>
+       <% end %>
+     </ul>
+   <% end %>
      
   </section>
 </div>
