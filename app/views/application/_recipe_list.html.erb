@@ -1,50 +1,54 @@
 <ul class="recipes all grid-list logged-in">
-  <% @recipes.each do |recipe| %>
-    <li class="item">
-      <article class="recipe thumbnail">
-        <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
-        <div class="img overlays">
-          <% if user_signed_in? %>
-            <% if current_user.recipes.exists?(recipe.id) %>
-              <span class="already-collected">
+  <% unless @recipes.empty? %>
+    <% @recipes.each do |recipe| %>
+      <li class="item">
+        <article class="recipe thumbnail">
+          <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
+          <div class="img overlays">
+            <% if user_signed_in? %>
+              <% if current_user.recipes.exists?(recipe.id) %>
+                <span class="already-collected">
+                    <button>
+                      <span class="left glyphicon glyphicon-ok"></span>
+                    </button>
+                </span>
+              <% else %>
+                <span class="add-opt">
+                  <form id="not-collected" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>">
+                    <button id="not-collected-button" type="submit">
+                      <span class="left glyphicon glyphicon-plus-sign"></span>
+                    </button>
+                  </form>
+                </span>
+              <% end %>
+              <% if current_user.recipes.exists?(recipe.id) && current_user.collected_recipes.where(recipe_id: recipe.id).first.favorite == true %>
                   <button>
-                    <span class="left glyphicon glyphicon-ok"></span>
-                  </button>
-              </span>
-            <% else %>
-              <span class="add-opt">
-                <form id="not-collected" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>">
-                  <button id="not-collected-button" type="submit">
-                    <span class="left glyphicon glyphicon-plus-sign"></span>
-                  </button>
-                </form>
-              </span>
+                       <span class="right glyphicon glyphicon-star faved"></span>
+                    </button>
+              <% else %>
+                  <form method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>&favorite=true">
+                    <button type="submit">
+                       <span class="right glyphicon glyphicon-star not-faved"></span>
+                    </button>
+                  </form>
+                </span>
+              <% end %>
             <% end %>
-            <% if current_user.recipes.exists?(recipe.id) && current_user.collected_recipes.where(recipe_id: recipe.id).first.favorite == true %>
-                <button>
-                     <span class="right glyphicon glyphicon-star faved"></span>
-                  </button>
-            <% else %>
-                <form method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>&favorite=true">
-                  <button type="submit">
-                     <span class="right glyphicon glyphicon-star not-faved"></span>
-                  </button>
-                </form>
-              </span>
-            <% end %>
-          <% end %>
 
-          <p class="img-thumbnail"><img src="<%= recipe.img_path %>" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
-        </div><!-- .image-overlays -->
-        <div class="add-to-week">
-          <% if current_user %>
-            <%= form_tag("/users/#{current_user.id}/scheduled_recipes/#{recipe.id}", class: "form inline-form", method: 'post') do %>
-              <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday']])) %>
-              <%= submit_tag("Add", class: "btn btn-info") %>
+            <p class="img-thumbnail"><img src="<%= recipe.img_path %>" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
+          </div><!-- .image-overlays -->
+          <div class="add-to-week">
+            <% if current_user %>
+              <%= form_tag("/users/#{current_user.id}/scheduled_recipes/#{recipe.id}", class: "form inline-form", method: 'post') do %>
+                <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday']])) %>
+                <%= submit_tag("Add", class: "btn btn-info") %>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
-      </article>
-    </li>
+          </div>
+        </article>
+      </li>
+    <% end %>
+  <% else %>
+    <p> No Results Found <p>
   <% end %>
 </ul>

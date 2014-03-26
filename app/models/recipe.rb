@@ -65,15 +65,13 @@ class Recipe < ActiveRecord::Base
   def self.search(search, method)
     if method == "recipe_name"
       @recipes = Recipe.where("name ILike ?", "%#{search}%")
-    elsif method == "ingredient"
+    else
       @recipes = []
       @ingredients = Ingredient.where("name ILike ?", "%#{search}%")
       @ingredients.each do |ingredient|
         @recipes += ingredient.recipes
       end
       @recipes.uniq
-    else
-      @recipes = Recipe.take(20)
     end
   end
 
