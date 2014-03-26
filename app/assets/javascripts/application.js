@@ -14,3 +14,12 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$("#remove-recipe").on("submit", function(e) {
+  e.preventDefault
+  $.post("/recipe/destroy", $(this), function(e) {
+      console.log(this)
+    }
+  )
+  $(this).reset
+})

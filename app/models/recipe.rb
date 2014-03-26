@@ -108,6 +108,9 @@ class Recipe < ActiveRecord::Base
     end
   end
 
+  def is_user_favorite?(current_user)
+    CollectedRecipe.where(recipe_id: self.id, collector_id: current_user.id).first.favorite == true
+  end
   
   
 end

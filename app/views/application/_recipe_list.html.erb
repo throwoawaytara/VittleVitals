@@ -8,17 +8,14 @@
 
             <% if user_signed_in? %>
 
-
-
-            
-              <% if current_user.recipes.exists?(recipe.id) %>
-                <form id="added" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>">
+              <% if current_user.recipes.exists?(recipe) %>
+                <form id="remove-recipe" method="post" action="<%= user_recipe_path(current_user, recipe) %>">
                   <button id="remove" type="submit">
                     <span class="left glyphicon glyphicon-ok"></span>
                   </button>
                 </form>
               <% else %>
-                <form id="not-added" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>">
+                <form id="add-recipe" method="post" action="/users/<%=current_user.id %>/collected_recipes?recipe=<%= recipe.id %>">
                   <button id="add" type="submit">
                     <span class="left glyphicon glyphicon-plus-sign"></span>
                   </button>
@@ -28,7 +25,7 @@
 
 
 
-              <% if current_user.recipes.exists?(recipe.id) && current_user.collected_recipes.where(recipe_id: recipe.id).first.favorite == true %>
+              <% if current_user.recipes.exists?(recipe) && recipe.is_user_favorite?(current_user) %>
                   <button>
                        <span class="right glyphicon glyphicon-star faved"></span>
                     </button>
@@ -40,7 +37,7 @@
                   </form>
                 </span>
               <% end %>
-            <% end %>
+         <% end %>
 
             <p class="img-thumbnail"><img src="<%= recipe.img_path %>" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
           </div><!-- .image-overlays -->
