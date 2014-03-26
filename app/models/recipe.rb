@@ -5,7 +5,7 @@ class Recipe < ActiveRecord::Base
   has_many :scheduled_recipes
   has_many :users, through: :scheduled_recipes
 
-  has_one :nutrition_information
+  has_many :nutrition_informations
 
   has_many :health_labels
 
@@ -16,15 +16,20 @@ class Recipe < ActiveRecord::Base
 
   def get_nutrition_information
     nutrition = query_edamam
+
+    NutritionInformation.create(recipe_id: self.id, name: "calories", value: nutrition["calories"] )
     # binding.pry
     args = {}
     args["recipe_id"] = self.id
-    args["calories"] = nutrition["calories"]
-    args.delete("uri")
-    args.delete("yield")
-    # binding.pry
-    nutrition_information = NutritionInformation.create(args)
+
+    nutrition["totalNutrients"].each do | nutrient_label, nutrient_values|
+      args["name"] = nutrient_values["label"]
+      args["value"] = nutrient_values["quantity"]
+      args["unit"] = nutrient_values["unit"]  
+      nutrition_information = NutritionInformation.create(args)
+    end
     nutrition["healthLabels"].each { |label_name| HealthLabel.create(recipe_id: self.id, label_name: label_name)}
+    self.nutrition_calc
 
   end
 
@@ -38,6 +43,8 @@ class Recipe < ActiveRecord::Base
     request.content_type = "application/json"
     request.body = params
     response = https.request(request).body
+
+    JSON.parse(response)
 
     begin
       return JSON.parse(response)
@@ -58,15 +65,13 @@ class Recipe < ActiveRecord::Base
   def self.search(search, method)
     if method == "recipe_name"
       @recipes = Recipe.where("name ILike ?", "%#{search}%")
-    elsif method == "ingredient"
+    else
       @recipes = []
       @ingredients = Ingredient.where("name ILike ?", "%#{search}%")
       @ingredients.each do |ingredient|
         @recipes += ingredient.recipes
       end
       @recipes.uniq
-    else
-      @recipes = Recipe.take(20)
     end
   end
 
@@ -99,19 +104,12 @@ class Recipe < ActiveRecord::Base
   end
 
 
- def nutrition_calc
-   attributes = {
-     :calories => "calories",
-     :total_fat => "total fat",
-     :fa_sat => "saturated fat",
-     :fa_mono => "monounsaturated fat",
-     :fa_poly => "polyunsaturated fat",
-     :cholestrl => "cholesterol",
-     :carbs => "carbohydrates",
-     :sugars => "sugars",
-     :fiber => "dietary fiber",
-     :protein => "protein"
-     }
+  def nutrition_calc
+    nutrition_infos = self.nutrition_informations
+    nutrition_infos.each do |nutrition_info|
+      value = nutrition_info.value
+      nutrition_info.update_attributes(value:  value / self.serving_size)
+    end
   end
 
   
