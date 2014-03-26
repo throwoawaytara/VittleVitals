@@ -9,13 +9,17 @@
             <% if user_signed_in? %>
 
               <% if current_user.recipes.exists?(recipe) %>
-                <form id="remove-recipe" method="post" action="<%= user_recipe_path(current_user, recipe) %>">
+                <form id="remove-recipe" method="destroy" action="<%= user_collected_recipe_path(current_user, recipe) %>">
+                  <input type="hidden" id="remove-recipe-user-id"  name="collector_id" value="<%= current_user.id %>">
+                   <input type="hidden" id="remove-recipe-recipe-id" name="recipe_id" value="<%= recipe.id %>">
                   <button id="remove" type="submit">
                     <span class="left glyphicon glyphicon-ok"></span>
                   </button>
                 </form>
               <% else %>
-                <form id="add-recipe" method="post" action="/users/<%=current_user.id %>/collected_recipes?recipe=<%= recipe.id %>">
+                <form id="add-recipe" method="create" action="<%= user_collected_recipe_path(current_user, recipe) %>">
+                  <input type="hidden" id="add-recipe-user-id"  name="collector_id" value="<%= current_user.id %>">
+                  <input type="hidden" id="add-recipe-recipe-id" name="recipe_id" value="<%= recipe.id %>">
                   <button id="add" type="submit">
                     <span class="left glyphicon glyphicon-plus-sign"></span>
                   </button>

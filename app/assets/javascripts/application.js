@@ -14,12 +14,17 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).ready(function(){
+
+
+// var removeRecipeForm = $("#remove-recipe").outerHTML()
 
 $("#remove-recipe").on("submit", function(e) {
   e.preventDefault
-  $.post("/recipe/destroy", $(this), function(e) {
-      console.log(this)
-    }
-  )
-  $(this).reset
+  var recipeId = $("#remove-recipe-recipe-id")
+  var collectorId = $("#remove-recipe-user-id")
+
+  params = []
+  console.log(e)
+})
 })
