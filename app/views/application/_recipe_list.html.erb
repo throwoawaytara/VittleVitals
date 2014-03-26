@@ -21,7 +21,7 @@
               </span>
             <% end %>
             <% if current_user.recipes.exists?(recipe.id) && current_user.collected_recipes.where(recipe_id: recipe.id).first.favorite == true %>
-                <button>
+                  <button>
                      <span class="right glyphicon glyphicon-star faved"></span>
                   </button>
             <% else %>
