@@ -40,7 +40,7 @@
           <div class="add-to-week">
             <% if current_user %>
               <%= form_tag("/users/#{current_user.id}/scheduled_recipes/#{recipe.id}", class: "form inline-form", method: 'post') do %>
-                <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday']])) %>
+                <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday'], ['Saturday', 'saturday'], ['Sunday', 'sunday']])) %>
                 <%= submit_tag("Add", class: "btn btn-info") %>
               <% end %>
             <% end %>
