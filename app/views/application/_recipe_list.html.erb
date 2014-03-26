@@ -5,22 +5,29 @@
         <article class="recipe thumbnail">
           <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
           <div class="img overlays">
+
             <% if user_signed_in? %>
+
+
+
+            
               <% if current_user.recipes.exists?(recipe.id) %>
-                <span class="already-collected">
-                    <button>
-                      <span class="left glyphicon glyphicon-ok"></span>
-                    </button>
-                </span>
+                <form id="added" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>">
+                  <button id="remove" type="submit">
+                    <span class="left glyphicon glyphicon-ok"></span>
+                  </button>
+                </form>
               <% else %>
-                <span class="add-opt">
-                  <form id="not-collected" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>">
-                    <button id="not-collected-button" type="submit">
-                      <span class="left glyphicon glyphicon-plus-sign"></span>
-                    </button>
-                  </form>
-                </span>
+                <form id="not-added" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>">
+                  <button id="add" type="submit">
+                    <span class="left glyphicon glyphicon-plus-sign"></span>
+                  </button>
+                </form>
               <% end %>
+
+
+
+
               <% if current_user.recipes.exists?(recipe.id) && current_user.collected_recipes.where(recipe_id: recipe.id).first.favorite == true %>
                   <button>
                        <span class="right glyphicon glyphicon-star faved"></span>
