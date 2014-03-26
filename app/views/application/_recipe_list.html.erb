@@ -14,7 +14,7 @@
             <% else %>
               <span class="add-opt">
                 <form id="not-collected" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>">
-                  <button id="not-collected-button" type="submit">
+                  <button class='add-recipe-button' id="not-collected-button" type="submit">
                     <span class="left glyphicon glyphicon-plus-sign"></span>
                   </button>
                 </form>
@@ -26,7 +26,7 @@
                   </button>
             <% else %>
                 <form method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>&favorite=true">
-                  <button type="submit">
+                  <button class="add-favorite-recipe-button" type="submit">
                      <span class="right glyphicon glyphicon-star not-faved"></span>
                   </button>
                 </form>

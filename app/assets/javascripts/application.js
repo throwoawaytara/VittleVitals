@@ -16,5 +16,15 @@
 //= require_tree .
 
 $(function() {
-  console.log('Hi Alyssa!');
+  $(".add-recipe-button").on("click", function(event) {
+    event.preventDefault();
+    console.log(event.target);
+    console.log('bwahhhha! I prevented the default!');
+  });
+
+  $(".add-favorite-recipe-button").on("click", function(event) {
+    event.preventDefault();
+    console.log(event.target);
+    console.log("wwooooahh, now you can't add a favorite!! mwaahhaha")
+  });
 });
