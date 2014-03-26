@@ -19,8 +19,8 @@ $(function() {
   // Need to assign this variable the default class name so that if the plus button
   // isn't clicked then fav can know what the current status is on that button
 
-  $(".nav .navbar-nav li a").on("click", function(event) {
-    console.log('hey');
+  $("div .navbar-collapse ul li a").on("click", function(event) {
+    console.log(this);
   });
 
   addButtonClassName = "left glyphicon glyphicon-plus-sign";
