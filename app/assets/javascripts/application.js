@@ -21,24 +21,24 @@ $(function() {
 
     $("#" + idUrlName).parent().addClass('active');
 
-  addButtonClassName = "left glyphicon glyphicon-plus-sign";
+  // addButtonClassName = "left glyphicon glyphicon-plus-sign";
 
-  $(".add-recipe-button").on("click", function(event) {
-    event.preventDefault();
+  // $(".add-recipe-button").on("click", function(event) {
+  //   event.preventDefault();
 
-    $(event.target).removeClass("glyphicon-plus-sign");
-    $(event.target).addClass("glyphicon-ok");
-    addButtonClassName = this.children[0].className;
-  });
+  //   $(event.target).removeClass("glyphicon-plus-sign");
+  //   $(event.target).addClass("glyphicon-ok");
+  //   addButtonClassName = this.children[0].className;
+  // });
 
-  $(".add-favorite-recipe-button").on("click", function(event) {
-    event.preventDefault();
+  // $(".add-favorite-recipe-button").on("click", function(event) {
+  //   event.preventDefault();
 
-    $(this).first("span").addClass("glyphicon-ok")
+  //   $(this).first("span").addClass("glyphicon-ok")
 
-    if (addButtonClassName === "left glyphicon glyphicon-plus-sign") {
-      console.log(this);
-    }
-  });
+  //   if (addButtonClassName === "left glyphicon glyphicon-plus-sign") {
+  //     console.log(this);
+  //   }
+  // });
 });
 
