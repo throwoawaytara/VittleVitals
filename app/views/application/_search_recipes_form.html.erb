@@ -1,0 +1,19 @@
+<%= form_tag recipes_path, class: "form-inline form search-recipes", role: "form", method: 'get' do %>
+    <div class="form-group">
+
+      <div class="input-group">
+        <%= text_field_tag :search, params[:search], class: "form-control search" %>
+        <span class="input-group-btn"><%= button_tag "Search Recipes", type: "submit", class: "btn btn-warning" %></span>
+      </div><!--.input-group -->
+      
+      <div class="input-group radios">
+        <span class="input-group-addon">
+          <label><%= radio_button_tag(:search_type, "ingredient") %>Find by Ingredient</label>
+        </span>
+        <span class="input-group-addon">
+            <label><%= radio_button_tag(:search_type, "recipe_name") %>Find by Recipe Name</label>
+        </span>
+      </div><!--.input group-->
+      
+  </div><!--.form-group-->
+<% end %>
