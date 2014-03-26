@@ -15,9 +15,6 @@ class RecipesController < ApplicationController
     @instructions_domain = @recipe.instruction_url_split
     @nutrition_info = @recipe.nutrition_informations
     @health_labels = @recipe.health_labels
-
-    # @nutrition_info = @recipe.nutrition_calc
-
   end
 
 

@@ -34,11 +34,11 @@
       <aside class="ingredients-w-o-nutifo"></aside>
       <h3>Nutrition Information</h3>
       <!-- 4 will be replaced with recipe.num_servings -->
-      <p><b>Servings</b>: 4 </p>
+      <p><b>Servings</b>: <%= @recipe.serving_size %> </p>
       <h4>Per Serving:</h4>
       <ul>
-       <% @nutrition_info.each do |key, val| %>
-        <li><b><%= key.capitalize %></b>: <%= val %></li>
+       <% @nutrition_info.each do |nutrient| %>
+        <li><b><%= nutrient.name %></b>: <%= nutrient.value.round(2) %><%= nutrient.unit %></li>
        <% end %>
      </ul>
    <% end %>
