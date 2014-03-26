@@ -12,5 +12,33 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
+
+$(function() {
+  var pathName = window.location.pathname;
+  var regex = /\/users\/\d\/([A-z]+).*/;
+  var idUrlName = pathName.replace(regex, "_\$1");
+
+    $("#" + idUrlName).parent().addClass('active');
+
+  // addButtonClassName = "left glyphicon glyphicon-plus-sign";
+
+  // $(".add-recipe-button").on("click", function(event) {
+  //   event.preventDefault();
+
+  //   $(event.target).removeClass("glyphicon-plus-sign");
+  //   $(event.target).addClass("glyphicon-ok");
+  //   addButtonClassName = this.children[0].className;
+  // });
+
+  // $(".add-favorite-recipe-button").on("click", function(event) {
+  //   event.preventDefault();
+
+  //   $(this).first("span").addClass("glyphicon-ok")
+
+  //   if (addButtonClassName === "left glyphicon glyphicon-plus-sign") {
+  //     console.log(this);
+  //   }
+  // });
+});
+

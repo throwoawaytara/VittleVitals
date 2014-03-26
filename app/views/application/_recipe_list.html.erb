@@ -23,17 +23,35 @@
               <% end %>
               <% if current_user.recipes.exists?(recipe.id) && current_user.collected_recipes.where(recipe_id: recipe.id).first.favorite == true %>
                   <button>
-                       <span class="right glyphicon glyphicon-star faved"></span>
-                    </button>
-              <% else %>
-                  <form method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>&favorite=true">
-                    <button type="submit">
-                       <span class="right glyphicon glyphicon-star not-faved"></span>
-                    </button>
-                  </form>
-                </span>
-              <% end %>
+                    <span class="left glyphicon glyphicon-ok"></span>
+                  </button>
+              </span>
+            <% else %>
+              <span class="add-opt">
+                <!-- Add to My week form -->
+                <form id="not-collected" method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>">
+                  <button class='add-recipe-button' id="not-collected-button" type="submit">
+                    <span class="left glyphicon glyphicon-plus-sign"></span>
+                  </button>
+                </form>
+                <!--  -->
+              </span>
             <% end %>
+            <% if current_user.recipes.exists?(recipe.id) && current_user.collected_recipes.where(recipe_id: recipe.id).first.favorite == true %>
+                <button>
+                     <span class="right glyphicon glyphicon-star faved"></span>
+                  </button>
+            <% else %>
+            <!-- Add to favorites form -->
+                <form method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>&favorite=true">
+                  <button class="add-favorite-recipe-button" type="submit">
+                     <span class="right glyphicon glyphicon-star not-faved"></span>
+                  </button>
+                </form>
+                <!--  -->
+              </span>
+            <% end %>
+          <% end %>
 
             <p class="img-thumbnail"><img src="<%= recipe.img_path %>" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
           </div><!-- .image-overlays -->
