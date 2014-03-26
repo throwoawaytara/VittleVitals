@@ -99,13 +99,27 @@ input,
   width:100%;
 }
 .form-inline.home .submit.form-group {
-  display:inline-block;
 }
-
+.navbar-form.navbar-left {display:none;}
+.form-inline.search-recipes input,
+.form-inline.search-recipes label {
+  display:inline;
+}
+.search-recipes .input-group.radios .input-group-addon {
+  margin-left:0; padding-left:0;
+  background:transparent;
+  border:none;
+}
+.search-recipes input[type="radio"] {
+  margin-right:5px;
+  width:10px;
+}
 .button-cluster .submit.form-group {
   float:left;
   margin-right:10px;
 }
+
+
 
 .button-cluster {
   list-style:none;
@@ -326,6 +340,9 @@ input,
     float:right;
     max-width:450px;
   }
+  .site-intro#banner h1 {
+  font-size:4em;
+}
 }
 
 @media screen and (min-width: 1200px) {

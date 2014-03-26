@@ -1,20 +1,19 @@
 <!-- logged out recipe search -->
 
 
-  <div class="well feature-recipe col-lg-9">
+  <div class="well col-lg-6">
     <section class="home search-form form-inline">
       <h2>Search Recipes</h2>
-        <%= render partial: 'search_recipes_form' %>
+        <%= render "search_recipes_form" %>
     </section><!-- .search-form -->
   </div>
-  <div class="col-lg-3" id="banner">
-    <h1>Grocer<i>EASE</i></h1>
-    <p class="lead">Making it easier to plan and shop for healthy meals.</p>
+  <div class="col-lg-6" id="banner" class="site-intro">
+    <%= render "banner" %>
   </div><!--#banner-->
 </div><!-- row-->
 
 <div class="row">
-  <div class="page-content col-xs-12">
+  <div class="page-content col-lg-12">
     <section class="search-results">
       <% if user_signed_in? %>
         <div class="logged-in"><%= render partial: "application/recipe_list", locals: {recipes: @recipes} %></div>
