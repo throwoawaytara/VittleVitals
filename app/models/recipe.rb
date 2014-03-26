@@ -29,6 +29,7 @@ class Recipe < ActiveRecord::Base
       nutrition_information = NutritionInformation.create(args)
     end
     nutrition["healthLabels"].each { |label_name| HealthLabel.create(recipe_id: self.id, label_name: label_name)}
+    self.nutrition_calc
 
   end
 
@@ -106,8 +107,11 @@ class Recipe < ActiveRecord::Base
 
 
   def nutrition_calc
-    nutrition_info = Recipe.nutrition_information
-
+    nutrition_infos = self.nutrition_informations
+    nutrition_infos.each do |nutrition_info|
+      value = nutrition_info.value
+      nutrition_info.update_attributes(value:  value / self.serving_size)
+    end
   end
 
   
