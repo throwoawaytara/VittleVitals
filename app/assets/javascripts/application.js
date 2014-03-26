@@ -16,36 +16,45 @@
 //= require_tree .
 
 $(function() {
-  // Need to assign this variable the default class name so that if the plus button
-  // isn't clicked then fav can know what the current status is on that button
+  var pathName = window.location.pathname;
+  var regex = /\/users\/\d\/([A-z]+).*/;
+  var idUrlName = pathName.replace(regex, "_\$1");
+  // console.log(idUrlName);
+    // $("#" + idUrlName).parent().addClass('active');
 
-  $("div .navbar-collapse ul li a").on("click", function(event) {
-    console.log(this);
-  });
+    $(document).on("click", "div .navbar-collapse ul li", function(event) {
+      event.preventDefault();
+      console.log($(this).children());
+      // $.ajax({
+      //   url: ''
+      // });
 
-  addButtonClassName = "left glyphicon glyphicon-plus-sign";
+      $("#" + idUrlName).parent().addClass('active');
+    });
 
-  $(".add-recipe-button").on("click", function(event) {
-    event.preventDefault();
-    // addRecipeTarget = event.target;
-    $(event.target).removeClass("glyphicon-plus-sign");
-    $(event.target).addClass("glyphicon-ok");
-    addButtonClassName = this.children[0].className;
-  });
+  // addButtonClassName = "left glyphicon glyphicon-plus-sign";
 
-  $(".add-favorite-recipe-button").on("click", function(event) {
-    event.preventDefault();
-    // console.log(addButtonClassName);
-    // $(event.target).removeClass("not-faved");
-    // $(event.target).addClass("faved");
-    $(this).first("span").addClass("glyphicon-ok")
+  // $(".add-recipe-button").on("click", function(event) {
+  //   event.preventDefault();
+  //   // addRecipeTarget = event.target;
+  //   $(event.target).removeClass("glyphicon-plus-sign");
+  //   $(event.target).addClass("glyphicon-ok");
+  //   addButtonClassName = this.children[0].className;
+  // });
 
-    if (addButtonClassName === "left glyphicon glyphicon-plus-sign") {
-      // console.log(addRecipeTarget);
-      console.log(this);
-      // $(someElement).removeClass("glyphicon-plus-sign");
-      // $(someElement).addClass("glyphicon-ok");
-    }
-  });
+  // $(".add-favorite-recipe-button").on("click", function(event) {
+  //   event.preventDefault();
+  //   // console.log(addButtonClassName);
+  //   // $(event.target).removeClass("not-faved");
+  //   // $(event.target).addClass("faved");
+  //   $(this).first("span").addClass("glyphicon-ok")
+
+  //   if (addButtonClassName === "left glyphicon glyphicon-plus-sign") {
+  //     // console.log(addRecipeTarget);
+  //     console.log(this);
+  //     // $(someElement).removeClass("glyphicon-plus-sign");
+  //     // $(someElement).addClass("glyphicon-ok");
+  //   }
+  // });
 });
 
