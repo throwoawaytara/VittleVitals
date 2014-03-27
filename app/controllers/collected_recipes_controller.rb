@@ -45,7 +45,7 @@ class CollectedRecipesController < ActionController::Base
       @recipe = CollectedRecipe.where(collector_id: params[:collector_id], recipe_id: params[:recipe_id]).first
       @recipe.destroy
       @recipes = current_user.recipes
-      render user_recipes_path(current_user), layout: false, locals: {recipes: @recipes}
+      render user_collected_recipes_path(current_user), layout: false, locals: {recipes: @recipes}
     else
       # render "grocerylists/show", layout: true if !request.xhr?
     end

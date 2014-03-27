@@ -10,7 +10,7 @@ TestRailsOnDigitalOcean::Application.routes.draw do
     post '/scheduled_recipes/:recipe_id', to: 'scheduled_recipes#create'
   end
 
-  # post '/users/:user_id/collected_recipes/:id/destroy', to: 'collected_recipes#destroy'
+  delete '/users/:user_id/collected_recipes/:id/destroy', to: 'collected_recipes#destroy'
   get 'twilio/text' => 'twilio#text'
 
 
