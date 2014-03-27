@@ -7,12 +7,21 @@ class CollectedRecipesController < ActionController::Base
 
   def create
     if request.xhr?
-      current_user.recipes << Recipe.find(params[:recipe_id])
-      params[:recipe_id]
+      @recipe = Recipe.find(params[:recipe_id])
+      unless current_user.recipes.exists?(@recipe)
+        CollectedRecipe.create(collector_id: current_user.id, recipe_id: @recipe.id)
+        @recipes = current_user.collected_recipes.map do |r|
+          Recipe.find(r.recipe_id)
+        end
+        render partial: "application/recipe_list", locals: {recipes: @recipes}
+      end 
     else
-      @recipes = Recipe.all
-      render "welcome/index"
+      redirect_to user_recipes_path(current_user)
     end
+    
+      # render user_recipes_path(current_user), layout:false, locals: {recipes: @recipes}
+      # params[:recipe_id]
+  end
 
       # if params[:favorite]
       #   if current_user.recipes.exists?(params[:recipe])
@@ -27,13 +36,18 @@ class CollectedRecipesController < ActionController::Base
       # end
       # redirect_to user_recipes_path(current_user)
 
-    end
+    # end
 
 
 
   def destroy
-    recipe = CollectedRecipe.where(collector_id: current_user.id, recipe_id: params[:id])
-    recipe.destroy
-    redirect_to user_recipes_path
+    if request.xhr?
+      @recipe = CollectedRecipe.where(collector_id: params[:collector_id], recipe_id: params[:recipe_id]).first
+      @recipe.destroy
+      @recipes = current_user.recipes
+      render user_recipes_path(current_user), layout: false, locals: {recipes: @recipes}
+    else
+      # render "grocerylists/show", layout: true if !request.xhr?
+    end
   end
 end

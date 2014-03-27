@@ -9,21 +9,25 @@
           <div class="img overlays">
             <% if user_signed_in? %>
               <% if current_user.recipes.exists?(recipe) %>
-                <form id="remove-recipe" method="destroy" action="<%= user_collected_recipe_path(current_user, recipe) %>">
-                  <input type="hidden" id="remove-recipe-user-id"  name="collector_id" value="<%= current_user.id %>">
+              <div class="form-wrapper">
+                <form id="remove-recipe" method="delete" data-remote="true"  action="<%= user_collected_recipe_path(current_user, recipe) %>/destroy">
+                  <input type="hidden" id="remove-recipe-user-id" name="collector_id" value="<%= current_user.id %>">
                    <input type="hidden" id="remove-recipe-recipe-id" name="recipe_id" value="<%= recipe.id %>">
                   <button id="remove" type="submit">
                     <span class="left glyphicon glyphicon-ok"></span>
                   </button>
                 </form>
+              </div><!--.form-wrapper-->
               <% else %>
-                <form id="add-recipe" method="create" action="<%= user_collected_recipe_path(current_user, recipe) %>">
+              <div class="form-wrapper">
+                <form id="add-recipe" method="post" data-remote="true" action="<%= user_collected_recipes_path(current_user) %>">
                   <input type="hidden" id="add-recipe-user-id"  name="collector_id" value="<%= current_user.id %>">
                   <input type="hidden" id="add-recipe-recipe-id" name="recipe_id" value="<%= recipe.id %>">
                   <button id="add" type="submit">
                     <span class="left glyphicon glyphicon-plus-sign"></span>
                   </button>
                 </form>
+              </div><!--.form-wrapper-->
               <% end %>
               <p class="img-thumbnail"><img src="<%= recipe.img_path %>" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
             </div><!-- .image-overlays -->

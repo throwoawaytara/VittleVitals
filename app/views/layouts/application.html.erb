@@ -8,13 +8,16 @@
   <meta name="author" content="Built by Diana Calvache, Dustin Fox, Cristin O'Connor and Tara Roys at Dev Bootcamp Chicago">
   <title>GrocerEase</title>
   <%= stylesheet_link_tag     "bootstrap", "application", media: "all" %>
-  <%= javascript_include_tag  "jquery","jquery-ui","bootstrap","application" %>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+  <%= javascript_include_tag  "bootstrap","application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <div class="container">
   <div class="clearfix">
     <div class="row">
+      <%= params.inspect %>
       <div class="col-lg-12">
         <div class="bs-component">
           <div class="navbar navbar-default">

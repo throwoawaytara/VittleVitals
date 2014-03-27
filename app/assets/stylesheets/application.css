@@ -189,6 +189,13 @@ input,
 
 .grid-list form {
   display:inline-block;
+  display: block;
+z-index: 5;
+position: relative;
+height: 45px;
+margin-bottom: -25px;
+width: 45px;
+
 }
 
 .grid-list h3 a ,

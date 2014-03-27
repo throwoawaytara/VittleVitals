@@ -13,17 +13,37 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(document).ready(function() {
+  
 
-$("#remove-recipe").on("submit", function(e) {
-  console.log($(this))
-  var userId = $("#remove-recipe-user-id").val()
-  var recipeId = $("#remove-recipe-recipe-id").val()
-  var url = '/users/' + userId + '/collected_recipes/' + recipeId
+  $("#remove-recipe").on("submit", function(e) {
+    e.preventDefault()
+    $addForm = $("#add-recipe").parent().html();
+    var url = $(this).attr("action");
+    var data = $(this).serialize();
+    $.post(url, data, function(serverResponse, status, request){
+      $removeForm.replaceWith($addForm);
+    });
+    // $(this).off("submit")
+    $(this).find(".glyphicon").toggleClass("glyphicon-plus-sign").toggleClass("glyphicon-ok")
+  })
 
-  $.post(url, {user_id: userId, recipe_id: recipeId}, function(e){
-    console.log(response)
+  $("#add-recipe").on("submit", function(e) {
+
+    e.preventDefault()
+    $removeForm = $("#remove-recipe").parent().html();
+
+    var url = $(this).attr("action");
+    var data = $(this).serialize();
+    $.post(url, data, function(serverResponse, status, request){
+      $addForm.replaceWith($removeForm);
+    });
+      $(this).find(".glyphicon").toggleClass("glyphicon-plus-sign").toggleClass("glyphicon-ok")
+
+    // $(this).off("submit")
   })
 })
+
 
 $(function() {
   var pathName = window.location.pathname;
@@ -32,24 +52,5 @@ $(function() {
 
     $("#" + idUrlName).parent().addClass('active');
 
-  // addButtonClassName = "left glyphicon glyphicon-plus-sign";
-
-  // $(".add-recipe-button").on("click", function(event) {
-  //   event.preventDefault();
-
-  //   $(event.target).removeClass("glyphicon-plus-sign");
-  //   $(event.target).addClass("glyphicon-ok");
-  //   addButtonClassName = this.children[0].className;
-  // });
-
-  // $(".add-favorite-recipe-button").on("click", function(event) {
-  //   event.preventDefault();
-
-  //   $(this).first("span").addClass("glyphicon-ok")
-
-  //   if (addButtonClassName === "left glyphicon glyphicon-plus-sign") {
-  //     console.log(this);
-  //   }
-  // });
 });
 
