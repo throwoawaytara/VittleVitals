@@ -14,31 +14,31 @@
 //= require jquery_ujs
 //= require_tree .
 $(document).ready(function() {
-  
 
   $("#remove-recipe").on("submit", function(e) {
     e.preventDefault()
-    $addForm = $("#add-recipe").parent().html();
+    
     var url = $(this).attr("action");
     var data = $(this).serialize();
     $.post(url, data, function(serverResponse, status, request){
-      $removeForm.replaceWith($addForm);
+      // $removeForm.replaceWith($addForm);
     });
-    // $(this).off("submit")
     $(this).find(".glyphicon").toggleClass("glyphicon-plus-sign").toggleClass("glyphicon-ok")
+    $("#remove-recipe").parent().html($("#add-recipe").parent().html());
   })
 
   $("#add-recipe").on("submit", function(e) {
 
     e.preventDefault()
-    $removeForm = $("#remove-recipe").parent().html();
+    
 
     var url = $(this).attr("action");
     var data = $(this).serialize();
     $.post(url, data, function(serverResponse, status, request){
-      $addForm.replaceWith($removeForm);
+      // $addForm.replaceWith($removeForm);
     });
       $(this).find(".glyphicon").toggleClass("glyphicon-plus-sign").toggleClass("glyphicon-ok")
+      $("#remove-recipe").parent().html($("#add-recipe").parent().html());
 
     // $(this).off("submit")
   })

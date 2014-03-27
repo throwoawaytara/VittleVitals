@@ -10,7 +10,7 @@
             <% if user_signed_in? %>
               <% if current_user.recipes.exists?(recipe) %>
               <div class="form-wrapper">
-                <form id="remove-recipe" method="delete" data-remote="true"  action="<%= user_collected_recipe_path(current_user, recipe) %>/destroy">
+                <form id="remove-recipe" method="delete" data-remote="true"  action="<%= user_collected_recipe_path(current_user, CollectedRecipe.where(collector_id: current_user.id, recipe_id: recipe.id)) %>">
                   <input type="hidden" id="remove-recipe-user-id" name="collector_id" value="<%= current_user.id %>">
                    <input type="hidden" id="remove-recipe-recipe-id" name="recipe_id" value="<%= recipe.id %>">
                   <button id="remove" type="submit">
@@ -20,8 +20,8 @@
               </div><!--.form-wrapper-->
               <% else %>
               <div class="form-wrapper">
-                <form id="add-recipe" method="post" data-remote="true" action="<%= user_collected_recipes_path(current_user) %>">
-                  <input type="hidden" id="add-recipe-user-id"  name="collector_id" value="<%= current_user.id %>">
+                <form id="add-recipe" method="post" data-remote="true" action="<%= user_collected_recipes_path(current_user, recipe.id) %>">
+                  <input type="hidden" id="add-recipe-user-id" name="collector_id" value="<%= current_user.id %>">
                   <input type="hidden" id="add-recipe-recipe-id" name="recipe_id" value="<%= recipe.id %>">
                   <button id="add" type="submit">
                     <span class="left glyphicon glyphicon-plus-sign"></span>
