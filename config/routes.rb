@@ -11,7 +11,7 @@ TestRailsOnDigitalOcean::Application.routes.draw do
   end
 
   get 'twilio/text' => 'twilio#text'
-
+  
   resources :recipes, only: [:show, :index]
 
   root 'welcome#index'
