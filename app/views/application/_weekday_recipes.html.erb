@@ -1,11 +1,13 @@
 <% @weekday_recipes.each do |weekday, recipes| %>
-  <div id="<%= weekday %>">
+  <div class="day" id="<%= weekday %>">
     <h3><%= weekday.titlecase %></h3>
     <% recipes.each do |recipe| %>
-      <ul class="weekday-recipes">
-        <li><%= link_to "#{recipe[0].name}", recipe_path(recipe[0]) %></li>
-        <li><%= link_to 'Delete', "/users/#{current_user.id}/scheduled_recipes/#{recipe[0].id}?day=#{weekday.downcase}", method: :delete %></li>
-      </ul>
+      <div class="days-recipe">
+        <ul >
+          <li><%= link_to "#{recipe[0].name}", recipe_path(recipe[0]) %></li>
+          <li><%= link_to '', "/users/#{current_user.id}/scheduled_recipes/#{recipe[0].id}?day=#{weekday.downcase}", method: :delete, class: "glyphicon glyphicon-trash" %></li>
+        </ul>
+      </div>
     <% end %>
   </div>
 <% end %>

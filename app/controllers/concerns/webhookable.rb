@@ -8,5 +8,4 @@ extend ActiveSupport::Concern
   def render_twiml(response)
           render text: response.text
   end
- 
 end

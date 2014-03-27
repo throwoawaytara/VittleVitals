@@ -356,4 +356,36 @@ input,
   }
 }
 
+div.days-recipe ul li {
+  display: inline;
+}
+
+div.days-recipe {
+  float: left;
+}
+
+div.day {
+  overflow: auto;
+  width: 100%;
+  
+}
+
+div#tags div{
+  float: left;
+}
+
+h3#nutrition-title {
+  padding-top: 10px;
+  clear: both;
+}
+
+div.health-label {
+  /*margin: 5px;*/
+  color: #aaa;
+  padding: 2px 5px !important;
+  margin: 2px 2px;
+  background-color: #444;
+  border-radius:25px !important; 
+}
+
 
