@@ -16,10 +16,6 @@ TestRailsOnDigitalOcean::Application.routes.draw do
 
   get 'twilio/text' => 'twilio#text'
 
-  resources :collected_recipes, only: [:destroy, :create]
-
-
-
   resources :recipes, only: [:show, :index]
 
   root 'welcome#index'
