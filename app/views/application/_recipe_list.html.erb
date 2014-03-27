@@ -8,9 +8,9 @@
           <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
           <div class="img overlays">
             <% if user_signed_in? %>
-              <% if current_user.recipes.exists?(recipe) %>
+              <% if current_user.recipes.include?(recipe) %>
               <div class="form-wrapper">
-                <form id="remove-recipe" method="delete" data-remote="true"  action="<%= user_collected_recipe_path(current_user, CollectedRecipe.where(collector_id: current_user.id, recipe_id: recipe.id)) %>">
+                <form id="remove-recipe" method="delete" data-remote="true"  action="<%= user_collected_recipe_path(current_user, recipe)%>">
                   <input type="hidden" id="remove-recipe-user-id" name="collector_id" value="<%= current_user.id %>">
                    <input type="hidden" id="remove-recipe-recipe-id" name="recipe_id" value="<%= recipe.id %>">
                   <button id="remove" type="submit">
@@ -20,7 +20,7 @@
               </div><!--.form-wrapper-->
               <% else %>
               <div class="form-wrapper">
-                <form id="add-recipe" method="post" data-remote="true" action="<%= user_collected_recipes_path(current_user, recipe.id) %>">
+                <form id="add-recipe" method="post" data-remote="true" action="/create-collected-recipe">
                   <input type="hidden" id="add-recipe-user-id" name="collector_id" value="<%= current_user.id %>">
                   <input type="hidden" id="add-recipe-recipe-id" name="recipe_id" value="<%= recipe.id %>">
                   <button id="add" type="submit">
@@ -34,7 +34,7 @@
             <div class="add-to-week container-fluid">
               <%= form_tag("/users/#{current_user.id}/scheduled_recipes/#{recipe.id}", class: "form inline-form", method: 'post') do %>
                 <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday'], ['Saturday', 'saturday'], ['Sunday', 'sunday']])) %>
-                <%= submit_tag("Add to My Week", class: "btn btn-info") %>
+                <%= submit_tag("Add", class: "btn btn-info") %>
               <% end %>
             </div><!--.add-to-week container-fluid-->
           <% end %><!-- if user_signed_in?-->

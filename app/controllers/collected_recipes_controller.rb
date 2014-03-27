@@ -13,7 +13,7 @@ class CollectedRecipesController < ActionController::Base
         @recipes = current_user.collected_recipes.map do |r|
           Recipe.find(r.recipe_id)
         end
-        render partial: "application/recipe_list", locals: {recipes: @recipes}
+        # render partial: "application/recipe_list", locals: {recipes: @recipes}
       end 
     else
       redirect_to user_collected_recipes_path(current_user)
@@ -27,9 +27,7 @@ class CollectedRecipesController < ActionController::Base
       @recipe = CollectedRecipe.where(collector_id: params[:collector_id], recipe_id: params[:recipe_id]).first
       @recipe.destroy if @recipe
       @recipes = current_user.recipes
-
-      render user_collected_recipes_path(current_user), layout: false, locals: {recipes: @recipes}
-    else
+      # render "user_recipes/index", layout: false, locals: {recipes: @recipes} else
       # render "grocerylists/show", layout: true if !request.xhr?
     end
   end

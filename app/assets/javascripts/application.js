@@ -24,22 +24,18 @@ $(document).ready(function() {
       // $removeForm.replaceWith($addForm);
     });
     $(this).find(".glyphicon").toggleClass("glyphicon-plus-sign").toggleClass("glyphicon-ok")
-    $("#remove-recipe").parent().html($("#add-recipe").parent().html());
+    $("#remove-recipe").parent().replaceWith($("#add-recipe").parent());
   })
 
   $("#add-recipe").on("submit", function(e) {
 
     e.preventDefault()
-    
-
     var url = $(this).attr("action");
     var data = $(this).serialize();
     $.post(url, data, function(serverResponse, status, request){
-      // $addForm.replaceWith($removeForm);
+      $(this).find(".glyphicon").toggleClass("glyphicon-plus-sign").addClass("glyphicon-ok")
+      $("#remove-recipe").parent().replaceWith($("#add-recipe").parent());
     });
-      $(this).find(".glyphicon").toggleClass("glyphicon-plus-sign").toggleClass("glyphicon-ok")
-      $("#remove-recipe").parent().html($("#add-recipe").parent().html());
-
     // $(this).off("submit")
   })
 })

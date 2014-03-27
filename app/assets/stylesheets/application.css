@@ -129,11 +129,19 @@ input,
   margin:0;
 }
 
+.col-lg-12 {
+  /*max-width:1200px;*/
+  margin:0 auto;
+  float:none;
+}
+
 .grid-list {
   list-style:none;
   padding:0;
   margin:0;
   display:inline-block;
+  margin: 0 auto;
+  /*text-align:center;*/
   text-align:justify;
 }
 
@@ -187,7 +195,7 @@ input,
   margin-bottom:0;
 }
 
-.grid-list form {
+.grid-list .overlays form {
   display:inline-block;
   display: block;
 z-index: 5;
@@ -345,13 +353,14 @@ width: 45px;
     float:left;
     max-width:350px;
   }
-    .full-recipe .thumbnail {
+  .full-recipe .thumbnail {
     float:right;
     max-width:450px;
   }
   .site-intro#banner h1 {
   font-size:4em;
-}
+  }
+  #banner {text-align:center;}
 }
 
 @media screen and (min-width: 1200px) {
