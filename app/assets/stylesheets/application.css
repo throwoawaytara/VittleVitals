@@ -370,4 +370,22 @@ div.day {
   
 }
 
+div#tags div{
+  float: left;
+}
+
+h3#nutrition-title {
+  padding-top: 10px;
+  clear: both;
+}
+
+div.health-label {
+  /*margin: 5px;*/
+  padding: 2px 5px !important;
+  margin: 5px;
+  background-color: #ccc;
+  border: 1px solid #ccc;
+  border-radius:25px !important; 
+}
+
 
