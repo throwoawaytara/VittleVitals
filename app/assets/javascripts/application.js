@@ -12,19 +12,33 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
-$(document).ready(function(){
 
+$(function() {
+  var pathName = window.location.pathname;
+  var regex = /\/users\/\d\/([A-z]+).*/;
+  var idUrlName = pathName.replace(regex, "_\$1");
 
-// var removeRecipeForm = $("#remove-recipe").outerHTML()
+    $("#" + idUrlName).parent().addClass('active');
 
-$("#remove-recipe").on("submit", function(e) {
-  e.preventDefault
-  var recipeId = $("#remove-recipe-recipe-id")
-  var collectorId = $("#remove-recipe-user-id")
+  // addButtonClassName = "left glyphicon glyphicon-plus-sign";
 
-  params = []
-  console.log(e)
-})
-})
+  // $(".add-recipe-button").on("click", function(event) {
+  //   event.preventDefault();
+
+  //   $(event.target).removeClass("glyphicon-plus-sign");
+  //   $(event.target).addClass("glyphicon-ok");
+  //   addButtonClassName = this.children[0].className;
+  // });
+
+  // $(".add-favorite-recipe-button").on("click", function(event) {
+  //   event.preventDefault();
+
+  //   $(this).first("span").addClass("glyphicon-ok")
+
+  //   if (addButtonClassName === "left glyphicon glyphicon-plus-sign") {
+  //     console.log(this);
+  //   }
+  // });
+});
+

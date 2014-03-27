@@ -10,9 +10,9 @@ TestRailsOnDigitalOcean::Application.routes.draw do
     post '/scheduled_recipes/:recipe_id', to: 'scheduled_recipes#create'
   end
 
+  get 'twilio/text' => 'twilio#text'
+
   resources :recipes, only: [:show, :index]
-  # post '/users/:user_id/collected_recipes/:recipe_id/add', to: 'collected_recipes#create'
-  # post '/users/:user_id/collected_recipes/:recipe_id/remove', to: 'collected_recipes#destroy'
 
   root 'welcome#index'
 end

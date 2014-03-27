@@ -1,13 +1,13 @@
-<ul class="recipes all grid-list logged-in">
-  <% unless @recipes.empty? %>
+<ul class="grid-list logged-in">
+  <% if @recipes.empty? %>
+    <div class="well warning"><p>No Results Found</p></div>
+  <% else %>
     <% @recipes.each do |recipe| %>
       <li class="item">
         <article class="recipe thumbnail">
           <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
           <div class="img overlays">
-
             <% if user_signed_in? %>
-
               <% if current_user.recipes.exists?(recipe) %>
                 <form id="remove-recipe" method="destroy" action="<%= user_collected_recipe_path(current_user, recipe) %>">
                   <input type="hidden" id="remove-recipe-user-id"  name="collector_id" value="<%= current_user.id %>">
@@ -25,38 +25,17 @@
                   </button>
                 </form>
               <% end %>
-
-
-
-
-              <% if current_user.recipes.exists?(recipe) && recipe.is_user_favorite?(current_user) %>
-                  <button>
-                       <span class="right glyphicon glyphicon-star faved"></span>
-                    </button>
-              <% else %>
-                  <form method="post" action="/users/<%=current_user.id%>/collected_recipes?recipe=<%=recipe.id%>&favorite=true">
-                    <button type="submit">
-                       <span class="right glyphicon glyphicon-star not-faved"></span>
-                    </button>
-                  </form>
-                </span>
-              <% end %>
-         <% end %>
-
-            <p class="img-thumbnail"><img src="<%= recipe.img_path %>" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
-          </div><!-- .image-overlays -->
-          <div class="add-to-week">
-            <% if current_user %>
+              <p class="img-thumbnail"><img src="<%= recipe.img_path %>" alt="<%= recipe.name %>" title="<%= recipe.name %>"></p>
+            </div><!-- .image-overlays -->
+            <div class="add-to-week container-fluid">
               <%= form_tag("/users/#{current_user.id}/scheduled_recipes/#{recipe.id}", class: "form inline-form", method: 'post') do %>
-                <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday']])) %>
-                <%= submit_tag("Add", class: "btn btn-info") %>
+                <%= select_tag(:day, options_for_select([['Monday', 'monday'], ['Tuesday', 'tuesday'], ['Wednesday', 'wednesday'], ['Thursday', 'thursday'], ['Friday', 'friday'], ['Saturday', 'saturday'], ['Sunday', 'sunday']])) %>
+                <%= submit_tag("Add to My Week", class: "btn btn-info") %>
               <% end %>
-            <% end %>
-          </div>
+            </div><!--.add-to-week container-fluid-->
+          <% end %><!-- if user_signed_in?-->
         </article>
       </li>
     <% end %>
-  <% else %>
-    <p> No Results Found <p>
   <% end %>
 </ul>
