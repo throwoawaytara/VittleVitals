@@ -48,5 +48,17 @@ class GrocerylistsController < ApplicationController
 
   end
 
+  def shopping
+    if current_user
+      @list_items = []
+      @grocery_list = current_user.grocery_list
+      if @grocery_list
+        @list_items = @grocery_list.ingredients
+      end
+    else
+      redirect_to '/'
+    end
+  end
+
 end
 

@@ -1,11 +1,12 @@
 
 <h2 class="page-title">Grocery List</h2>
 <div class="page-content">
+  <%= link_to "Shopping Mode", user_shoppinglist_path(user_id: current_user.id, grocery_list_id: @grocery_list.id) %>
   <ul class="grocery-list">
     <% @list_items.each do |ingredient| %>
       <li class="grocery-item well">
         <b class="name"><%= ingredient.name %>
-        <%= link_to("", user_grocerylist_path(current_user.id,  id: params[:id], ingredient_id: ingredient.id), method: 'delete', class: "glyphicon glyphicon-trash") %>
+        <%= link_to("", user_grocerylist_path(current_user.id, @grocery_list.id),  id: params[:id], ingredient_id: ingredient.id, method: 'delete', class: "glyphicon glyphicon-trash") %>
       </li>
     <% end %>
   </ul>
