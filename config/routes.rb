@@ -10,6 +10,7 @@ TestRailsOnDigitalOcean::Application.routes.draw do
     post '/scheduled_recipes/:recipe_id', to: 'scheduled_recipes#create'
   end
 
+  get 'twilio/text' => 'twilio#text'
   resources :recipes, only: [:show, :index]
 
   root 'welcome#index'
