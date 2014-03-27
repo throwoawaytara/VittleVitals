@@ -14,6 +14,17 @@
 //= require jquery_ujs
 //= require_tree .
 
+$("#remove-recipe").on("submit", function(e) {
+  console.log($(this))
+  var userId = $("#remove-recipe-user-id").val()
+  var recipeId = $("#remove-recipe-recipe-id").val()
+  var url = '/users/' + userId + '/collected_recipes/' + recipeId
+
+  $.post(url, {user_id: userId, recipe_id: recipeId}, function(e){
+    console.log(response)
+  })
+})
+
 $(function() {
   var pathName = window.location.pathname;
   var regex = /\/users\/\d\/([A-z]+).*/;
